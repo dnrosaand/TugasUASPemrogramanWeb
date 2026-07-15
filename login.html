@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <section class="logo-section">
+        <div class="logo">
+            <img src="img/logo.png" alt="annyeongshop">
+        </div>
+    </section>
+    <header>
+        <button class="menu">
+            ☰
+        </button>
+        <div class="search">
+            <input type="text" placeholder="Search You're Fav">
+        </div>
+        <div class="header-icon">
+            <a href="#"><img src="img/Heart.png" alt="Tersimpan"></a>
+            <a href="#"><img src="img/Shopping cart.png" alt="Keranjang"></a>
+            <a href="#">
+                <img src="img/User.png" alt="Akun Saya">
+            </a>
+        </div>
+    </header>
+
+    <section class="login-page">
+        <div class="login-container">
+            <div class="login-tab">
+                <button class="active">Masuk</button>
+                <button class="inactive" onclick="location.href='register.html'">
+                    Daftar
+                </button>
+            </div>
+            <form class="login-form">
+                <input type="email" placeholder="Email Address">
+                <div class="password-box">
+                    <input
+                    type="password"
+                    placeholder="Kata Sandi"
+                    id="password">
+                <button type="button" id="togglePassword">
+                    <img src="img/Eye off.png" alt="eye">
+                </button>
+                </div>
+                <a href="#" class="forgot">
+                    Lupa Kata Sandi?
+                </a>
+                <button class="login-button">
+                    Masuk
+                </button>
+            </form>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-logo">
+            <img src="img/logo.png" alt="logo">
+            <p>© 2026 AnnyeongShop. Seluruh Hak Cipta Dilindungi.</p>
+        </div>
+
+        <div class="footer-menu">
+            <h4>BANTUAN</h4>
+            <a href="#">Hubungi Kami</a>
+            <a href="#">FAQ</a>
+            <a href="#">Cara Pemesanan</a>
+            <a href="#">Informasi Pengiriman</a>
+            <a href="#">Kebijakan Pengembalian</a>
+        </div>
+
+        <div class="footer-social">
+            <h4>IKUTI KAMI</h4>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+            <a href="#">TikTok</a>
+        </div>
+    </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

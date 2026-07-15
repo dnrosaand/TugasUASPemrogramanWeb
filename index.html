@@ -3,94 +3,211 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>AnnyeongShop</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <section class="logo-section">
+        <div class="logo">
+            <img src="img/logo.png" alt="annyeongshop">
+        </div>
+    </section>
     <header>
+        <button class="menu">
+            ☰
+        </button>
         <div class="search">
             <input type="text" placeholder="Search You're Fav">
-            <button class="menu">
-                ☰
-            </button>
+        </div>
+        <div class="header-icon">
+            <a href="#"><img src="img/Heart.png" alt="Tersimpan"></a>
+            <a href="#"><img src="img/Shopping cart.png" alt="Keranjang"></a>
+            <a href="#" id="user-btn">
+                <img src="img/User.png" alt="Akun Saya"></a>
         </div>
     </header>
+
     <section class="banner">
-        <img src="img/lemontang.png" alt="Lemontang">
+        <button class="prev">
+            ❮
+        </button>
+        <img src="img/lemontang.png" alt="LmeonTang">
+        <button class="next">
+            ❯
+        </button>
     </section>
+
     <section class="preorder">
-        <p class="section-label">Pre-Order Now</p>
-        <h2>Hearts2Hearts (H2H) - Lemon Tang</h2>
+        <small>Pre-Order</small>
+        <h3>Hearts2Hearts (H2H) - Lemon Tang</h3>
     </section>
-    <section class="product">
-        <h3>Flash Sale</h3>
-        <div class="product-grid">
-            <div class="product-card">
-                <img src="img/haechan.png" alt="haechan">
-                <p class="product-name">
-                    HAECHAN (NCT) - Taste (Full Spread ver.) [1st Album]
-                </p>
-                <p class="product-price">
-                    Rp. 350.000
-                    <span>Rp. 450.000</span>
-                </p>
-            </div>   
-            <div class="product-card">
-                <img src="img/ls nct.png" alt="Ls 127">
-                <p class="product-name">
-                    NCT 127 - Official Lightstick ver. 2
-                </p>
-                <p class="product-price">
-                    Rp. 780.000
-                    <span>Rp. 1.000.000</span>
-                </p>
-            </div>         
-        </div>
-        <a href="#">Cek Selengkapnya</a>
-    </section>
+
     <section class="stock">
-        <h3>Stock</h3>
+        <div class="section-title">
+            <h3>Flash Sale</h3>
+            <a href="#">❯</a>
+        </div>
+
         <div class="product-grid">
             <div class="product-card">
-                <img src="img/cortis.png" alt="album cortis">
-                <small>Pre-Order Now</small>
-                <p class="product-name">
-                    CORTIS [1st EP Album COLOR OUTSIDE THE LINES](Scene 1 Ver.) + 3 Extra Photocards Set
-                </p>
-                <p class="product-price">
-                    Rp. 310.000
-                </p>
-            </div>
-            <div class="product-card">
-                <img src="img/mark.png" alt="album mark">
+                <img src="img/bts arirang.jpeg" alt="bts arirang">
                 <small>Ready Stock</small>
                 <p class="product-name">
-                    The Firstfruit - The 1st Album Photobook ver
+                    BTS The 5th Album 'ARIRANG'
                 </p>
-                <p class="product-price">
-                    Rp. 250.000
+                <p class="price">
+                    Rp.475.000
+                    <span>Rp.550.000</span>
                 </p>
+                <div class="product-action">
+                    <button>Belanja</button>
+                    <img src="img/Shopping cart.png" alt="card">
+                </div>
             </div>
+
             <div class="product-card">
-                <img src="img/svt 1.png" alt="album svt">
+                <img src="img/cortis.jpeg" alt="CORTIS">
                 <small>Ready Stock</small>
                 <p class="product-name">
-                    V8 [1st Mini Album V8] (RATS NEST Ver. + REV Ver.)
+                    Cortis - Greengreen (studio ver.) (Walmart Exclusive) - Music & Performance - CD [Exclusive]
                 </p>
-                <p class="product-price">
-                    Rp. 527.000
+                <p class="price">
+                    Rp.346.000
+                    <span>Rp.480.000</span>
                 </p>
+                <div class="product-action">
+                    <button>Belanja</button>
+                    <img src="img/Shopping cart.png" alt="card">
+                </div>
             </div>
+
             <div class="product-card">
-                <img src="img/jnjm 1.png" alt="album jnjm">
-                <small>Pre-Order Now</small>
+                <img src="img/enha.jpeg" alt="CORTIS">
+                <small>Ready Stock</small>
                 <p class="product-name">
-                    NCT JNJM The 1st Mini Album 'BOTH SIDES'
+                    EN-HYPEN DESIRE: UNLEASH [Engene Ver.] 6th Mini Album (JAY)
                 </p>
-                <p class="product-price">
-                    Rp. 231.000
+                <p class="price">
+                    Rp.280.000
+                    <span>Rp.340.000</span>
                 </p>
+                <div class="product-action">
+                    <button>Belanja</button>
+                    <img src="img/Shopping cart.png" alt="card">
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="img/illit.jpeg" alt="CORTIS">
+                <small>Ready Stock</small>
+                <p class="product-name">
+                   ILLIT 3rd Mini Album - Bomb - STANDARD SET
+                </p>
+                <p class="price">
+                    Rp.345.000
+                    <span>Rp.480.000</span>
+                </p>
+                <div class="product-action">
+                    <button>Belanja</button>
+                    <img src="img/Shopping cart.png" alt="card">
+                </div>
             </div>
         </div>
     </section>
+
+    <section class="stock">
+        <div class="stock-tittle">
+            <h3>Our Stock</h3>
+            <a href="#">❯</a>
+        </div>
+
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="img/dreamscape.jpeg" alt="NCT">
+                <small>Ready Stock</small>
+                <p class="product-name">
+                    NCT DREAM - DREAM()SCAPE' (Photobook ver.)
+                </p>
+                <p class="price">
+                    Rp.299.000
+                </p>
+                <div class="product-action">
+                    <button>Belanja</button>
+                    <img src="img/Shopping cart.png" alt="card">
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="img/bts.jpeg" alt="BTS">
+                <small>Ready Stock</small>
+                <p class="product-name">
+                    BTS Arirang Lomo Card Set
+                </p>
+                <p class="price">
+                    Rp.150.000
+                </p>
+                <div class="product-action">
+                    <button>Belanja</button>
+                    <img src="img/Shopping cart.png" alt="card">
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="img/skz.jpeg" alt="StrayKids">
+                <small>Ready Stock</small>
+                <p class="product-name">
+                    Stray Kids SKZHOP Hiptape "合 (HOP)"
+                </p>
+                <p class="price">
+                    Rp.305.000
+                </p>
+                <div class="product-action">
+                    <button>Belanja</button>
+                    <img src="img/Shopping cart.png" alt="card">
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="img/dreamscape.jpeg" alt="NCT">
+                <small>Ready Stock</small>
+                <p class="product-name">
+                    NCT DREAM - DREAM()SCAPE' (Photobook ver.)
+                </p>
+                <p class="price">
+                    Rp.299.000
+                </p>
+                <div class="product-action">
+                    <button>Belanja</button>
+                    <img src="img/Shopping cart.png" alt="card">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">
+            <img src="img/logo.png" alt="logo">
+            <p>© 2026 AnnyeongShop. Seluruh Hak Cipta Dilindungi.</p>
+        </div>
+
+        <div class="footer-menu">
+            <h4>BANTUAN</h4>
+            <a href="#">Hubungi Kami</a>
+            <a href="#">FAQ</a>
+            <a href="#">Cara Pemesanan</a>
+            <a href="#">Informasi Pengiriman</a>
+            <a href="#">Kebijakan Pengembalian</a>
+        </div>
+
+        <div class="footer-social">
+            <h4>IKUTI KAMI</h4>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+            <a href="#">TikTok</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>

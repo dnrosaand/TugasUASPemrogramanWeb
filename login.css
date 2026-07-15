@@ -1,0 +1,367 @@
+/* ===================== CONTAINER ===================== */
+
+body{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+/* ===================== HEADER ===================== */
+
+header{
+    width:1200px;
+    height:80px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 30px;
+    background:#fff;
+}
+
+/* ===================== LOGO ===================== */
+
+.logo-section{
+    width:100%;
+    background:#fff;
+    display:flex;
+    justify-content:center;
+    padding:3px 0 0;
+}
+
+.logo{
+    width:170px;
+}
+
+.logo img{
+    width:100%;
+    display:block;
+}
+
+/* ===================== MENU ===================== */
+
+.menu{
+    background:none;
+    border:none;
+    font-size:28px;
+    color:#FF8FAB;
+    cursor:pointer;
+    margin-right:20px;
+}
+
+/* ===================== SEARCH ===================== */
+
+.search{
+    flex:1;
+    margin:0 25px;
+}
+
+.search input{
+    width:100%;
+    height:38px;
+    border:1.5px solid #FF8FAB;
+    border-radius:30px;
+    padding:0 18px;
+    outline:none;
+    font-size:14px;
+}
+
+.search input::placeholder{
+    color:#B6B6B6;
+}
+
+/* ===================== ICON ===================== */
+
+.header-icon{
+    display:flex;
+    align-items:center;
+    gap:22px;
+}
+
+.header-icon img{
+    width:22px;
+    cursor:pointer;
+}
+
+/* ================= LOGIN ================= */
+
+.login-page{
+    width:100%;
+    background:#fff;
+    display:flex;
+    justify-content:center;
+    padding:60px 0 90px;
+}
+
+.login-container{
+    width:330px;
+}
+
+/* ===== Tab ===== */
+
+.login-tab{
+    display:flex;
+    gap:8px;
+    margin-bottom:25px;
+}
+
+.login-tab button{
+    width:90px;
+    height:28px;
+    border:none;
+    border-radius:20px;
+    font-size:12px;
+    cursor:pointer;
+}
+
+.login-tab .active{
+    background:#67607A;
+    color:#fff;
+}
+
+.login-tab .inactive{
+    background:#FF8FAB;
+    color:#fff;
+}
+
+/* ===== Form ===== */
+
+.login-form{
+    display:flex;
+    flex-direction:column;
+}
+
+.login-form input{
+    width:100%;
+    height:34px;
+    border:1px solid #E8E8E8;
+    border-radius:4px;
+    padding:0 12px;
+    font-size:12px;
+    margin-bottom:10px;
+    outline:none;
+}
+
+.login-form input:focus{
+    border:1px solid #FF8FAB;
+}
+
+/* Password */
+
+.password-box{
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+.password-box input{
+    margin:0;
+}
+
+.password-box button{
+    width:34px;
+    height:34px;
+    border:1px solid #E8E8E8;
+    border-radius:4px;
+    background:#fff;
+    cursor:pointer;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.password-box img{
+    width:16px;
+}
+
+/* ===== Lupa Password ===== */
+
+.forgot{
+    margin-top:8px;
+    margin-bottom:18px;
+    font-size:10px;
+    color:#FF8FAB;
+    text-decoration:none;
+}
+
+/* ===== Button Login ===== */
+
+.login-page{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:60px 0 120px;
+    background:#fff;
+}
+
+.login-container{
+    width:260px;
+}
+
+.login-tab{
+    display:flex;
+    gap:10px;
+    justify-content:center;
+    margin-bottom:30px;
+}
+
+.login-tab button{
+    width:105px;
+    height:28px;
+    border:none;
+    border-radius:20px;
+    font-size:11px;
+    cursor:pointer;
+}
+
+.active{
+    background:#67607A;
+    color:#fff;
+}
+
+.inactive{
+    background:#FF8FAB;
+    color:#fff;
+}
+
+.login-form{
+    display:flex;
+    flex-direction:column;
+}
+
+.login-form input{
+
+    width:100%;
+    height:30px;
+    border:1px solid #E8E8E8;
+    border-radius:4px;
+    padding:0 12px;
+    font-size:11px;
+    margin-bottom:10px;
+}
+
+.password-box{
+
+    display:flex;
+
+    gap:4px;
+
+}
+
+.password-box button{
+
+    width:30px;
+
+    height:30px;
+
+    border:1px solid #E8E8E8;
+
+    background:#fff;
+
+    border-radius:4px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.password-box img{
+    width:15px;
+}
+
+.password-box button{
+    width:30px;
+    height:30px;
+    border:1px solid #E8E8E8;
+    background:#fff;
+    border-radius:4px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.password-box img{
+    width:15px;
+}
+
+.forgot{
+    margin-top:6px;
+    margin-bottom:16px;
+    color:#FF8FAB;
+    font-size:10px;
+    text-decoration:none;
+}
+
+.login-btn{
+    width:125px;
+    height:30px;
+    margin:auto;
+    border:none;
+    border-radius:4px;
+    background:#FF8FAB;
+    color:#fff;
+    font-size:11px;
+    cursor:pointer;
+}
+
+/* ===================== FOOTER ===================== */
+
+footer{
+    width:100%;
+    background:#2F2F2F;
+    color:#fff;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    padding:35px 60px;
+    margin-top:40px;
+}
+
+/* ===================== FOOTER LOGO ===================== */
+
+.footer-logo{
+    width:260px;
+}
+
+.footer-logo img{
+    width:170px;
+    margin-bottom:20px;
+}
+
+.footer-logo p{
+    font-size:12px;
+    color:#CFCFCF;
+    line-height:1.6;
+}
+
+/* ===================== FOOTER MENU ===================== */
+
+.footer-menu,
+.footer-social{
+    display:flex;
+    flex-direction:column;
+}
+
+.footer-menu h4,
+.footer-social h4{
+    font-size:18px;
+    margin-bottom:18px;
+    color:#fff;
+}
+
+.footer-menu a,
+.footer-social a{
+    text-decoration:none;
+    color:#DADADA;
+    font-size:14px;
+    margin-bottom:10px;
+    transition:.3s;
+}
+
+.footer-menu a:hover,
+.footer-social a:hover{
+    color:#FF8FAB;
+}
