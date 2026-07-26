@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock</title>
+
+    <link rel="stylesheet" href="ourstock.css">
+</head>
+<body>
+    <section class="logo-section">
+        <div class="logo">
+            <img src="img/logo.png" alt="annyeongshop">
+        </div>
+    </section>
+    <header>
+        <button class="menu">
+            ☰
+        </button>
+        <div class="search">
+            <input type="text" placeholder="Search You're Fav">
+        </div>
+        <div class="header-icon">
+            <a href="#">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
+                2 5.42 4.42 3 7.5 3
+                c1.74 0 3.41.81 4.5 2.09
+                C13.09 3.81 14.76 3 16.5 3
+                19.58 3 22 5.42 22 8.5
+                c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+            </a>
+            <a href="#">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M7 4H3v2h2l2.4 9.59A2 2 0 0 0 9.35 17H19v-2H9.42l-.27-1H18a2 2 0 0 0 1.94-1.51L22 6H7.42L7 4zm2 15a2 2 0 100 4 2 2 0 000-4zm8 0a2 2 0 100 4 2 2 0 000-4z"/>
+                </svg>
+            </a>
+            <a href="#" id="user-btn">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24">
+                    <path d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1Zm0 2a9 9 0 016.447 15.276 7 7 0 00-12.895 0A9 9 0 0112 3Zm0 2a4 4 0 100 8 4 4 0 000-8Zm0 2a2 2 0 110 4 2 2 0 010-4Zm-.1 9.001L11.899 16a5 5 0 014.904 3.61A8.96 8.96 0 0112 21a8.96 8.96 0 01-4.804-1.391 5 5 0 014.704-3.608Z"/>
+                </svg>
+            </a>
+        </div>
+    </header>
+    
+    <div class="breadcrumb">
+        <a href="index.html">← Beranda</a>
+    </div>
+
+    <div class="product-grid">
+            <div class="product-card">
+                <img src="img/dreamscape.jpeg" alt="NCT">
+                <div class="product-info">
+                    <small>Ready Stock</small>
+                    <p class="product-name">
+                        NCT DREAM - DREAM()SCAPE' (Photobook ver.)
+                    </p>
+                    <p class="price">
+                        Rp.299.000
+                    </p>
+                    <div class="product-action">
+                        <button
+                            onclick="goToDetail(this)"
+                            class="buy-btn"
+                            data-image="img/dreamscape.jpeg"
+                            data-category="CD Boxset · K-Hip Hop / K-Pop"
+                            data-artist="NCT DREAM"
+                            data-name="NCT DREAM - DREAM()SCAPE' (Photobook ver.)"
+                            data-price="299000"
+                            data-desc="Dream()scape adalah album mini keenam dari grup vokal pria Korea Selatan NCT Dream. Album ini dirilis pada tanggal 25 Maret 2024 oleh SM Entertainment melalui Kakao Entertainment, album ini terdiri dari enam lagu, termasuk singel utama, 'Smoothie'.">
+                                Belanja
+                        </button>
+                        <img src="img/Shopping cart.png" alt="card">
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="img/bts.jpeg" alt="BTS">
+                <div class="product-info">
+                    <small>Ready Stock</small>
+                    <p class="product-name">
+                        BTS Arirang Lomo Card Set
+                    </p>
+                    <p class="price">
+                        Rp.150.000
+                    </p>
+                    <div class="product-action">
+                        <button
+                            onclick="goToDetail(this)"
+                            class="buy-btn"
+                            data-image="img/bts.jpeg"
+                            data-category="CD Boxset · K-Hip Hop / K-Pop"
+                            data-artist="BTS"
+                            data-name="BTS Arirang Lomo Card Set"
+                            data-price="150000"
+                            data-desc="BTS Arirang Lomo Card Set merupakan koleksi photocard bergaya lomo yang menampilkan foto-foto eksklusif seluruh member BTS dengan kualitas cetak yang jernih dan desain menarik. Cocok untuk koleksi pribadi, menghias binder, photocard holder, maupun sebagai hadiah bagi sesama ARMY. Dibuat menggunakan material kertas berkualitas dengan ukuran yang praktis untuk dibawa ke mana saja.">
+                                Belanja
+                        </button>
+                        <img src="img/Shopping cart.png" alt="card">
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="img/skz.jpeg" alt="StrayKids">
+                <div class="product-info">
+                    <small>Ready Stock</small>
+                    <p class="product-name">
+                        Stray Kids SKZHOP Hiptape "合 (HOP)"
+                    </p>
+                    <p class="price">
+                        Rp.305.000
+                    </p>
+                    <div class="product-action">
+                        <button
+                            onclick="goToDetail(this)"
+                            class="buy-btn"
+                            data-image="img/skz.jpeg"
+                            data-category="CD Boxset · K-Hip Hop / K-Pop"
+                            data-artist="StaryKids"
+                            data-name="Stray Kids SKZHOP Hiptape "合 (HOP)""
+                            data-price="305000"
+                            data-desc=" Mixtape dari lini rap Stray Kids dengan box eksklusif bergaya streetwear, lengkap dengan photobook, photocard random, dan item koleksi lainnya.">
+                                Belanja
+                        </button>
+                        <img src="img/Shopping cart.png" alt="card">
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="img/Taste of love ° Taste ver_ TWICE.jpg" alt="Twice">
+                <div class="product-info">
+                    <small>Ready Stock</small>
+                    <p class="product-name">
+                        aste of love ° Taste ver. TWICE
+                    </p>
+                    <p class="price">
+                        Rp.390.000
+                    </p>
+                    <div class="product-action">
+                        <button
+                            onclick="goToDetail(this)"
+                            class="buy-btn"
+                            data-image="img/Taste of love ° Taste ver_ TWICE.jpg"
+                            data-category="CD Boxset · K-Hip Hop / K-Pop"
+                            data-artist="TWICE"
+                            data-name="aste of love ° Taste ver. TWICE"
+                            data-price="390000"
+                            data-desc="TWICE – Taste of Love (Taste Ver.) merupakan album resmi TWICE yang hadir dengan konsep musim panas yang ceria dan elegan. Edisi Taste Ver. dikemas dalam desain eksklusif serta berisi CD, photobook, photocard random, postcard, dan berbagai item koleksi resmi lainnya. Album ini sangat cocok untuk ONCE yang ingin melengkapi koleksi sekaligus menikmati lagu-lagu populer TWICE dalam kemasan original berkualitas.">>
+                                Belanja
+                        </button>
+                        <img src="img/Shopping cart.png" alt="card">
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <footer>
+        <div class="footer-logo">
+            <img src="img/logo.png" alt="logo">
+            <p>© 2026 AnnyeongShop. Seluruh Hak Cipta Dilindungi.</p>
+        </div>
+
+        <div class="footer-menu">
+            <h4>BANTUAN</h4>
+            <a href="#">Hubungi Kami</a>
+            <a href="#">FAQ</a>
+            <a href="#">Cara Pemesanan</a>
+            <a href="#">Informasi Pengiriman</a>
+            <a href="#">Kebijakan Pengembalian</a>
+        </div>
+
+        <div class="footer-social">
+            <h4>IKUTI KAMI</h4>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+            <a href="#">TikTok</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

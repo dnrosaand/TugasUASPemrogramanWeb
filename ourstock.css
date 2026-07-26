@@ -1,0 +1,281 @@
+/* ===================== RESET ===================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#fff;
+    color:#333;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+/* ===================== LOGO ===================== */
+
+.logo-section{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    padding-top:5px;
+}
+
+.logo{
+    width:170px;
+}
+
+.logo img{
+    width:100%;
+    display:block;
+}
+
+/* ===================== HEADER ===================== */
+
+header{
+    width:1200px;
+    height:80px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 30px;
+}
+
+.menu{
+    border:none;
+    background:none;
+    color:#FF8FAB;
+    font-size:28px;
+    cursor:pointer;
+}
+
+.search{
+    flex:1;
+    margin:0 25px;
+}
+
+.search input{
+    width:100%;
+    height:40px;
+    border:1.5px solid #FF8FAB;
+    border-radius:30px;
+    padding:0 18px;
+    outline:none;
+}
+
+.search input::placeholder{
+    color:#b7b7b7;
+}
+
+.header-icon{
+    display:flex;
+    gap:22px;
+}
+
+.header-icon a{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.header-icon .icon{
+    width:24px;
+    height:24px;
+    stroke:#FF8FAB;
+    fill:none;
+    stroke-width:2;
+}
+
+.header-icon .icon:hover{
+    fill:#ff6d9c;
+}
+
+/* ===================== CONTAINER ===================== */
+
+.stock-container{
+    width:1200px;
+    margin:30px auto 60px;
+}
+
+/* ===================== BREADCRUMB ===================== */
+
+.breadcrumb{
+    width:1200px;
+    margin:30px auto 25px;
+    padding-bottom:12px;
+    border-bottom:1px solid #d9d9d9;
+}
+
+.breadcrumb a{
+    text-decoration:none;
+    color:#555;
+    font-size:14px;
+    font-weight:500;
+    transition:.3s;
+}
+
+.breadcrumb a:hover{
+    color:#FF8FAB;
+}
+
+/* ===================== PRODUCT GRID ===================== */
+
+.product-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:30px;
+}
+
+/* ===================== PRODUCT CARD ===================== */
+
+.product-card{
+    display:flex;
+    gap:20px;
+    padding:18px;
+    border:1px solid #e7e7e7;
+    border-radius:8px;
+    background:#fff;
+    transition:.3s;
+}
+
+.product-card:hover{
+    box-shadow:0 5px 18px rgba(0,0,0,.08);
+}
+
+/* ===================== IMAGE ===================== */
+
+.product-card>img{
+    width:170px;
+    height:170px;
+    object-fit:cover;
+    border-radius:6px;
+}
+
+/* ===================== PRODUCT INFO ===================== */
+
+.product-info{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+}
+
+.product-info small{
+    color:#999;
+    font-size:13px;
+    margin-bottom:8px;
+}
+
+.product-name{
+    font-size:19px;
+    font-weight:600;
+    color:#333;
+    line-height:1.4;
+    margin-bottom:14px;
+}
+
+.price{
+    font-size:23px;
+    font-weight:700;
+    color:#FF8FAB;
+    margin-bottom:18px;
+}
+
+.price span{
+    margin-left:10px;
+    color:#aaa;
+    font-size:15px;
+    text-decoration:line-through;
+}
+
+/* ===================== BUTTON ===================== */
+
+.product-action{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:auto;
+}
+
+.buy-btn{
+    width:170px;
+    height:40px;
+    border:none;
+    border-radius:6px;
+    background:#FF8FAB;
+    color:#fff;
+    cursor:pointer;
+    font-size:14px;
+    transition:.3s;
+}
+
+.buy-btn:hover{
+    background:#ff6d9c;
+}
+
+.product-action img{
+    width:22px;
+    height:22px;
+    cursor:pointer;
+}
+
+/* ===================== FOOTER ===================== */
+
+footer{
+    width:100%;
+    background:#2F2F2F;
+    color:#fff;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    padding:45px 60px;
+    margin-top:40px;
+}
+
+/* ===================== FOOTER LOGO ===================== */
+
+.footer-logo{
+    width:260px;
+}
+
+.footer-logo img{
+    width:170px;
+    margin-bottom:20px;
+}
+
+.footer-logo p{
+    font-size:12px;
+    color:#CFCFCF;
+    line-height:1.6;
+}
+
+/* ===================== FOOTER MENU ===================== */
+
+.footer-menu,
+.footer-social{
+    display:flex;
+    flex-direction:column;
+}
+
+.footer-menu h4,
+.footer-social h4{
+    font-size:18px;
+    margin-bottom:18px;
+    color:#fff;
+}
+
+.footer-menu a,
+.footer-social a{
+    text-decoration:none;
+    color:#DADADA;
+    font-size:14px;
+    margin-bottom:10px;
+    transition:.3s;
+}
+
+.footer-menu a:hover,
+.footer-social a:hover{
+    color:#FF8FAB;
+}

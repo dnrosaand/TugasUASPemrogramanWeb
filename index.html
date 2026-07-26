@@ -21,20 +21,51 @@
             <input type="text" placeholder="Search You're Fav">
         </div>
         <div class="header-icon">
-            <a href="#"><img src="img/Heart.png" alt="Tersimpan"></a>
-            <a href="#"><img src="img/Shopping cart.png" alt="Keranjang"></a>
+            <a href="#">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
+                2 5.42 4.42 3 7.5 3
+                c1.74 0 3.41.81 4.5 2.09
+                C13.09 3.81 14.76 3 16.5 3
+                19.58 3 22 5.42 22 8.5
+                c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+            </a>
+            <a href="#">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M7 4H3v2h2l2.4 9.59A2 2 0 0 0 9.35 17H19v-2H9.42l-.27-1H18a2 2 0 0 0 1.94-1.51L22 6H7.42L7 4zm2 15a2 2 0 100 4 2 2 0 000-4zm8 0a2 2 0 100 4 2 2 0 000-4z"/>
+                </svg>
+            </a>
             <a href="#" id="user-btn">
-                <img src="img/User.png" alt="Akun Saya"></a>
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24">
+                    <path d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1Zm0 2a9 9 0 016.447 15.276 7 7 0 00-12.895 0A9 9 0 0112 3Zm0 2a4 4 0 100 8 4 4 0 000-8Zm0 2a2 2 0 110 4 2 2 0 010-4Zm-.1 9.001L11.899 16a5 5 0 014.904 3.61A8.96 8.96 0 0112 21a8.96 8.96 0 01-4.804-1.391 5 5 0 014.704-3.608Z"/>
+                </svg>
+            </a>
         </div>
     </header>
 
     <section class="banner">
         <button class="prev">
-            ❮
+            <svg viewBox="0 0 22 32" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 4 L6 16 L18 28"
+                stroke="white"
+                stroke-width="4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                fill="none"/>
+            </svg>
         </button>
         <img src="img/lemontang.png" alt="LmeonTang">
         <button class="next">
-            ❯
+            <svg viewBox="0 0 22 32" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 4 L16 16 L4 28"
+                stroke="white"
+                stroke-width="4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                fill="none"/>
+            </svg>
         </button>
     </section>
 
@@ -46,7 +77,7 @@
     <section class="stock">
         <div class="section-title">
             <h3>Flash Sale</h3>
-            <a href="#">❯</a>
+            <a href="flashsale.html">❯</a>
         </div>
 
         <div class="product-grid">
@@ -61,7 +92,20 @@
                     <span>Rp.550.000</span>
                 </p>
                 <div class="product-action">
-                    <button>Belanja</button>
+                    <button
+                    class="buy-btn"
+                    onclick="goToDetail(this)"
+                    data-image="img/bts arirang.jpeg"
+                    data-category="CD Boxset · K-Hip Hop / K-Pop"
+                    data-artist="BTS"
+                    data-name="BTS The 5th Album 'ARIRANG'"
+                    data-price="475000"
+                    data-oldprice="550000"
+                    data-sold="68"
+                    data-stock="80"
+                    data-desc="Album fisik dengan konsep minimalis berwarna putih yang menampilkan desain clean dan elegan. Dikemas dalam tiga versi berbeda dengan finishing premium, cocok untuk kolektor maupun penggemar yang menyukai konsep modern. Produk original dalam kondisi baru dan siap menjadi pelengkap koleksi K-Pop Anda.">
+                        Belanja
+                    </button>
                     <img src="img/Shopping cart.png" alt="card">
                 </div>
             </div>
@@ -77,7 +121,20 @@
                     <span>Rp.480.000</span>
                 </p>
                 <div class="product-action">
-                    <button>Belanja</button>
+                    <button
+                    class="buy-btn"
+                    onclick="goToDetail(this)"
+                    data-image="img/cortis.jpeg"
+                    data-category="CD Boxset · K-Hip Hop / K-Pop"
+                    data-artist="Cortis"
+                    data-name="Cortis - Greengreen (studio ver.) (Walmart Exclusive) - Music & Performance - CD [Exclusive]"
+                    data-price="346000"
+                    data-oldprice="480000"
+                    data-sold="90"
+                    data-stock="100"
+                    data-desc="Cortis – Greengreen (Studio Ver.) (Walmart Exclusive) merupakan album eksklusif dengan konsep visual yang modern dan elegan, menghadirkan pengalaman koleksi premium bagi para penggemar. Edisi Walmart Exclusive ini dikemas dengan desain khusus dan dilengkapi CD, photobook eksklusif, photocard acak, sticker, serta berbagai item koleksi resmi lainnya. Produk original dalam kondisi baru, cocok untuk kolektor maupun penggemar yang ingin melengkapi koleksi album K-Pop mereka.">
+                        Belanja
+                    </button>
                     <img src="img/Shopping cart.png" alt="card">
                 </div>
             </div>
@@ -93,13 +150,26 @@
                     <span>Rp.340.000</span>
                 </p>
                 <div class="product-action">
-                    <button>Belanja</button>
+                    <button
+                    class="buy-btn"
+                    onclick="goToDetail(this)"
+                    data-image="img/enha.jpeg"
+                    data-category="CD Boxset · K-Hip Hop / K-Pop"
+                    data-artist="ENHYPHEN"
+                    data-name="EN-HYPEN DESIRE: UNLEASH [Engene Ver.] 6th Mini Album (JAY)"
+                    data-price="280000"
+                    data-oldprice="340000"
+                    data-sold="10"
+                    data-stock="90"
+                    data-desc="ENHYPEN DESIRE : UNLEASH [Engene Ver.] 6th Mini Album (JAY) merupakan album resmi ENHYPEN edisi Engene Version yang menghadirkan konsep eksklusif dengan desain kemasan premium. Setiap album berisi CD, photobook, photocard random, postcard, dan berbagai item koleksi resmi lainnya. Sangat cocok untuk ENGENE yang ingin melengkapi koleksi album sekaligus menikmati rilisan terbaru dari ENHYPEN dengan kualitas original.">
+                        Belanja
+                    </button>
                     <img src="img/Shopping cart.png" alt="card">
                 </div>
             </div>
 
             <div class="product-card">
-                <img src="img/illit.jpeg" alt="CORTIS">
+                <img src="img/illit.jpeg" alt="illit">
                 <small>Ready Stock</small>
                 <p class="product-name">
                    ILLIT 3rd Mini Album - Bomb - STANDARD SET
@@ -109,7 +179,20 @@
                     <span>Rp.480.000</span>
                 </p>
                 <div class="product-action">
-                    <button>Belanja</button>
+                    <button
+                    class="buy-btn"
+                    onclick="goToDetail(this)"
+                    data-image="img/illit.jpeg"
+                    data-category="CD Boxset · K-Hip Hop / K-Pop"
+                    data-artist="ILLIT"
+                    data-name="ILLIT 3rd Mini Album - Bomb - STANDARD SET"
+                    data-price="345000"
+                    data-oldprice="480000"
+                    data-sold="90"
+                    data-stock="10"
+                    data-desc="ILLIT 3rd Mini Album – Bomb (STANDARD SET) menghadirkan konsep yang fresh dan penuh energi khas ILLIT dengan desain album yang colorful serta kemasan premium. Versi STANDARD SET terdiri dari tiga versi album berbeda yang dilengkapi CD, photobook eksklusif, photocard acak, sticker, dan poster. Produk original dalam kondisi baru, cocok untuk kolektor maupun penggemar yang ingin melengkapi koleksi album resmi ILLIT.">
+                        Belanja
+                    </button>
                     <img src="img/Shopping cart.png" alt="card">
                 </div>
             </div>
@@ -119,7 +202,7 @@
     <section class="stock">
         <div class="stock-tittle">
             <h3>Our Stock</h3>
-            <a href="#">❯</a>
+            <a href="ourstock.html">❯</a>
         </div>
 
         <div class="product-grid">
@@ -133,7 +216,17 @@
                     Rp.299.000
                 </p>
                 <div class="product-action">
-                    <button>Belanja</button>
+                    <button
+                        onclick="goToDetail(this)"
+                        class="buy-btn"
+                        data-image="img/dreamscape.jpeg"
+                        data-category="CD Boxset · K-Hip Hop / K-Pop"
+                        data-artist="NCT DREAM"
+                        data-name="NCT DREAM - DREAM()SCAPE' (Photobook ver.)"
+                        data-price="299000"
+                        data-desc="Dream()scape adalah album mini keenam dari grup vokal pria Korea Selatan NCT Dream. Album ini dirilis pada tanggal 25 Maret 2024 oleh SM Entertainment melalui Kakao Entertainment, album ini terdiri dari enam lagu, termasuk singel utama, 'Smoothie'.">
+                            Belanja
+                    </button>
                     <img src="img/Shopping cart.png" alt="card">
                 </div>
             </div>
@@ -148,7 +241,17 @@
                     Rp.150.000
                 </p>
                 <div class="product-action">
-                    <button>Belanja</button>
+                    <button
+                        onclick="goToDetail(this)"
+                        class="buy-btn"
+                        data-image="img/bts.jpeg"
+                        data-category="CD Boxset · K-Hip Hop / K-Pop"
+                        data-artist="BTS"
+                        data-name="BTS Arirang Lomo Card Set"
+                        data-price="150000"
+                        data-desc="BTS Arirang Lomo Card Set merupakan koleksi photocard bergaya lomo yang menampilkan foto-foto eksklusif seluruh member BTS dengan kualitas cetak yang jernih dan desain menarik. Cocok untuk koleksi pribadi, menghias binder, photocard holder, maupun sebagai hadiah bagi sesama ARMY. Dibuat menggunakan material kertas berkualitas dengan ukuran yang praktis untuk dibawa ke mana saja.">
+                            Belanja
+                    </button>
                     <img src="img/Shopping cart.png" alt="card">
                 </div>
             </div>
@@ -163,22 +266,41 @@
                     Rp.305.000
                 </p>
                 <div class="product-action">
-                    <button>Belanja</button>
+                    <button
+                        onclick="goToDetail(this)"
+                        data-image="img/skz.jpeg"
+                        data-category="CD Boxset · K-Hip Hop / K-Pop"
+                        data-artist="Stray Kids"
+                        data-name='Stray Kids SKZHOP Hiptape "合 (HOP)"'
+                        data-price="305000"
+                        data-desc="Mixtape dari lini rap Stray Kids dengan box eksklusif bergaya streetwear, lengkap dengan photobook, photocard random, dan item koleksi lainnya.">
+                            Belanja
+                    </button>
                     <img src="img/Shopping cart.png" alt="card">
                 </div>
             </div>
 
             <div class="product-card">
-                <img src="img/dreamscape.jpeg" alt="NCT">
+                <img src="img/Taste of love ° Taste ver_ TWICE.jpg" alt="Twice">
                 <small>Ready Stock</small>
                 <p class="product-name">
-                    NCT DREAM - DREAM()SCAPE' (Photobook ver.)
+                    aste of love ° Taste ver. TWICE
                 </p>
                 <p class="price">
-                    Rp.299.000
+                    Rp.390.000
                 </p>
                 <div class="product-action">
-                    <button>Belanja</button>
+                    <button
+                        onclick="goToDetail(this)"
+                        class="buy-btn"
+                        data-image="img/Taste of love ° Taste ver_ TWICE.jpg"
+                        data-category="CD Boxset · K-Hip Hop / K-Pop"
+                        data-artist="TWICE"
+                        data-name="aste of love ° Taste ver. TWICE"
+                        data-price="390000"
+                        data-desc="TWICE – Taste of Love (Taste Ver.) merupakan album resmi TWICE yang hadir dengan konsep musim panas yang ceria dan elegan. Edisi Taste Ver. dikemas dalam desain eksklusif serta berisi CD, photobook, photocard random, postcard, dan berbagai item koleksi resmi lainnya. Album ini sangat cocok untuk ONCE yang ingin melengkapi koleksi sekaligus menikmati lagu-lagu populer TWICE dalam kemasan original berkualitas.">
+                        Belanja
+                    </button>
                     <img src="img/Shopping cart.png" alt="card">
                 </div>
             </div>

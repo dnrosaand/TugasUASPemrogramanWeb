@@ -15,24 +15,21 @@ body{
 /* ===================== CONTAINER ===================== */
 
 body{
-    font-family: Arial, Helvetica, sans-serif;
-    background:#fff;
-    color:#333;
     display:flex;
     flex-direction:column;
-    align-items:stretch;
+    align-items:center;
 }
 
 /* ===================== HEADER ===================== */
 
 header{
     width:1200px;
-    margin:0 auto;
     height:80px;
     display:flex;
     align-items:center;
     justify-content:space-between;
     padding:0 30px;
+    background:#fff;
 }
 
 .header-icon{
@@ -124,161 +121,142 @@ header{
     cursor:pointer;
 }
 
-/* ===== MENU LOGIN ===== */
 
-.auth-nav{
-    width:1200px;
-    margin:12px auto 0;
-    display:flex;
-    justify-content:flex-start;
-    margin-top:8px;
-    padding-left:30px;
+.flash-products{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:30px;
+    width:100%;
 }
 
-.auth-wrapper{
-    display:inline-flex;
+.product-card{
+    display:flex;
+    gap:20px;
+    padding:18px;
+    border:1px solid #e8e8e8;
+    border-radius:8px;
+    background:#fff;
+    transition:.3s;
+}
+
+.product-card:hover{
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
+}
+
+.product-card img{
+    width:170px;
+    height:170px;
+    object-fit:cover;
+    border-radius:5px;
+}
+
+.product-info{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+}
+
+.product-card small{
+    color:#999;
+    font-size:13px;
+    margin-bottom:8px;
+}
+
+.product-name{
+    font-size:22px;
+    font-weight:600;
+    color:#333;
+    line-height:1.4;
+    margin-bottom:12px;
+}
+
+.price{
+    color:#FF8FAB;
+    font-size:22px;
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+.price span{
+    margin-left:10px;
+    color:#999;
+    font-size:15px;
+    text-decoration:line-through;
+}
+
+/* ================= FLASH HEADER ================= */
+
+.flash-header{
+    width:100%;
+    height:80px;
+    display:flex;
+    justify-content:space-between;
     align-items:center;
-    background:#F889AF;
-    border-radius:999px;
+    padding:0 25px;
+    margin:25px 0 35px;
+    border:1px solid #FF8FAB;
+    border-radius:18px;
+    background:linear-gradient(90deg,#FF8FAB,#FFD6E2);
+    box-sizing:border-box;
+}
+
+.flash-header h2{
+    color:#fff;
+    font-size:40px;
+    font-weight:700;
+    margin:0;
+}
+
+.flash-container{
+    width:1200px;
+    margin:30px auto 70px;
+}
+
+/* ================= COUNTDOWN ================= */
+
+.countdown{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.countdown span{
+    font-size:18px;
+    color:#777;
+    font-weight:600;
+}
+
+.time-box{
+    width:38px;
+    height:38px;
+    background:#fff;
+    border:1px solid #FF8FAB;
+    border-radius:4px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:18px;
+    font-weight:700;
+    color:#333;
+}
+
+.progress{
+    width:100%;
+    height:8px;
+    background:#ececec;
+    border-radius:20px;
     overflow:hidden;
 }
 
-.auth-item{
-    min-width:82px;
-    height:30px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-decoration:none;
-    color:#fff;
+.progress-bar{
+    height:100%;
+    background:#FF8FAB;
+}
+
+.sold-text{
+    margin-top:8px;
+    color:#FF8FAB;
     font-size:13px;
-    font-weight:500;
-    cursor:pointer;
-    user-select:none;
-    transition:
-        background-color .25s ease,
-        transform .2s ease,
-        opacity .2s ease;
-}
-
-.auth-item:not(.active):hover{
-    background:#f57da7;
-}
-
-.auth-item:active{
-    transform:scale(.96);
-}
-
-.auth-item.active{
-    background:#4B4B4B;
-    border-radius:999px;
-    cursor:default;
-}
-
-/* =========================
-   LOGIN FORM
-========================= */
-
-.login-form {
-    width: 340px;
-    margin: 60px auto 0;
-    display: flex;
-    flex-direction: column;
-}
-
-.form-group {
-    margin-bottom: 16px;
-}
-
-.form-group input {
-    width: 100%;
-    height: 38px;
-    padding: 0 14px;
-    border: 1px solid #D9D9D9;
-    border-radius: 6px;
-    outline: none;
-    font-size: 13px;
-}
-
-.password-group{
-    margin-bottom: 10px;
-}
-
-
-
-/* Password */
-
-.password-group{
-    position: relative;
-}
-
-.password-group input{
-    width: 100%;
-    height: 38px;
-    padding: 0 45px 0 14px; /* beri ruang untuk icon */
-}
-
-.toggle-password {
-    position: absolute;
-    top: 50%;
-    right: 14px;
-    transform: translateY(-50%);
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-}
-
-.toggle-password i {
-    font-size: 18px;
-    color: #4b4b4b;
-}
-
-.toggle-password:hover i{
-    color: #F889AF;
-}
-/* Lupa Password */
-
-.forgot-password{
-    text-decoration: none;
-    color: #F889AF;
-    font-size: 12px;
-    font-weight: 500;
-    margin-bottom: 28px;
-    align-self: flex-start;
-}
-
-.forgot-password:hover {
-    text-decoration: underline;
-}
-
-/* Tombol Masuk */
-
-.login-btn{
-    width: 180px;
-    height: 34px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    background: #F889AF;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.login-btn:hover {
-    background: #ff6b98;
-}
-
-.login-btn svg {
-    width: 14px;
-    height: 14px;
 }
 
 /* ===================== FOOTER ===================== */

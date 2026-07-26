@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flash Sale</title>
+
+    <link rel="stylesheet" href="flashsale.css">
+</head>
+<body>
+    <section class="logo-section">
+        <div class="logo">
+            <img src="img/logo.png" alt="annyeongshop">
+        </div>
+    </section>
+    <header>
+        <button class="menu">
+            ☰
+        </button>
+        <div class="search">
+            <input type="text" placeholder="Search You're Fav">
+        </div>
+        <div class="header-icon">
+            <a href="#">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
+                2 5.42 4.42 3 7.5 3
+                c1.74 0 3.41.81 4.5 2.09
+                C13.09 3.81 14.76 3 16.5 3
+                19.58 3 22 5.42 22 8.5
+                c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+            </a>
+            <a href="#">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M7 4H3v2h2l2.4 9.59A2 2 0 0 0 9.35 17H19v-2H9.42l-.27-1H18a2 2 0 0 0 1.94-1.51L22 6H7.42L7 4zm2 15a2 2 0 100 4 2 2 0 000-4zm8 0a2 2 0 100 4 2 2 0 000-4z"/>
+                </svg>
+            </a>
+            <a href="#" id="user-btn">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24">
+                    <path d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1Zm0 2a9 9 0 016.447 15.276 7 7 0 00-12.895 0A9 9 0 0112 3Zm0 2a4 4 0 100 8 4 4 0 000-8Zm0 2a2 2 0 110 4 2 2 0 010-4Zm-.1 9.001L11.899 16a5 5 0 014.904 3.61A8.96 8.96 0 0112 21a8.96 8.96 0 01-4.804-1.391 5 5 0 014.704-3.608Z"/>
+                </svg>
+            </a>
+        </div>
+    </header>
+
+    <main class="flash-container">
+        <div class="breadcrumb">
+            <a href="index.html">← Beranda</a>
+        </div>
+        <section class="flash-header">
+            <h2>Flash Sale</h2>
+            <div class="countdown">
+                <span>Berakhir Dalam</span>
+                 <div class="time-box" id="hours">00</div>
+                 <span>:</span>
+                 <div class="time-box" id="minutes">00</div>
+                 <span>:</span>
+                 <div class="time-box" id="seconds">00</div>
+            </div>
+        </section>
+
+        <section class="flash-products">
+            <div class="product-card"
+            onclick="goToDetail(this)"
+            data-image="img/bts arirang.jpeg"
+            data-category="CD Boxset · K-Hip Hop / K-Pop"
+            data-artist="BTS"
+            data-name="BTS The 5th Album 'ARIRANG'"
+            data-price="475000"
+            data-oldprice="550000"
+            data-sold="68"
+            data-stock="80"
+            data-desc="Album fisik dengan konsep minimalis berwarna putih yang menampilkan desain clean dan elegan. Dikemas dalam tiga versi berbeda dengan finishing premium, cocok untuk kolektor maupun penggemar yang menyukai konsep modern. Produk original dalam kondisi baru dan siap menjadi pelengkap koleksi K-Pop Anda.">
+                <img src="img/bts arirang.jpeg" alt="bts arirang">
+                <div class="product-info">
+                    <small>Ready Stock</small>
+                    <p class="product-name">
+                        BTS The 5th Album 'ARIRANG'
+                    </p>
+                    <p class="price">
+                        Rp475.000
+                        <span>Rp550.000</span>
+                    </p>
+
+                    <div class="flash-sale-box">
+                        <div class="progress">
+                            <div class="progress-bar" style="width:85%;"></div>
+                        </div>
+                        <p class="sold-text">
+                            85% Terjual
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card"
+            class="buy-btn"
+            onclick="goToDetail(this)"
+            data-image="img/cortis.jpeg"
+            data-category="CD Boxset · K-Hip Hop / K-Pop"
+            data-artist="Cortis"
+            data-name="Cortis - Greengreen (studio ver.) (Walmart Exclusive) - Music & Performance - CD [Exclusive]"
+            data-price="346000"
+            data-oldprice="480000"
+            data-sold="90"
+            data-stock="100"
+            data-desc="Cortis – Greengreen (Studio Ver.) (Walmart Exclusive) merupakan album eksklusif dengan konsep visual yang modern dan elegan, menghadirkan pengalaman koleksi premium bagi para penggemar. Edisi Walmart Exclusive ini dikemas dengan desain khusus dan dilengkapi CD, photobook eksklusif, photocard acak, sticker, serta berbagai item koleksi resmi lainnya. Produk original dalam kondisi baru, cocok untuk kolektor maupun penggemar yang ingin melengkapi koleksi album K-Pop mereka.">
+                <img src="img/cortis.jpeg" alt="cortis">
+                <div class="product-info">
+                    <small>Ready Stock</small>
+                    <p class="product-name">
+                        Cortis - Greengreen (studio ver.) (Walmart Exclusive) - Music & Performance - CD
+                    </p>
+                    <p class="price">
+                        Rp346.000
+                        <span>Rp480.000</span>
+                    </p>
+
+                    <div class="flash-sale-box">
+                        <div class="progress">
+                            <div class="progress-bar" style="width:10%;"></div>
+                        </div>
+                        <p class="sold-text">
+                            10% Terjual
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card"
+            class="buy-btn"
+            onclick="goToDetail(this)"
+            data-image="img/enha.jpeg"
+            data-category="CD Boxset · K-Hip Hop / K-Pop"
+            data-artist="ENHYPHEN"
+            data-name="EN-HYPEN DESIRE: UNLEASH [Engene Ver.] 6th Mini Album (JAY)"
+            data-price="280000"
+            data-oldprice="340000"
+            data-sold="10"
+            data-stock="90"
+            data-desc="ENHYPEN DESIRE : UNLEASH [Engene Ver.] 6th Mini Album (JAY) merupakan album resmi ENHYPEN edisi Engene Version yang menghadirkan konsep eksklusif dengan desain kemasan premium. Setiap album berisi CD, photobook, photocard random, postcard, dan berbagai item koleksi resmi lainnya. Sangat cocok untuk ENGENE yang ingin melengkapi koleksi album sekaligus menikmati rilisan terbaru dari ENHYPEN dengan kualitas original.">
+                <img src="img/enha.jpeg" alt="Enhyphen">
+                <div class="product-info">
+                    <small>Ready Stock</small>
+                    <p class="product-name">
+                        EN-HYPEN DESIRE: UNLEASH [Engene Ver.] 6th Mini Album (JAY)
+                    </p>
+                    <p class="price">
+                        Rp.280.000
+                        <span>Rp.340.000</span>
+                    </p>
+
+                    <div class="flash-sale-box">
+                        <div class="progress">
+                            <div class="progress-bar" style="width:50%;"></div>
+                        </div>
+                        <p class="sold-text">
+                            50% Terjual
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card"
+            class="buy-btn"
+            onclick="goToDetail(this)"
+            data-image="img/illit.jpeg"
+            data-category="CD Boxset · K-Hip Hop / K-Pop"
+            data-artist="ILLIT"
+            data-name="ILLIT 3rd Mini Album - Bomb - STANDARD SET"
+            data-price="345000"
+            data-oldprice="480000"
+            data-sold="90"
+            data-stock="10"
+            data-desc="ILLIT 3rd Mini Album – Bomb (STANDARD SET) menghadirkan konsep yang fresh dan penuh energi khas ILLIT dengan desain album yang colorful serta kemasan premium. Versi STANDARD SET terdiri dari tiga versi album berbeda yang dilengkapi CD, photobook eksklusif, photocard acak, sticker, dan poster. Produk original dalam kondisi baru, cocok untuk kolektor maupun penggemar yang ingin melengkapi koleksi album resmi ILLIT.">
+                <img src="img/illit.jpeg" alt="illit">
+                <div class="product-info">
+                    <small>Ready Stock</small>
+                    <p class="product-name">
+                        ILLIT 3rd Mini Album - Bomb - STANDARD SET
+                    </p>
+                    <p class="price">
+                        Rp345.000
+                        <span>Rp480.000</span>
+                    </p>
+
+                    <div class="flash-sale-box">
+                        <div class="progress">
+                            <div class="progress-bar" style="width:50%;"></div>
+                        </div>
+                        <p class="sold-text">
+                            50% Terjual
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-logo">
+            <img src="img/logo.png" alt="logo">
+            <p>© 2026 AnnyeongShop. Seluruh Hak Cipta Dilindungi.</p>
+        </div>
+
+        <div class="footer-menu">
+            <h4>BANTUAN</h4>
+            <a href="#">Hubungi Kami</a>
+            <a href="#">FAQ</a>
+            <a href="#">Cara Pemesanan</a>
+            <a href="#">Informasi Pengiriman</a>
+            <a href="#">Kebijakan Pengembalian</a>
+        </div>
+
+        <div class="footer-social">
+            <h4>IKUTI KAMI</h4>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+            <a href="#">TikTok</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

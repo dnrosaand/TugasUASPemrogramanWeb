@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<,>, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="detail.css">
+</head>
+<body>
+    <header>
+        <main class="detail-container">
+             <div class="breadcrumb">
+                <a href="index.html">← Beranda</a>
+             </div>
+
+             <section class="product-detail">
+                <div class="product-image">
+                    <img
+                    id="product-image"
+                    src="img/skz.jpeg"
+                    alt="product-image">
+                </div>
+                <div class="product-info">
+                    <p class="category" id="product-category">
+                        CD Boxset · K-Hip Hop / K-Pop
+                    </p>
+                    <p class="artist" id="product-artist">
+                        Stray Kids
+                    </p>
+                    <h1 id="product-name">
+                        Stray Kids SKZHOP Hiptape "合 (HOP)"
+                    </h1>
+                    
+                    <h2>
+                        <span id="product-price">Rp385.000</span>
+                        <span id="old-price"></span>
+                        <small>Termasuk PPN</small>
+                    </h2>
+
+                    <div id="flash-sale-box">
+                        <div class="progress">
+                            <div id="progress-bar"></div>
+                        </div>
+                        <p id="sold-text"></p>
+                    </div>
+                    <hr>
+
+                    <p class="description" id="product-desc">
+                        Mixtape dari lini rap Stray Kids ini datang dalam kemasan box eksklusif bergaya streetwear dengan desain grafis tebal khas SKZHOP. Setiap unit dilengkapi photobook, photocard random, dan item koleksi lainnya.
+                    </p>
+
+                    <div class="quantity">
+                        <label>JUMLAH</label>
+
+                        <div class="qty-box">
+                            <button id="minus">-</button>
+                            <input type="text" id="qty" value="1" readonly>
+                            <button id="plus">+</button>
+                        </div>
+                    </div>
+
+                    <div class="action">
+                        <button class="cart">
+                            Masukkan Keranjang
+                        </button>
+
+                        <button class="buy">
+                            Beli Sekarang
+                        </button>
+                    </div>
+                </div>
+             </section>
+    </header>
+
+    <script>
+        const product = JSON.parse(localStorage.getItem("product"));
+
+        if (product) {
+            document.getElementById("product-image").src = product.image;
+            document.getElementById("product-category").textContent = product.category;
+            document.getElementById("product-artist").textContent = product.artist;
+            document.getElementById("product-name").textContent = product.name;
+            document.getElementById("product-price").textContent = "Rp " + Number(product.price).toLocaleString("id-ID");
+            document.getElementById("product-desc").textContent = product.desc;
+
+            const oldPrice = document.getElementById("old-price");
+            const flashBox = document.getElementById("flash-sale-box");
+
+            if (product.oldprice) {
+                oldPrice.textContent = "Rp " + Number(product.oldprice).toLocaleString("id-ID");
+                
+                const persen = (product.sold / product.stock) * 100;
+                document.getElementById("progress-bar").style.width = persen + "%";
+                document.getElementById("sold-text").textContent = `${product.sold} dari ${product.stock} Terjual`;
+
+                } else {
+                    oldPrice.style.display = "none";
+                    flashBox.style.display = "none";
+                }
+        }
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Daftar</title>
 
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="daftar.css">
 </head>
 <body>
     <section class="logo-section">
@@ -49,57 +49,47 @@
     <div class="auth-nav">
         <div class="auth-wrapper">
             <a href="index.html" class="auth-item">Beranda</a>
-            <a href="login.html" class="auth-item active">Masuk</a>
-            <a href="daftar.html" class="auth-item">Daftar</a>
+            <a href="login.html" class="auth-item">Masuk</a>
+            <a href="daftar.html" class="auth-item active">Daftar</a>
         </div>
     </div>
 
-    <div class="login-form">
-        <div class="form-group">
-            <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Email Address"
-            required
-            >
+    <h3 class="register-title">DATA DIRI</h3>
+
+    <div class="register-form">
+        <div class="form-row">
+            <div class="form-group">
+                <input type="text" placeholder="Nama Depan" required>
+            </div>
+
+            <div class="form-group">
+                <input type="text" placeholder="Nama Belakang" required>
+            </div>
         </div>
+        <div class="form-row">
+            <div class="form-group">
+                 <input type="email" placeholder="@gmail.com" required>
+            </div>
 
-        <div class="form-group password-group">
-            <input
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Kata Sandi"
-            required
-            >
-
-            <button type="button" class="toggle-password">
-                <i class="bi bi-eye-slash"></i>
-            </button>
+            <div class="form-group">
+                <input type="tel" placeholder="Telepon" required>
+            </div>
         </div>
+         <div class="form-row">
+            <div class="form-group">
+                 <input type="password" placeholder="Kata Sandi" required>
+            </div>
 
-        <a href="forgot-password.html" class="forgot-password">
-            Lupa Password?
-        </a>
-
-        <button type="submit" class="login-btn">
-            <span>Masuk</span>
-
-            <svg xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round">
-
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-        </button>
+            <div class="form-group password-group">
+                 <input type="password" placeholder="Kata Sandi" required>
+                 <button type="button" class="toggle-password">
+                    <i class="bi bi-eye-slash"></i>
+                 </button>
+            </div>
+         </div>
+         <button type="submit" class="register-btn">
+            Lanjutkan
+         </button>
     </div>
 
     <footer>
