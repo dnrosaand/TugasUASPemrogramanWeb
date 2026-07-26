@@ -6,11 +6,13 @@ require("dotenv").config();
 console.log("DATABASE_URL =", process.env.DATABASE_URL);
 
 const db = require("./config/db");
+const productRoutes = require("./routes/productRoutes");
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use("/api/products", productRoutes);
 
 app.get("/", (req, res) => {
     res.send("Backend AnnyeongShop berhasil berjalan!");

@@ -1,19 +1,19 @@
 const express = require("express");
 const router = express.Router();
+const db = require("../config/db");
 
-router.get("/", (req, res) => {
-    res.json([
-        {
-            id: 1,
-            name: "BTS The 5th Album 'ARIRANG'",
-            price: 475000
-        },
-        {
-            id: 2,
-            name: "ILLIT Bomb",
-            price: 345000
-        }
-    ]);
+router.get("/", async (req, res) => {
+    try {
+        const result = await db.query("SELECT * FROM products ORDER BY id");
+
+        res.json(result.rows);
+    } catch (err) {
+        console.error(err);
+
+        res.status(500).json({
+            message: "Gagal mengambil produk"
+        });
+    }
 });
 
 module.exports = router;
