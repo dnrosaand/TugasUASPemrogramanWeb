@@ -189,7 +189,7 @@ async function loadStocks() {
         const response = await fetch("https://tugasuaspemrogramanweb-production.up.railway.app/api/stocks");
         const products = await response.json();
 
-        const productGrid = document.querySelector(".product-grid");
+        const productGrid = document.getElementById("our-stock-products");
 
         products.forEach(product => {
 
