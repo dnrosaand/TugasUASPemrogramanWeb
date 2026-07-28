@@ -246,7 +246,7 @@ header{
 
 /* Button */
 
-.register-btn{
+.button{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -270,11 +270,11 @@ header{
     transition: .2s ease;
 }
 
-.register-btn:hover{
+.button:hover{
     background: #f57da7;
 }
 
-.register-btn:active{
+.button:active{
     transform: scale(.98);
 }
 
