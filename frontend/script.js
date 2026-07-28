@@ -182,7 +182,7 @@ loadProducts();
 
 console.log("PATH:", window.location.pathname);
 
-if (window.location.pathname.includes("ourstock.html")) {
+if (window.location.pathname.includes("ourstock")) {
     console.log("MASUK OUR STOCK");
     loadStocks();
 }
