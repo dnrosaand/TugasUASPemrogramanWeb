@@ -246,38 +246,42 @@ header{
 
 /* Button */
 
-.button{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.next-btn{
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
-    width: 154px;
-    height: 32px;
+    width:170px;
+    height:40px;
 
-    margin-left: auto;
-    margin-top: 24px;
+    margin-left:auto;
+    margin-top:24px;
 
-    border: none;
-    border-radius: 5px;
+    border:none;
+    border-radius:6px;
 
-    background: #F889AF;
-    color: #fff;
+    background:#F889AF;
+    color:#fff;
 
-    font-size: 13px;
-    font-weight: 600;
+    font-size:14px;
+    font-weight:600;
 
-    cursor: pointer;
-    transition: .2s ease;
+    cursor:pointer;
+
+    transition:
+        background .3s ease,
+        transform .25s ease,
+        box-shadow .25s ease;
 }
 
-.button:hover{
+.next-btn:hover{
     background:#ff6b98;
-    transform:translateY(-2px);
-    box-shadow:0 8px 18px rgba(248,137,175,.35);
+    transform:translateY(-3px);
+    box-shadow:0 10px 22px rgba(248,137,175,.35);
 }
 
-.button:active{
-    transform:scale(.97);
+.next-btn:active{
+    transform:scale(.96);
     box-shadow:none;
 }
 
