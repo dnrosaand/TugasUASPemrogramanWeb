@@ -59,37 +59,40 @@
     <div class="register-form">
         <div class="form-row">
             <div class="form-group">
-                <input type="text" placeholder="Nama Depan" required>
+                <input type="text" id="firstname" placeholder="Nama Depan">
             </div>
 
             <div class="form-group">
-                <input type="text" placeholder="Nama Belakang" required>
+                <input type="text" id="lastname" placeholder="Nama Belakang">
             </div>
         </div>
         <div class="form-row">
             <div class="form-group">
-                 <input type="email" placeholder="@gmail.com" required>
+                 <input type="email" id="email" placeholder="@gmail.com">
             </div>
 
             <div class="form-group">
-                <input type="tel" placeholder="Telepon" required>
+                <input type="tel" id="phone" placeholder="Telepon">
             </div>
         </div>
          <div class="form-row">
             <div class="form-group">
-                 <input type="password" placeholder="Kata Sandi" required>
+                 <input type="password" id="password" placeholder="Kata Sandi">
             </div>
 
             <div class="form-group password-group">
-                 <input type="password" placeholder="Kata Sandi" required>
+                 <input type="password" id="confirmPassword" placeholder="Kata Sandi">
                  <button type="button" class="toggle-password">
                     <i class="bi bi-eye-slash"></i>
                  </button>
             </div>
          </div>
-         <button type="submit" class="register-btn">
-            Lanjutkan
-         </button>
+         <button
+            type="button"
+            id="nextBtn"
+            class="next-btn">
+                Lanjutkan
+        </button>
     </div>
 
     <footer>
@@ -114,5 +117,7 @@
             <a href="#">TikTok</a>
         </div>
     </footer>
+    
+    <script src="script.js"></script>
 </body>
 </html>

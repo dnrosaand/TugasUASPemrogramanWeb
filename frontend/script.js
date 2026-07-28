@@ -1,10 +1,60 @@
 const userBtn = document.getElementById("user-btn");
+const userDropdown = document.getElementById("userDropdown");
+const user = JSON.parse(sessionStorage.getItem("user"));
 
-if (userBtn) {
-    userBtn.addEventListener("click", function (e) {
+
+// Kalau user sudah login
+if (user && userBtn) {
+
+    userBtn.innerHTML = `
+        <span>${user.fullname}</span>
+    `;
+
+
+    userBtn.addEventListener("click", function(e){
+
         e.preventDefault();
-        window.location.href = "login.html";
+
+        if (userDropdown) {
+            userDropdown.style.display =
+            userDropdown.style.display === "block"
+            ? "none"
+            : "block";
+        }
+
     });
+
+}
+
+
+// Kalau belum login
+else if (userBtn) {
+
+    userBtn.addEventListener("click", function(e){
+
+        e.preventDefault();
+
+        window.location.href = "login.html";
+
+    });
+
+}
+
+
+// LOGOUT
+
+const logoutBtn = document.getElementById("logoutBtn");
+
+if (logoutBtn) {
+
+    logoutBtn.addEventListener("click", function(){
+
+        sessionStorage.removeItem("user");
+
+        window.location.href = "index.html";
+
+    });
+
 }
 
 // =======================
@@ -127,3 +177,274 @@ async function loadProducts() {
 }
 
 loadProducts();
+
+// ================= OUR STOCK =================
+
+if (window.location.pathname.includes("ourstock.html")) {
+    loadStocks();
+}
+
+async function loadStocks() {
+    try {
+        const response = await fetch("http://localhost:3000/api/stocks");
+        const products = await response.json();
+
+        const productGrid = document.querySelector(".product-grid");
+
+        products.forEach(product => {
+
+            const card = `
+            <div class="product-card">
+                <img src="${product.image}" alt="${product.name}">
+                
+                <div class="product-info">
+                
+                    <small>${product.status}</small>
+                
+                    <p class="product-name">
+                        ${product.name}
+                    </p>
+
+                    <p class="price">
+                        Rp${Number(product.price).toLocaleString("id-ID")}
+                    </p>
+
+                    <div class="product-action">
+                        <button
+                            onclick="goToDetail(this)"
+                            class="buy-btn"
+                            data-image="${product.image}"
+                            data-category="${product.category}"
+                            data-artist="${product.artist}"
+                            data-name="${product.name}"
+                            data-price="${product.price}"
+                            data-stock="${product.stock}"
+                            data-sold="${product.sold}"
+                            data-desc="${product.description}">
+                                Belanja
+                        </button>
+                        <img src="img/Shopping cart.png" alt="cart">
+                    </div>
+                </div>
+            </div>`;
+
+            productGrid.insertAdjacentHTML("beforeend", card);
+});
+
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+// =======================
+// LOGIN USER
+// =======================
+
+const loginForm = document.getElementById("loginForm");
+
+if (loginForm) {
+
+    loginForm.addEventListener("submit", async function(e){
+
+        e.preventDefault();
+
+
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+
+        try {
+
+            const response = await fetch(
+                "http://localhost:3000/api/users/login",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        email,
+                        password
+                    })
+                }
+            );
+
+
+            const result = await response.json();
+
+
+            if(response.ok){
+
+                sessionStorage.setItem(
+                    "user",
+                    JSON.stringify(result.user)
+                );
+
+
+                alert("Login berhasil!");
+
+                window.location.href = "index.html";
+
+
+            } else {
+
+                alert(result.message);
+
+            }
+
+
+        } catch(error){
+
+            console.error(error);
+
+            alert("Server tidak terhubung.");
+
+        }
+
+
+    });
+
+}
+
+// =======================
+// DATA DIRI
+// =======================
+
+const nextBtn = document.getElementById("nextBtn");
+
+if (nextBtn) {
+
+    nextBtn.addEventListener("click", function () {
+
+        const firstName = document.getElementById("firstname").value.trim();
+        const lastName = document.getElementById("lastname").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
+
+        if (
+            !firstName ||
+            !lastName ||
+            !email ||
+            !phone ||
+            !password ||
+            !confirmPassword
+        ) {
+            alert("Semua data harus diisi.");
+            return;
+        }
+
+        if (password !== confirmPassword) {
+            alert("Konfirmasi password tidak sama.");
+            return;
+        }
+
+        const registerData = {
+            firstName,
+            lastName,
+            email,
+            phone,
+            password
+        };
+
+        sessionStorage.setItem(
+            "registerData",
+            JSON.stringify(registerData)
+        );
+
+        window.location.href = "alamat.html";
+
+    });
+
+}
+
+// ------Alamat------- //
+document.addEventListener("DOMContentLoaded", () => {
+
+    const agreeCheck = document.getElementById("agreeCheck");
+    const registerBtn = document.getElementById("registerBtn");
+
+    if (agreeCheck && registerBtn) {
+
+        registerBtn.disabled = true;
+
+        agreeCheck.addEventListener("change", function () {
+
+            registerBtn.disabled = !this.checked;
+
+        });
+
+        // =======================
+        // CEK DATA DARI HALAMAN PERTAMA
+        // =======================
+
+        registerBtn.addEventListener("click", async function () {
+
+    const user = JSON.parse(sessionStorage.getItem("registerData"));
+
+    if (!user) {
+        alert("Data diri belum diisi.");
+        return;
+    }
+
+    const data = {
+        fullname: `${user.firstName} ${user.lastName}`,
+        email: user.email,
+        phone: user.phone,
+        password: user.password,
+
+        province: document.getElementById("province").value,
+        city: document.getElementById("city").value,
+        district: document.getElementById("district").value,
+        village: document.getElementById("village").value,
+        street: document.getElementById("street").value,
+        houseNumber: document.getElementById("houseNumber").value,
+        rtRw: document.getElementById("rtRw").value,
+        detail: document.getElementById("detail").value
+    };
+
+    try {
+
+        const response = await fetch("http://localhost:3000/api/users/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+
+    alert("Registrasi berhasil!");
+
+    sessionStorage.setItem(
+        "user",
+        JSON.stringify(data)
+    );
+
+    sessionStorage.removeItem("registerData");
+
+    window.location.href = "index.html";
+
+}
+        else {
+
+            alert(result.message);
+
+        }
+
+    } catch (err) {
+
+        console.error(err);
+        alert("Server Error");
+
+    }
+
+});
+
+    }
+
+});
