@@ -178,7 +178,7 @@ async function loadProducts() {
 
 loadProducts();
 
-// ================= OUR STOCK =================
+// ================= OUR STOCK ================= //
 
 console.log("PATH:", window.location.pathname);
 
@@ -187,52 +187,125 @@ if (window.location.pathname.includes("ourstock")) {
     loadStocks();
 }
 
+
 async function loadStocks() {
 
     console.log("LOAD STOCK JALAN");
 
     try {
-        const response = await fetch("https://tugasuaspemrogramanweb-production.up.railway.app/api/stocks");
 
-        console.log("RESPONSE:", response);
+        const response = await fetch(
+            "https://tugasuaspemrogramanweb-production.up.railway.app/api/stocks"
+        );
+
 
         const products = await response.json();
 
+
         console.log("DATA STOCK:", products);
+
 
         const productGrid = document.getElementById("our-stock-products");
 
+
         console.log("PRODUCT GRID:", productGrid);
+
+
+        if (!productGrid) {
+            console.error("Element our-stock-products tidak ditemukan");
+            return;
+        }
+
 
         products.forEach(product => {
 
+
             const card = `
-            <div class="product-card">
-                <img src="${product.image}" alt="${product.name}">
+
+            <div class="product-card"
+                onclick="goToDetail(this)"
+
+                data-image="${product.image}"
+                data-category="${product.category}"
+                data-artist="${product.artist}"
+                data-name="${product.name}"
+                data-price="${product.price}"
+                data-oldprice="${product.old_price || ''}"
+                data-stock="${product.stock}"
+                data-sold="${product.sold}"
+                data-desc="${product.description}"
+            >
+
+
+                <img 
+                    src="${product.image}" 
+                    alt="${product.name}"
+                >
+
 
                 <div class="product-info">
 
-                    <small>${product.status}</small>
+
+                    <small>
+                        ${product.status}
+                    </small>
+
 
                     <p class="product-name">
                         ${product.name}
                     </p>
 
+
                     <p class="price">
                         Rp${Number(product.price).toLocaleString("id-ID")}
                     </p>
 
+
+                    <div class="product-action">
+
+
+                        <button class="buy-btn">
+                            Belanja
+                        </button>
+
+
+                        <img 
+                            src="img/Shopping cart.png" 
+                            alt="cart"
+                        >
+
+
+                    </div>
+
+
                 </div>
+
+
             </div>
+
             `;
 
-            productGrid.insertAdjacentHTML("beforeend", card);
+
+            productGrid.insertAdjacentHTML(
+                "beforeend",
+                card
+            );
+
 
         });
 
+
     } catch(error) {
-        console.error("ERROR STOCK:", error);
+
+
+        console.error(
+            "ERROR STOCK:",
+            error
+        );
+
+
     }
+
 }
 
 // =======================
