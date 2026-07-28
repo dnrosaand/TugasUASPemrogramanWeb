@@ -271,11 +271,14 @@ header{
 }
 
 .button:hover{
-    background: #f57da7;
+    background:#ff6b98;
+    transform:translateY(-2px);
+    box-shadow:0 8px 18px rgba(248,137,175,.35);
 }
 
 .button:active{
-    transform: scale(.98);
+    transform:scale(.97);
+    box-shadow:none;
 }
 
 /* ===================== FOOTER ===================== */
@@ -335,4 +338,201 @@ footer{
 .footer-menu a:hover,
 .footer-social a:hover{
     color:#FF8FAB;
+}
+
+/* ===================== RESPONSIVE TABLET ===================== */
+
+@media screen and (max-width:992px){
+
+    header,
+    .auth-nav{
+        width:100%;
+    }
+
+    .register-form,
+    .register-title{
+        width:90%;
+    }
+
+    footer{
+        padding:40px 30px;
+    }
+
+}
+
+/* ===================== RESPONSIVE MOBILE ===================== */
+
+@media screen and (max-width:768px){
+
+    body{
+        overflow-x:hidden;
+    }
+
+    /* HEADER */
+
+    header{
+        width:100%;
+        height:70px;
+        padding:0 12px;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:10px;
+    }
+
+    .logo{
+        width:90px;
+    }
+
+    .menu{
+        margin-right:0;
+        font-size:24px;
+    }
+
+    .search{
+        flex:1;
+        max-width:140px;
+        margin:0 10px;
+    }
+
+    .search input{
+        width:100%;
+        height:34px;
+        font-size:12px;
+        padding:0 12px;
+    }
+
+    .header-icon{
+        display:flex;
+        align-items:center;
+        gap:12px;
+        flex-shrink:0;
+    }
+
+    .header-icon .icon,
+    .header-icon img{
+        width:20px;
+        height:20px;
+    }
+
+    /* LOGIN MENU */
+
+    .auth-nav{
+        width:100%;
+        padding:0 15px;
+        margin-top:15px;
+        justify-content:center;
+    }
+
+    .auth-wrapper{
+        width:100%;
+        max-width:260px;
+    }
+
+    .auth-item{
+        flex:1;
+    }
+
+    /* REGISTER */
+
+    .register-title{
+        width:100%;
+        padding:0 15px;
+        margin:30px 0 15px;
+        font-size:16px;
+    }
+
+    .register-form{
+        width:100%;
+        padding:0 15px;
+    }
+
+    .form-row{
+        flex-direction:column;
+        gap:12px;
+    }
+
+    .form-group input{
+        height:42px;
+        font-size:14px;
+    }
+
+    .toggle-password i{
+        font-size:18px;
+    }
+
+    .button{
+        width:100%;
+        height:42px;
+        margin-top:25px;
+    }
+
+    /* FOOTER */
+
+    footer{
+        flex-direction:column;
+        gap:30px;
+        padding:30px 20px;
+    }
+
+    .footer-logo,
+    .footer-menu,
+    .footer-social{
+        width:100%;
+    }
+
+}
+
+/* ===================== HP KECIL ===================== */
+
+@media screen and (max-width:480px){
+
+    header{
+        height:65px;
+        padding:0 10px;
+    }
+
+    .logo{
+        width:75px;
+    }
+
+    .menu{
+        font-size:22px;
+    }
+
+    .search{
+        max-width:100px;
+        margin:0 6px;
+    }
+
+    .search input{
+        height:30px;
+        font-size:11px;
+        padding:0 10px;
+    }
+
+    .header-icon{
+        gap:8px;
+    }
+
+    .header-icon .icon,
+    .header-icon img{
+        width:18px;
+        height:18px;
+    }
+
+    .register-title{
+        font-size:15px;
+    }
+
+    .form-group input{
+        height:40px;
+        font-size:13px;
+    }
+
+    .button{
+        height:40px;
+        font-size:13px;
+    }
+
 }

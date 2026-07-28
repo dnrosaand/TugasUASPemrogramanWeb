@@ -195,3 +195,127 @@
     color:#ff6f9b;
 }
 
+/* ===================== RESPONSIVE DETAIL ===================== */
+
+@media screen and (max-width:768px){
+
+    .detail-container{
+        width:100%;
+        padding:0 15px;
+        margin:20px auto 40px;
+    }
+
+    .breadcrumb{
+        margin-bottom:20px;
+    }
+
+    .breadcrumb a{
+        font-size:13px;
+    }
+
+    /* UBAH DARI SEJAJAR MENJADI KE BAWAH */
+
+    .product-detail{
+        display:flex;
+        flex-direction:column;
+        gap:25px;
+    }
+
+    .product-image{
+        width:100%;
+    }
+
+    .product-image img{
+        width:100%;
+        border-radius:12px;
+    }
+
+    .product-info{
+        width:100%;
+    }
+
+    .product-info h1{
+        font-size:28px;
+    }
+
+    #product-price{
+        font-size:24px;
+    }
+
+    #old-price{
+        font-size:16px;
+    }
+
+    .description{
+        font-size:14px;
+        line-height:24px;
+    }
+
+    .progress{
+        width:100%;
+    }
+
+    .quantity{
+        flex-wrap:wrap;
+        gap:12px;
+    }
+
+    .action{
+        flex-direction:column;
+        gap:12px;
+    }
+
+    .cart,
+    .buy{
+        width:100%;
+    }
+
+}
+
+/* ===================== HP KECIL ===================== */
+
+@media screen and (max-width:480px){
+
+    .detail-container{
+        padding:0 10px;
+    }
+
+    .product-info h1{
+        font-size:22px;
+    }
+
+    #product-price{
+        font-size:20px;
+    }
+
+    #old-price{
+        font-size:14px;
+    }
+
+    .category,
+    .artist{
+        font-size:13px;
+    }
+
+    .description{
+        font-size:13px;
+        line-height:22px;
+    }
+
+    .qty-box button{
+        width:32px;
+        height:32px;
+    }
+
+    .qty-box input{
+        width:45px;
+    }
+
+    .cart,
+    .buy{
+        height:42px;
+        font-size:14px;
+    }
+
+}
+

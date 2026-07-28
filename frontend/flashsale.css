@@ -317,3 +317,250 @@ footer{
 .footer-social a:hover{
     color:#FF8FAB;
 }
+
+/* ===================== RESPONSIVE TABLET ===================== */
+
+@media screen and (max-width:992px){
+
+    header,
+    .flash-container{
+        width:95%;
+    }
+
+    .flash-products{
+        grid-template-columns:1fr;
+    }
+
+    footer{
+        padding:40px 30px;
+    }
+
+}
+
+/* ===================== RESPONSIVE MOBILE ===================== */
+
+@media screen and (max-width:768px){
+
+    body{
+        overflow-x:hidden;
+    }
+
+    /* HEADER */
+
+    header{
+        width:100%;
+        height:70px;
+        padding:0 12px;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:10px;
+    }
+
+    .logo{
+        width:90px;
+    }
+
+    .menu{
+        margin-right:0;
+        font-size:24px;
+    }
+
+    .search{
+        flex:1;
+        max-width:140px;
+        margin:0 10px;
+    }
+
+    .search input{
+        height:34px;
+        font-size:12px;
+        padding:0 12px;
+    }
+
+    .header-icon{
+        display:flex;
+        align-items:center;
+        gap:12px;
+        flex-shrink:0;
+    }
+
+    .header-icon .icon,
+    .header-icon img{
+        width:20px;
+        height:20px;
+    }
+
+    /* FLASH CONTAINER */
+
+    .flash-container{
+        width:100%;
+        padding:0 15px;
+        margin:20px auto 40px;
+    }
+
+    .flash-header{
+        flex-direction:column;
+        height:auto;
+        padding:15px;
+        gap:15px;
+        text-align:center;
+    }
+
+    .flash-header h2{
+        font-size:28px;
+    }
+
+    .countdown{
+        justify-content:center;
+        flex-wrap:wrap;
+    }
+
+    .time-box{
+        width:34px;
+        height:34px;
+        font-size:16px;
+    }
+
+    /* PRODUK SATU KOLOM */
+
+    .flash-products{
+        grid-template-columns:1fr;
+        gap:18px;
+    }
+
+    .product-card{
+        flex-direction:column;
+        align-items:center;
+        text-align:center;
+        padding:15px;
+    }
+
+    .product-card img{
+        width:100%;
+        max-width:250px;
+        height:auto;
+        aspect-ratio:1/1;
+        border-radius:8px;
+    }
+
+    .product-info{
+        width:100%;
+    }
+
+    .product-card small{
+        display:block;
+        margin-bottom:8px;
+        font-size:13px;
+    }
+
+    .product-name{
+        font-size:18px;
+        margin-bottom:10px;
+    }
+
+    .price{
+        font-size:20px;
+        margin-bottom:12px;
+    }
+
+    .price span{
+        display:block;
+        margin:5px 0 0;
+        font-size:13px;
+    }
+
+    .progress{
+        width:100%;
+    }
+
+    .sold-text{
+        margin-top:8px;
+        font-size:12px;
+    }
+
+    footer{
+        flex-direction:column;
+        gap:30px;
+        padding:30px 20px;
+    }
+
+    .footer-logo,
+    .footer-menu,
+    .footer-social{
+        width:100%;
+    }
+
+}
+
+/* ===================== HP KECIL ===================== */
+
+@media screen and (max-width:480px){
+
+    .logo{
+        width:75px;
+    }
+
+    .search{
+        max-width:100px;
+        margin:0 6px;
+    }
+
+    .search input{
+        height:30px;
+        font-size:11px;
+    }
+
+    .header-icon{
+        gap:8px;
+    }
+
+    .header-icon .icon,
+    .header-icon img{
+        width:18px;
+        height:18px;
+    }
+
+    .flash-header{
+        padding:12px;
+    }
+
+    .flash-header h2{
+        font-size:22px;
+    }
+
+    .countdown{
+        gap:6px;
+    }
+
+    .countdown span{
+        font-size:14px;
+    }
+
+    .time-box{
+        width:30px;
+        height:30px;
+        font-size:14px;
+    }
+
+    .product-card{
+        padding:12px;
+    }
+
+    .product-card img{
+        max-width:220px;
+    }
+
+    .product-name{
+        font-size:16px;
+    }
+
+    .price{
+        font-size:18px;
+    }
+
+    .price span{
+        font-size:12px;
+    }
+
+}

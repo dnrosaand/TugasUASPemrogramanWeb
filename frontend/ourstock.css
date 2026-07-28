@@ -279,3 +279,174 @@ footer{
 .footer-social a:hover{
     color:#FF8FAB;
 }
+
+/* ===================== TABLET ===================== */
+
+@media screen and (max-width:992px){
+
+    .stock-container,
+    .breadcrumb,
+    header{
+        width:95%;
+    }
+
+    .product-grid{
+        grid-template-columns:1fr;
+        gap:20px;
+    }
+
+}
+
+/* ===================== MOBILE ===================== */
+
+@media screen and (max-width:768px){
+
+    body{
+        overflow-x:hidden;
+    }
+
+    /* HEADER */
+
+    header{
+        width:100%;
+        height:70px;
+        padding:0 12px;
+        gap:10px;
+    }
+
+    .logo{
+        width:90px;
+    }
+
+    .menu{
+        font-size:24px;
+    }
+
+    .search{
+        flex:1;
+        max-width:140px;
+        margin:0 10px;
+    }
+
+    .search input{
+        height:34px;
+        font-size:12px;
+        padding:0 12px;
+    }
+
+    .header-icon{
+        gap:12px;
+        flex-shrink:0;
+    }
+
+    .header-icon .icon{
+        width:20px;
+        height:20px;
+    }
+
+    /* CONTAINER */
+
+    .stock-container,
+    .breadcrumb{
+        width:100%;
+        padding:0 15px;
+    }
+
+    /* SATU PRODUK SATU BARIS */
+
+    .product-grid{
+        grid-template-columns:1fr;
+        gap:18px;
+    }
+
+    .product-card{
+        flex-direction:column;
+        align-items:center;
+        text-align:center;
+        padding:15px;
+    }
+
+    .product-card>img{
+        width:100%;
+        max-width:250px;
+        height:auto;
+        aspect-ratio:1/1;
+    }
+
+    .product-info{
+        width:100%;
+    }
+
+    .product-name{
+        font-size:18px;
+        margin-bottom:10px;
+    }
+
+    .price{
+        font-size:20px;
+        margin-bottom:15px;
+    }
+
+    .product-action{
+        width:100%;
+        flex-direction:column;
+        gap:12px;
+    }
+
+    .buy-btn{
+        width:100%;
+        height:42px;
+    }
+
+    .product-action img{
+        display:none;
+    }
+
+    footer{
+        flex-direction:column;
+        gap:30px;
+        padding:30px 20px;
+    }
+
+}
+
+/* ===================== HP KECIL ===================== */
+
+@media screen and (max-width:480px){
+
+    .logo{
+        width:75px;
+    }
+
+    .search{
+        max-width:100px;
+        margin:0 6px;
+    }
+
+    .search input{
+        height:30px;
+        font-size:11px;
+    }
+
+    .header-icon{
+        gap:8px;
+    }
+
+    .header-icon .icon{
+        width:18px;
+        height:18px;
+    }
+
+    .product-card{
+        padding:12px;
+    }
+
+    .product-name{
+        font-size:16px;
+    }
+
+    .price{
+        font-size:18px;
+    }
+
+}

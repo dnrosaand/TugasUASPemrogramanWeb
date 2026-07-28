@@ -428,7 +428,7 @@ footer{
 
 /* ===================== RESPONSIVE TABLET ===================== */
 
-@media screen and (max-width: 992px){
+@media screen and (max-width:992px){
 
     header,
     .banner,
@@ -458,203 +458,151 @@ footer{
     /* HEADER */
 
     header{
-
         width:100%;
-        height:auto;
-        padding:15px;
-        flex-wrap:wrap;
-        gap:15px;
-
+        height:70px;
+        padding:0 12px;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:10px;
     }
 
     .logo{
-
-        width:120px;
-
+        width:90px;
     }
 
     .menu{
-
         margin-right:0;
-
+        font-size:24px;
     }
 
     .search{
-
-        order:3;
-        width:100%;
-        margin:0;
-
+        flex:1;
+        margin:0 10px;
+        max-width:140px;
+        order:unset;
     }
 
     .search input{
-
-        height:42px;
-        font-size:14px;
-
+        width:100%;
+        height:34px;
+        font-size:12px;
+        padding:0 12px;
     }
 
     .header-icon{
-
-        gap:15px;
-
+        display:flex;
+        align-items:center;
+        gap:12px;
+        flex-shrink:0;
     }
 
-    .header-icon .icon{
-
-        width:22px;
-        height:22px;
-
+    .header-icon .icon,
+    .header-icon img{
+        width:20px;
+        height:20px;
     }
 
     .user-dropdown{
-
         right:10px;
-        top:65px;
-
+        top:60px;
     }
 
     /* BANNER */
 
     .banner{
-
         width:100%;
         padding:12px;
-
     }
 
     .banner img{
-
+        width:100%;
         height:auto;
         border-radius:16px;
-
     }
 
     .prev,
     .next{
-
-        width:35px;
-        height:35px;
-
+        width:34px;
+        height:34px;
     }
 
     /* SECTION */
 
     .preorder,
     .stock{
-
         width:100%;
         padding:15px;
-
     }
 
     .preorder h2{
-
         font-size:26px;
-
     }
 
     .section-title h3,
     .stock-tittle h3{
-
         font-size:20px;
-
     }
 
     .section-title a,
     .stock-tittle a{
-
         font-size:16px;
-
     }
 
-    /* GRID PRODUK */
+    /* GRID */
 
     .product-grid{
-
         grid-template-columns:repeat(2,1fr);
         gap:12px;
-
     }
 
     .product-card{
-
         border-radius:12px;
         overflow:hidden;
-
-    }
-
-    .product-card img{
-
-        aspect-ratio:1/1;
-        object-fit:cover;
-
     }
 
     .product-name{
-
         font-size:12px;
         height:auto;
         min-height:34px;
-
     }
 
     .price{
-
         font-size:14px;
-
     }
 
     .price span{
-
         display:block;
         margin-left:0;
         margin-top:2px;
-
     }
 
     .product-action{
-
         padding:10px;
-
     }
 
     .buy-btn,
     .product-action button{
-
         width:100%;
         height:36px;
-
     }
 
     .product-action img{
-
         display:none;
-
     }
 
     /* FOOTER */
 
     footer{
-
         flex-direction:column;
         gap:30px;
         padding:30px 20px;
-
     }
 
     .footer-logo,
     .footer-menu,
     .footer-social{
-
         width:100%;
-
-    }
-
-    .footer-logo img{
-
-        width:150px;
-
     }
 
 }
@@ -664,90 +612,75 @@ footer{
 @media screen and (max-width:480px){
 
     header{
-
-        padding:12px;
-
+        height:65px;
+        padding:0 10px;
     }
 
     .logo{
-
-        width:95px;
-
+        width:75px;
     }
 
     .menu{
+        font-size:22px;
+    }
 
-        font-size:24px;
+    .search{
+        max-width:100px;
+        margin:0 6px;
+    }
 
+    .search input{
+        height:30px;
+        font-size:11px;
+        padding:0 10px;
     }
 
     .header-icon{
-
-        gap:12px;
-
+        gap:8px;
     }
 
-    .header-icon .icon{
-
-        width:20px;
-        height:20px;
-
+    .header-icon .icon,
+    .header-icon img{
+        width:18px;
+        height:18px;
     }
 
     .banner{
-
         padding:8px;
-
     }
 
     .banner img{
-
         border-radius:12px;
-
     }
 
     .preorder,
     .stock{
-
         padding:10px;
-
     }
 
     .preorder h2{
-
         font-size:22px;
-
     }
 
     .product-grid{
-
         gap:10px;
-
     }
 
     .product-name{
-
         font-size:11px;
-
     }
 
     .price{
-
         font-size:13px;
-
     }
 
     .price span{
-
         font-size:10px;
-
     }
 
     .buy-btn,
     .product-action button{
-
         font-size:12px;
-
     }
 
 }
