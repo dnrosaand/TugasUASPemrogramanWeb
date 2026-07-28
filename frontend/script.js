@@ -111,7 +111,7 @@ async function loadProducts() {
 
     try {
 
-        const response = await fetch("https://tugasuaspemrogramanweb-production.up.railway.app");
+        const response = await fetch("https://tugasuaspemrogramanweb-production.up.railway.app/api/products");
         const products = await response.json();
 
         products.forEach(product => {
@@ -186,7 +186,7 @@ if (window.location.pathname.includes("ourstock.html")) {
 
 async function loadStocks() {
     try {
-        const response = await fetch("https://tugasuaspemrogramanweb-production.up.railway.app");
+        const response = await fetch("https://tugasuaspemrogramanweb-production.up.railway.app/api/stocks");
         const products = await response.json();
 
         const productGrid = document.querySelector(".product-grid");
@@ -256,7 +256,7 @@ if (loginForm) {
         try {
 
             const response = await fetch(
-                "https://tugasuaspemrogramanweb-production.up.railway.app",
+                "https://tugasuaspemrogramanweb-production.up.railway.app/api/users/login",
                 {
                     method: "POST",
                     headers: {
@@ -406,7 +406,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
 
-        const response = await fetch("https://tugasuaspemrogramanweb-production.up.railway.app", {
+        const response = await fetch("https://tugasuaspemrogramanweb-production.up.railway.app/api/users/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
