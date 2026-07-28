@@ -371,26 +371,45 @@ footer{
         padding:0 15px;
     }
 
-    /* PRODUK 2 KOLOM */
+    /* GRID 2 KOLOM */
 
     .product-grid{
+        display:grid;
         grid-template-columns:repeat(2,1fr);
         gap:12px;
     }
 
+    /* CARD */
+
     .product-card{
-        padding:12px;
+        display:block;
+        padding:0;
+        border-radius:12px;
+        overflow:hidden;
     }
 
     .product-card>img{
         width:100%;
         aspect-ratio:1/1;
         height:auto;
+        display:block;
+    }
+
+    .product-info{
+        padding:10px;
+    }
+
+    .product-info small{
+        display:block;
+        font-size:11px;
+        margin-bottom:6px;
     }
 
     .product-name{
         font-size:12px;
+        line-height:1.4;
         min-height:34px;
+        margin-bottom:8px;
     }
 
     .price{
@@ -400,22 +419,28 @@ footer{
 
     .price span{
         display:block;
-        margin-left:0;
-        margin-top:2px;
+        margin:2px 0 0;
         font-size:11px;
     }
 
     .product-action{
-        padding:10px;
+        display:flex;
+        align-items:center;
+        gap:8px;
+        padding:0;
     }
 
     .buy-btn{
+        flex:1;
         width:100%;
         height:36px;
+        font-size:12px;
     }
 
     .product-action img{
-        display:none;
+        width:18px;
+        height:18px;
+        display:block; /* kalau mau ikon love tetap muncul */
     }
 
     /* FOOTER */
@@ -431,10 +456,7 @@ footer{
     .footer-social{
         width:100%;
     }
-
 }
-
-/* ===================== HP KECIL ===================== */
 
 /* ===================== HP KECIL ===================== */
 
@@ -494,25 +516,64 @@ footer{
     }
 
     .product-card{
-        padding:10px;
+        display:block;
+        padding:0;
+        border-radius:10px;
+        overflow:hidden;
+    }
+
+    .product-card>img{
+        width:100%;
+        aspect-ratio:1/1;
+        height:auto;
+        display:block;
+    }
+
+    .product-info{
+        padding:8px;
+    }
+
+    .product-info small{
+        font-size:10px;
+        margin-bottom:5px;
     }
 
     .product-name{
         font-size:11px;
+        line-height:1.4;
         min-height:32px;
+        margin-bottom:6px;
     }
 
     .price{
         font-size:13px;
+        margin-bottom:8px;
     }
 
     .price span{
+        display:block;
+        margin-top:2px;
+        margin-left:0;
         font-size:10px;
     }
 
+    .product-action{
+        display:flex;
+        align-items:center;
+        gap:6px;
+        padding:0;
+    }
+
     .buy-btn{
+        flex:1;
         height:34px;
         font-size:12px;
+    }
+
+    .product-action img{
+        width:16px;
+        height:16px;
+        display:block;
     }
 
 }
