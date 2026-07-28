@@ -180,27 +180,40 @@ loadProducts();
 
 // ================= OUR STOCK =================
 
+console.log("PATH:", window.location.pathname);
+
 if (window.location.pathname.includes("ourstock.html")) {
+    console.log("MASUK OUR STOCK");
     loadStocks();
 }
 
 async function loadStocks() {
+
+    console.log("LOAD STOCK JALAN");
+
     try {
         const response = await fetch("https://tugasuaspemrogramanweb-production.up.railway.app/api/stocks");
+
+        console.log("RESPONSE:", response);
+
         const products = await response.json();
 
+        console.log("DATA STOCK:", products);
+
         const productGrid = document.getElementById("our-stock-products");
+
+        console.log("PRODUCT GRID:", productGrid);
 
         products.forEach(product => {
 
             const card = `
             <div class="product-card">
                 <img src="${product.image}" alt="${product.name}">
-                
+
                 <div class="product-info">
-                
+
                     <small>${product.status}</small>
-                
+
                     <p class="product-name">
                         ${product.name}
                     </p>
@@ -209,30 +222,16 @@ async function loadStocks() {
                         Rp${Number(product.price).toLocaleString("id-ID")}
                     </p>
 
-                    <div class="product-action">
-                        <button
-                            onclick="goToDetail(this)"
-                            class="buy-btn"
-                            data-image="${product.image}"
-                            data-category="${product.category}"
-                            data-artist="${product.artist}"
-                            data-name="${product.name}"
-                            data-price="${product.price}"
-                            data-stock="${product.stock}"
-                            data-sold="${product.sold}"
-                            data-desc="${product.description}">
-                                Belanja
-                        </button>
-                        <img src="img/Shopping cart.png" alt="cart">
-                    </div>
                 </div>
-            </div>`;
+            </div>
+            `;
 
             productGrid.insertAdjacentHTML("beforeend", card);
-});
 
-    } catch (error) {
-        console.error(error);
+        });
+
+    } catch(error) {
+        console.error("ERROR STOCK:", error);
     }
 }
 
