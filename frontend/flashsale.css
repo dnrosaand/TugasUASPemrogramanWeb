@@ -353,8 +353,7 @@ footer{
         padding:0 12px;
         display:flex;
         align-items:center;
-        justify-content:space-between;
-        gap:10px;
+        gap:6px;
     }
 
     .logo{
@@ -364,25 +363,35 @@ footer{
     .menu{
         margin-right:0;
         font-size:24px;
+        flex-shrink:0;
     }
 
     .search{
         flex:1;
-        max-width:140px;
-        margin:0 10px;
+        margin:0 8px;
+        min-width:0;
     }
 
     .search input{
-        height:34px;
+        width:100%;
+        height:36px;
+        padding:0 14px;
         font-size:12px;
-        padding:0 12px;
     }
 
     .header-icon{
         display:flex;
         align-items:center;
-        gap:12px;
+        gap:2px;
         flex-shrink:0;
+    }
+
+    .header-icon a{
+        width:28px;
+        height:28px;
+        display:flex;
+        justify-content:center;
+        align-items:center;
     }
 
     .header-icon .icon,
@@ -400,48 +409,49 @@ footer{
     }
 
     .flash-header{
-        flex-direction:column;
-        height:auto;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        flex-direction:row;
         padding:15px;
-        gap:15px;
-        text-align:center;
+        gap:10px;
     }
 
     .flash-header h2{
-        font-size:28px;
+        font-size:24px;
     }
 
     .countdown{
-        justify-content:center;
-        flex-wrap:wrap;
+        display:flex;
+        align-items:center;
+        justify-content:flex-end;
+        gap:6px;
     }
 
     .time-box{
         width:34px;
         height:34px;
-        font-size:16px;
+        font-size:15px;
     }
 
     /* PRODUK SATU KOLOM */
 
     .flash-products{
-        grid-template-columns:1fr;
-        gap:18px;
+        display:grid;
+        grid-template-columns:repeat(2,1fr);
+        gap:12px;
     }
 
     .product-card{
         flex-direction:column;
-        align-items:center;
-        text-align:center;
-        padding:15px;
+        padding:12px;
+        text-align:left;
     }
 
     .product-card img{
         width:100%;
-        max-width:250px;
         height:auto;
         aspect-ratio:1/1;
-        border-radius:8px;
     }
 
     .product-info{
@@ -455,19 +465,17 @@ footer{
     }
 
     .product-name{
-        font-size:18px;
-        margin-bottom:10px;
+        font-size:14px;
     }
 
     .price{
-        font-size:20px;
-        margin-bottom:12px;
-    }
+        font-size:16px;
+    }   
 
     .price span{
         display:block;
-        margin:5px 0 0;
-        font-size:13px;
+        margin:3px 0 0;
+        font-size:12px;
     }
 
     .progress{
@@ -475,8 +483,7 @@ footer{
     }
 
     .sold-text{
-        margin-top:8px;
-        font-size:12px;
+        font-size:11px;
     }
 
     footer{
@@ -497,22 +504,42 @@ footer{
 
 @media screen and (max-width:480px){
 
+    header{
+        height:65px;
+        padding:0 10px;
+        gap:5px;
+    }
+
     .logo{
         width:75px;
     }
 
+    .menu{
+        font-size:22px;
+    }
+
     .search{
-        max-width:100px;
-        margin:0 6px;
+        flex:1;
+        margin:0 5px;
+        min-width:0;
     }
 
     .search input{
-        height:30px;
+        height:32px;
+        padding:0 12px;
         font-size:11px;
     }
 
     .header-icon{
-        gap:8px;
+        gap:2px;
+    }
+
+    .header-icon a{
+        width:26px;
+        height:26px;
+        display:flex;
+        justify-content:center;
+        align-items:center;
     }
 
     .header-icon .icon,
@@ -522,45 +549,67 @@ footer{
     }
 
     .flash-header{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        flex-direction:row;
         padding:12px;
+        gap:8px;
     }
 
     .flash-header h2{
-        font-size:22px;
+        font-size:20px;
     }
 
     .countdown{
-        gap:6px;
+        display:flex;
+        align-items:center;
+        gap:4px;
     }
 
     .countdown span{
-        font-size:14px;
+        font-size:12px;
     }
 
     .time-box{
-        width:30px;
-        height:30px;
-        font-size:14px;
+        width:28px;
+        height:28px;
+        font-size:12px;
+    }
+
+    .flash-products{
+        display:grid;
+        grid-template-columns:repeat(2,1fr);
+        gap:10px;
     }
 
     .product-card{
-        padding:12px;
+        padding:10px;
     }
 
     .product-card img{
-        max-width:220px;
+        width:100%;
+        max-width:none;
+        aspect-ratio:1/1;
     }
 
     .product-name{
-        font-size:16px;
+        font-size:12px;
     }
 
     .price{
-        font-size:18px;
+        font-size:14px;
     }
 
     .price span{
-        font-size:12px;
+        display:block;
+        margin-top:2px;
+        margin-left:0;
+        font-size:10px;
+    }
+
+    .sold-text{
+        font-size:10px;
     }
 
 }
