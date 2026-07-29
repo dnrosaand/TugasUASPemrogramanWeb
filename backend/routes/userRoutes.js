@@ -2,7 +2,12 @@ const express = require("express");
 const router = express.Router();
 const db = require("../config/db");
 const bcrypt = require("bcrypt");
-const upload = require("./upload");
+const supabase = require("../config/supabase");
+const multer = require("multer");
+
+const upload = multer({
+    storage: multer.memoryStorage()
+});
 
 // ================= LOGIN =================
 
@@ -162,31 +167,47 @@ router.post(
     upload.single("photo"),
     async (req, res) => {
         try {
-            const id = req.params.id;
             if (!req.file) {
                 return res.status(400).json({
                     message: "Tidak ada foto."
                 });
             }
 
-            const photo = `https://tugasuaspemrogramanweb-production.up.railway.app/uploads/${req.file.filename}`;
+            const fileName = `${req.params.id}-${Date.now()}-${req.file.originalname}`;
+
+            const { error } = await supabase.storage
+                .from("profile-photo")
+                .upload(fileName, req.file.buffer, {
+                    contentType: req.file.mimetype,
+                    upsert: true
+                });
+
+            if (error) throw error;
+
+            const { data } = supabase.storage
+                .from("profile-photo")
+                .getPublicUrl(fileName);
+
+            const photo = data.publicUrl;
+
             await db.query(
                 "UPDATE users SET photo = $1 WHERE id = $2",
-                [photo, id]
+                [photo, req.params.id]
             );
 
             res.json({
                 message: "Foto berhasil diupload.",
                 photo
             });
+
         } catch (err) {
             console.error(err);
             res.status(500).json({
-                message: "Server Error"
+                message: err.message
             });
         }
     }
-)
+);
 
 // ================= UPDATE PROFILE =================
 
