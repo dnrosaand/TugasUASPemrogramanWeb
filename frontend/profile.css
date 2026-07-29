@@ -382,128 +382,145 @@ footer{
     color:#FF8FAB;
 }
 
-/* ===================== TABLET ===================== */
+/* ===================== RESPONSIVE TABLET ===================== */
 
-@media screen and (max-width:768px){
+@media screen and (max-width:992px){
 
-    header{
+    header,
+    .profile-container{
         width:100%;
-        padding:15px 20px;
-        height:auto;
-        gap:15px;
-    }
-
-    .logo{
-        width:150px;
-    }
-
-    .search{
-        margin:0 15px;
     }
 
     .profile-container{
-        width:92%;
-        margin:30px auto 50px;
-    }
-
-    .profile-card{
-        padding:25px;
-    }
-
-    .profile-photo{
-        width:70px;
-        height:70px;
-    }
-
-    .profile-info h2{
-        font-size:22px;
-    }
-
-    .profile-info p{
-        font-size:14px;
-    }
-
-    .menu-card h3{
-        padding:16px 20px;
-    }
-
-    .menu-card a{
-        padding:16px 20px;
+        padding:0 30px;
     }
 
     footer{
-        flex-direction:column;
-        gap:30px;
-        padding:35px 30px;
-    }
-
-    .footer-logo{
-        width:100%;
+        padding:40px 30px;
     }
 
 }
 
-/* ===================== HP KECIL ===================== */
 
-@media screen and (max-width:480px){
+/* ===================== RESPONSIVE MOBILE ===================== */
+
+@media screen and (max-width:768px){
+
+    body{
+        overflow-x:hidden;
+    }
+
+
+    /* HEADER */
 
     header{
         width:100%;
-        flex-wrap:wrap;
-        justify-content:center;
-        padding:15px;
-        gap:15px;
+        height:70px;
+        padding:0 12px;
+        display:flex;
+        align-items:center;
+        gap:6px;
     }
+
+
+    .logo{
+        width:90px;
+    }
+
 
     .menu{
         margin-right:0;
         font-size:24px;
+        flex-shrink:0;
     }
+
 
     .search{
-        width:100%;
-        order:3;
-        margin:0;
+        flex:1;
+        margin:0 8px;
     }
+
 
     .search input{
-        height:42px;
-        font-size:14px;
+        width:100%;
+        height:36px;
+        padding:0 14px;
+        font-size:12px;
     }
+
 
     .header-icon{
-        gap:16px;
+        display:flex;
+        align-items:center;
+        gap:2px;
+        flex-shrink:0;
     }
 
-    .logo{
-        width:130px;
+
+    .header-icon a{
+        width:28px;
+        height:28px;
+        display:flex;
+        justify-content:center;
+        align-items:center;
     }
+
+
+    .header-icon .icon,
+    .header-icon img{
+        width:20px;
+        height:20px;
+    }
+
+
+    .user-dropdown{
+        right:10px;
+        top:60px;
+    }
+
+
+
+    /* PROFILE */
 
     .profile-container{
-        width:95%;
+        width:100%;
+        padding:0 15px;
         margin:25px auto 40px;
     }
 
+
     .profile-card{
         padding:20px;
+        border-radius:12px;
     }
+
 
     .profile-header{
         flex-direction:column;
         text-align:center;
     }
 
+
+    .profile-photo{
+        width:70px;
+        height:70px;
+    }
+
+
     .profile-info{
         margin:15px 0;
     }
+
 
     .profile-info h2{
         font-size:22px;
     }
 
+
     .profile-info p{
         font-size:13px;
     }
+
 
     .edit-profile{
         margin:15px 0 0;
@@ -511,10 +528,14 @@ footer{
         height:45px;
     }
 
+
+    /* MENU */
+
     .menu-card h3{
         font-size:15px;
         padding:15px 18px;
     }
+
 
     .menu-card a{
         padding:15px 18px;
@@ -522,31 +543,146 @@ footer{
         gap:12px;
     }
 
+
     .menu-icon{
         width:18px;
         height:18px;
     }
+
+
+
+    /* FOOTER */
+
+    footer{
+        flex-direction:column;
+        gap:30px;
+        padding:30px 20px;
+    }
+
+
+    .footer-logo,
+    .footer-menu,
+    .footer-social{
+        width:100%;
+    }
+
+}
+
+
+
+/* ===================== HP KECIL ===================== */
+
+@media screen and (max-width:480px){
+
+
+    header{
+        height:65px;
+        padding:0 10px;
+        gap:5px;
+    }
+
+
+    .logo{
+        width:75px;
+    }
+
+
+    .menu{
+        font-size:22px;
+    }
+
+
+    .search{
+        flex:1;
+        margin:0 6px;
+    }
+
+
+    .search input{
+        height:32px;
+        padding:0 12px;
+        font-size:11px;
+    }
+
+
+    .header-icon{
+        gap:2px;
+    }
+
+
+    .header-icon a{
+        width:26px;
+        height:26px;
+    }
+
+
+    .header-icon .icon,
+    .header-icon img{
+        width:18px;
+        height:18px;
+    }
+
+
+
+    /* PROFILE */
+
+    .profile-container{
+        padding:0 10px;
+    }
+
+
+    .profile-card{
+        padding:18px;
+    }
+
+
+    .profile-photo{
+        width:65px;
+        height:65px;
+    }
+
+
+    .profile-info h2{
+        font-size:20px;
+    }
+
+
+    .profile-info p{
+        font-size:12px;
+    }
+
+
+    .menu-card h3{
+        font-size:14px;
+    }
+
+
+    .menu-card a{
+        padding:14px;
+        font-size:13px;
+    }
+
 
     .user-dropdown{
         width:170px;
         right:10px;
     }
 
+
+
+    /* FOOTER */
+
     footer{
-        flex-direction:column;
-        gap:25px;
         padding:30px 20px;
         text-align:center;
         align-items:center;
     }
 
-    .footer-logo{
-        width:100%;
-    }
 
     .footer-logo img{
         width:150px;
     }
+
 
     .footer-menu,
     .footer-social{
