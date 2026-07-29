@@ -548,7 +548,6 @@ if (profileName && profilePhone) {
     const user = JSON.parse(sessionStorage.getItem("user"));
     if (!user) {
         window.location.href = "login.html";
-        return;
     }
     profileName.textContent = user.fullname;
     profilePhone.textContent = user.phone;
