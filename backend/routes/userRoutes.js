@@ -47,6 +47,14 @@ router.post("/login", async (req, res) => {
                 fullname: user.fullname,
                 email: user.email,
                 phone: user.phone,
+                province: user.province,
+                city: user.city,
+                district: user.district,
+                village: user.village,
+                street: user.street,
+                house_number: user.house_number,
+                rt_rw: user.rt_rw,
+                detail: user.detail,
                 photo: user.photo
             }
         });
@@ -161,7 +169,7 @@ router.post(
                 });
             }
 
-            const photo = `/uploads/${req.file.filename}`;
+            const photo = `https://tugasuaspemrogramanweb-production.up.railway.app/uploads/${req.file.filename}`;
             await db.query(
                 "UPDATE users SET photo = $1 WHERE id = $2",
                 [photo, id]
@@ -179,6 +187,72 @@ router.post(
         }
     }
 )
+
+// ================= UPDATE PROFILE =================
+
+router.put("/:id", async (req, res) => {
+
+    const {
+        fullname,
+        email,
+        phone,
+        province,
+        city,
+        district,
+        village,
+        street,
+        houseNumber,
+        rtRw,
+        detail
+    } = req.body;
+
+    try {
+
+        const result = await db.query(
+            `UPDATE users
+             SET
+                fullname = $1,
+                email = $2,
+                phone = $3,
+                province = $4,
+                city = $5,
+                district = $6,
+                village = $7,
+                street = $8,
+                house_number = $9,
+                rt_rw = $10,
+                detail = $11
+             WHERE id = $12
+             RETURNING *`,
+            [
+                fullname,
+                email,
+                phone,
+                province,
+                city,
+                district,
+                village,
+                street,
+                houseNumber,
+                rtRw,
+                detail,
+                req.params.id
+            ]
+        );
+
+        res.json({
+            message: "Profil berhasil diperbarui.",
+            user: result.rows[0]
+        });
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({
+            message: "Server Error"
+        });
+    }
+
+});
 
 // ================= EXPORT =================
 

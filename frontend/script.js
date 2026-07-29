@@ -559,18 +559,55 @@ if (profileImage) {
     }
 }
 
+const photoInput = document.getElementById("photoInput");
+const previewPhoto = document.getElementById("previewPhoto");
+
+if (photoInput && previewPhoto) {
+
+    // tampilkan foto lama
+    if (user && user.photo) {
+        previewPhoto.src = user.photo;
+    }
+
+    // preview foto baru
+    photoInput.addEventListener("change", function () {
+
+        const file = this.files[0];
+
+        if (!file) return;
+
+        previewPhoto.src = URL.createObjectURL(file);
+
+    });
+
+}
+
 // ------ edit ------ //
 const fullnameInput = document.getElementById("fullname");
 const emailInput = document.getElementById("email");
 const phoneInput = document.getElementById("phone");
-const addressInput = document.getElementById("address");
+const provinceInput = document.getElementById("province");
+const cityInput = document.getElementById("city");
+const districtInput = document.getElementById("district");
+const villageInput = document.getElementById("village");
+const streetInput = document.getElementById("street");
+const houseNumberInput = document.getElementById("houseNumber");
+const rtRwInput = document.getElementById("rtRw");
+const detailInput = document.getElementById("detail");
 const saveBtn = document.getElementById("saveProfile");
 
 if (
     fullnameInput &&
     emailInput &&
     phoneInput &&
-    addressInput &&
+    provinceInput &&
+    cityInput &&
+    districtInput &&
+    villageInput &&
+    streetInput &&
+    houseNumberInput &&
+    rtRwInput &&
+    detailInput &&
     saveBtn
 ) {
     if (!user) {
@@ -579,10 +616,41 @@ if (
     fullnameInput.value = user.fullname || "";
     emailInput.value = user.email || "";
     phoneInput.value = user.phone || "";
-    addressInput.value = user.address || "";
+    
+    provinceInput.value = user.province || "";
+    cityInput.value = user.city || "";
+    districtInput.value = user.district || "";
+    villageInput.value = user.village || "";
+    streetInput.value = user.street || "";
+    houseNumberInput.value = user.house_number || "";
+    rtRwInput.value = user.rt_rw || "";
+    detailInput.value = user.detail || "";
 
     saveBtn.addEventListener("click", async () => {
         try {
+            if (photoInput.files.length > 0) {
+
+    const formData = new FormData();
+    formData.append("photo", photoInput.files[0]);
+
+    const uploadResponse = await fetch(
+        `https://tugasuaspemrogramanweb-production.up.railway.app/api/users/upload-photo/${user.id}`,
+        {
+            method: "POST",
+            body: formData
+        }
+    );
+
+    const uploadResult = await uploadResponse.json();
+
+    if (!uploadResponse.ok) {
+        alert(uploadResult.message);
+        return;
+    }
+
+    user.photo = uploadResult.photo;
+}
+
             const response = await fetch(
                 `https://tugasuaspemrogramanweb-production.up.railway.app/api/users/${user.id}`,
                 {
@@ -594,7 +662,14 @@ if (
                         fullname: fullnameInput.value,
                         email: emailInput.value,
                         phone: phoneInput.value,
-                        address: addressInput.value
+                        province: provinceInput.value,
+                        city: cityInput.value,
+                        district: districtInput.value,
+                        village: villageInput.value,
+                        street: streetInput.value,
+                        houseNumber: houseNumberInput.value,
+                        rtRw: rtRwInput.value,
+                        detail: detailInput.value
                     })
                 }
             );
@@ -606,7 +681,15 @@ if (
                     fullname: fullnameInput.value,
                     email: emailInput.value,
                     phone: phoneInput.value,
-                    address: addressInput.value
+                    province: provinceInput.value,
+                    city: cityInput.value,
+                    district: districtInput.value,
+                    village: villageInput.value,
+                    street: streetInput.value,
+                    house_number: houseNumberInput.value,
+                    rt_rw: rtRwInput.value,
+                    detail: detailInput.value
+                    photo: user.photo
                 };
                 sessionStorage.setItem(
                     "user",
