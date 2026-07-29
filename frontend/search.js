@@ -1,3 +1,26 @@
+const searchInput = document.getElementById("searchInput");
+
+if(searchInput){
+
+    searchInput.addEventListener("keydown", function(e){
+
+        if(e.key === "Enter"){
+
+            const keyword = searchInput.value.trim();
+
+            if(keyword !== ""){
+
+                window.location.href =
+                `search.html?keyword=${keyword}`;
+
+            }
+
+        }
+
+    });
+
+}
+
 // =======================
 // LOAD SEARCH RESULT
 // =======================
