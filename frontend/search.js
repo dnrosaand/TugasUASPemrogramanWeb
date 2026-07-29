@@ -1,132 +1,71 @@
 // =======================
-// SEARCH INPUT HEADER
-// =======================
-
-const searchInput = document.getElementById("searchInput");
-
-
-if(searchInput){
-
-
-    searchInput.addEventListener("keypress", function(e){
-
-
-        if(e.key === "Enter"){
-
-
-            const keyword = searchInput.value.trim();
-
-
-            if(keyword !== ""){
-
-
-                window.location.href =
-                `search.html?keyword=${keyword}`;
-
-
-            }
-
-
-        }
-
-
-    });
-
-
-}
-
-
-
-// =======================
 // LOAD SEARCH RESULT
 // =======================
 
-
 async function loadSearchProducts(){
 
+    const container = document.getElementById("search-products");
 
-    const container =
-    document.getElementById("search-products");
-
-
-    // kalau bukan halaman search
     if(!container) return;
 
 
-
-
-    const params =
-    new URLSearchParams(
+    const params = new URLSearchParams(
         window.location.search
     );
 
 
+    const keyword = params.get("keyword")?.trim().toLowerCase();
 
-    const keyword =
-    params.get("keyword");
 
+    console.log("KEYWORD:", keyword);
 
 
     if(!keyword){
 
-        container.innerHTML =
-        "<p>Pencarian kosong</p>";
+        container.innerHTML = `
+            <p>Pencarian kosong</p>
+        `;
 
         return;
 
     }
 
 
-
-
-
     try{
 
 
-        const response =
-        await fetch(
-        "https://tugasuaspemrogramanweb-production.up.railway.app/api/products"
+        const response = await fetch(
+            "https://tugasuaspemrogramanweb-production.up.railway.app/api/products"
         );
 
 
-
-        const products =
-        await response.json();
+        const products = await response.json();
 
 
-
-
-        const result =
-        products.filter(product=>{
-
-
-            const name =
-            product.name?.toLowerCase() || "";
-
-
-            const artist =
-            product.artist?.toLowerCase() || "";
-
-
-            const category =
-            product.category?.toLowerCase() || "";
+        console.log("SEMUA PRODUK:", products);
 
 
 
-            const search =
-            keyword.toLowerCase();
+        const result = products.filter(product => {
 
+
+            const name = 
+            String(product.name || "").toLowerCase();
+
+
+            const artist = 
+            String(product.artist || "").toLowerCase();
+
+
+            const category = 
+            String(product.category || "").toLowerCase();
 
 
 
             return (
-
-                name.includes(search) ||
-
-                artist.includes(search) ||
-
-                category.includes(search)
-
+                name.includes(keyword) ||
+                artist.includes(keyword) ||
+                category.includes(keyword)
             );
 
 
@@ -134,6 +73,7 @@ async function loadSearchProducts(){
 
 
 
+        console.log("HASIL SEARCH:", result);
 
 
 
@@ -148,27 +88,24 @@ async function loadSearchProducts(){
 
             `;
 
-
             return;
 
         }
 
 
 
+        container.innerHTML = "";
 
 
 
-
-        result.forEach(product=>{
+        result.forEach(product => {
 
 
             container.innerHTML += `
 
-
             <div class="product-card"
 
             onclick="goToDetail(this)"
-
 
             data-image="${product.image}"
 
@@ -191,11 +128,9 @@ async function loadSearchProducts(){
             >
 
 
-
                 <img 
                 src="${product.image}"
                 alt="${product.name}">
-
 
 
                 <div class="product-info">
@@ -206,20 +141,14 @@ async function loadSearchProducts(){
                     </small>
 
 
-
                     <p class="product-name">
-
                     ${product.name}
-
                     </p>
 
 
-
                     <p class="price">
-
                     Rp${Number(product.price)
                     .toLocaleString("id-ID")}
-
                     </p>
 
 
@@ -229,34 +158,23 @@ async function loadSearchProducts(){
             </div>
 
 
-
             `;
-
 
 
         });
 
 
 
-
-
-
     }catch(error){
-
 
         console.error(
             "Gagal load search:",
             error
         );
 
-
     }
 
-
-
 }
-
-
 
 
 loadSearchProducts();
