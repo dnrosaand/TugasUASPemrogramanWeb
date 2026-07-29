@@ -558,3 +558,75 @@ if (profileImage) {
         profileImage.src = user.photo;
     }
 }
+
+// ------ edit ------ //
+const editBtn = document.querySelector(".edit-profile");
+const editContainer = document.getElementById("editContainer");
+const fullnameInput = document.getElementById("fullname");
+const phoneInput = document.getElementById("phone");
+
+if (editBtn) {
+    editBtn.addEventListener("click", function () {
+        const user = JSON.parse(sessionStorage.getItem("user"));
+        // tampilkan form
+        editContainer.style.display = "block";
+        // isi data lama
+        fullnameInput.value = user.fullname;
+        phoneInput.value = user.phone;
+    });
+}
+
+// ------- save -------- //
+const saveBtn = document.getElementById("saveProfile");
+
+if(saveBtn){
+    saveBtn.addEventListener("click", async function(){
+        const user = JSON.parse(sessionStorage.getItem("user"));
+        if(!user){
+            alert("User belum login");
+            return;
+        }
+        const fullname = fullnameInput.value;
+        const phone = phoneInput.value;
+        try {
+            const response = await fetch(
+                `https://tugasuaspemrogramanweb-production.up.railway.app/api/users/${user.id}`,
+                {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        fullname: fullname,
+                        phone: phone
+                    })
+                }
+            );
+
+            const result = await response.json();
+            if(response.ok){
+                // update sessionStorage
+                const updatedUser = {
+                    ...user,
+                    fullname: fullname,
+                    phone: phone
+                };
+
+                sessionStorage.setItem(
+                    "user",
+                    JSON.stringify(updatedUser)
+                );
+                alert("Profile berhasil diperbarui");
+                // sembunyikan form lagi
+                editContainer.style.display = "none";
+                // update tampilan profile
+                location.reload();
+            } else{
+                alert(result.message || "Gagal update profile");
+            }
+        } catch(error){
+            console.error(error);
+            alert("Terjadi kesalahan server");
+        }
+    });
+}
