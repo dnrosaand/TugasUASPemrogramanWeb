@@ -463,6 +463,73 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
+    registerBtn.addEventListener("click", async function () {
+
+    const user = JSON.parse(sessionStorage.getItem("registerData"));
+
+    if (!user) {
+        alert("Data diri belum diisi.");
+        return;
+    }
+
+    const data = {
+        fullname: `${user.firstName} ${user.lastName}`,
+        email: user.email,
+        phone: user.phone,
+        password: user.password,
+
+        province: document.getElementById("province").value,
+        city: document.getElementById("city").value,
+        district: document.getElementById("district").value,
+        village: document.getElementById("village").value,
+        street: document.getElementById("street").value,
+        houseNumber: document.getElementById("houseNumber").value,
+        rtRw: document.getElementById("rtRw").value,
+        detail: document.getElementById("detail").value
+    };
+
+    try {
+
+        if (
+            data.province === "Provinsi" ||
+            data.city === "Kabupaten/Kota" ||
+            data.district === "Kecamatan" ||
+            data.village === "Kelurahan/Desa"
+        ) {
+            alert("Silakan lengkapi alamat.");
+            return;
+        }
+
+        const response = await fetch("https://tugasuaspemrogramanweb-production.up.railway.app/api/users/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+            alert("Registrasi berhasil!");
+            sessionStorage.removeItem("registerData");
+            window.location.href = "login.html";
+        }
+        else {
+
+            alert(result.message);
+
+        }
+
+    } catch (err) {
+
+        console.error(err);
+        alert("Server Error");
+
+    }
+
+});
+
 
     // ===== DATA WILAYAH ===== //
     const wilayah = {
@@ -586,77 +653,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-        // =======================
-        // CEK DATA DARI HALAMAN PERTAMA
-        // =======================
-
-        registerBtn.addEventListener("click", async function () {
-
-    const user = JSON.parse(sessionStorage.getItem("registerData"));
-
-    if (!user) {
-        alert("Data diri belum diisi.");
-        return;
-    }
-
-    const data = {
-        fullname: `${user.firstName} ${user.lastName}`,
-        email: user.email,
-        phone: user.phone,
-        password: user.password,
-
-        province: document.getElementById("province").value,
-        city: document.getElementById("city").value,
-        district: document.getElementById("district").value,
-        village: document.getElementById("village").value,
-        street: document.getElementById("street").value,
-        houseNumber: document.getElementById("houseNumber").value,
-        rtRw: document.getElementById("rtRw").value,
-        detail: document.getElementById("detail").value
-    };
-
-    try {
-
-        if (
-            data.province === "Provinsi" ||
-            data.city === "Kabupaten/Kota" ||
-            data.district === "Kecamatan" ||
-            data.village === "Kelurahan/Desa"
-        ) {
-            alert("Silakan lengkapi alamat.");
-            return;
-        }
-
-        const response = await fetch("https://tugasuaspemrogramanweb-production.up.railway.app/api/users/register", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        });
-
-        const result = await response.json();
-
-        if (response.ok) {
-            alert("Registrasi berhasil!");
-            sessionStorage.removeItem("registerData");
-            window.location.href = "login.html";
-        }
-        else {
-
-            alert(result.message);
-
-        }
-
-    } catch (err) {
-
-        console.error(err);
-        alert("Server Error");
-
-    }
-
-});
-
 // ======================= PROFILE USER ======================= //
 const profileName = document.getElementById("profileName");
 const profilePhone = document.getElementById("profilePhone");
@@ -672,7 +668,6 @@ if (profileName && profilePhone) {
 
 const profileImage = document.getElementById("profileImage");
 if (profileImage) {
-    const user = JSON.parse(sessionStorage.getItem("user"));
     if (user && user.photo) {
         profileImage.src = user.photo;
     }
@@ -768,6 +763,13 @@ if (
     }
 
     user.photo = uploadResult.photo;
+
+    user.photo = uploadResult.photo;
+
+sessionStorage.setItem(
+    "user",
+    JSON.stringify(user)
+);
 }
 
             const response = await fetch(
