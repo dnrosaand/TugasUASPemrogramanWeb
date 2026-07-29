@@ -2,24 +2,24 @@ const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 
-const uploadPath = path.join(__dirname, "../uploads");
+const uploadPath = path.resolve(__dirname, "../uploads");
 
-// kalau folder belum ada, buat otomatis
+console.log("UPLOAD PATH =", uploadPath);
+console.log("__dirname =", __dirname);
+
 if (!fs.existsSync(uploadPath)) {
     fs.mkdirSync(uploadPath, { recursive: true });
 }
 
 const storage = multer.diskStorage({
     destination(req, file, cb) {
+        console.log("Saving to:", uploadPath);
         cb(null, uploadPath);
     },
 
     filename(req, file, cb) {
-        const ext = path.extname(file.originalname);
-        cb(null, Date.now() + ext);
+        cb(null, Date.now() + path.extname(file.originalname));
     }
 });
 
-module.exports = multer({
-    storage
-});
+module.exports = multer({ storage });
