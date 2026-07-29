@@ -882,8 +882,10 @@ async function loadSearchProducts(){
 
 
         const products = await response.json();
-        console.log(products);
-        
+
+        console.log("DATA PRODUK:", products);
+        console.log("KEYWORD:", keyword);
+
         const result = products.filter(product => {
 
     const name = product.name?.toLowerCase() || "";
