@@ -568,55 +568,61 @@ const saveBtn = document.getElementById("saveProfile");
 
 const user = JSON.parse(sessionStorage.getItem("user"));
 
-if(!user){
-    alert("Silakan login terlebih dahulu");
-    window.location.href="login.html";
-}
+if (
+    fullnameInput &&
+    emailInput &&
+    phoneInput &&
+    addressInput &&
+    saveBtn
+) {
+    if (!user) {
+        window.location.href = "login.html";
+        return;
+    }
+    fullnameInput.value = user.fullname || "";
+    emailInput.value = user.email || "";
+    phoneInput.value = user.phone || "";
+    addressInput.value = user.address || "";
 
-fullnameInput.value = user.fullname || "";
-emailInput.value = user.email || "";
-phoneInput.value = user.phone || "";
-addressInput.value = user.address || "";
-
-saveBtn.addEventListener("click", async () => {
-    try {
-        const response = await fetch(
-            `https://tugasuaspemrogramanweb-production.up.railway.app/api/users/${user.id}`,
-            {
-                method: "PUT",
-                headers: {
+    saveBtn.addEventListener("click", async () => {
+        try {
+            const response = await fetch(
+                `https://tugasuaspemrogramanweb-production.up.railway.app/api/users/${user.id}`,
+                {
+                    method: "PUT",
+                    headers: {
                     "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
+                    },
+                    body: JSON.stringify({
+                        fullname: fullnameInput.value,
+                        email: emailInput.value,
+                        phone: phoneInput.value,
+                        address: addressInput.value
+                    })
+                }
+            );
+            const result = await response.json();
+            if (response.ok) {
+                // Update session
+                const updatedUser = {
+                    ...user,
                     fullname: fullnameInput.value,
                     email: emailInput.value,
                     phone: phoneInput.value,
                     address: addressInput.value
-                })
+                };
+                sessionStorage.setItem(
+                    "user",
+                    JSON.stringify(updatedUser)
+                );
+                alert("Profil berhasil diperbarui.");
+                window.location.href = "profile.html";
+            } else {
+                alert(result.message || "Gagal memperbarui profil.");
             }
-
-        );
-        const result = await response.json();
-        if (response.ok) {
-            // Update session
-            const updatedUser = {
-                ...user,
-                fullname: fullnameInput.value,
-                email: emailInput.value,
-                phone: phoneInput.value,
-                address: addressInput.value
-            };
-            sessionStorage.setItem(
-                "user",
-                JSON.stringify(updatedUser)
-            );
-            alert("Profil berhasil diperbarui.");
-            window.location.href = "profile.html";
-        } else {
-            alert(result.message || "Gagal memperbarui profil.");
+        } catch (error) {
+            console.error(error);
+            alert("Terjadi kesalahan pada server.");
         }
-    } catch (error) {
-        console.error(error);
-        alert("Terjadi kesalahan pada server.");
-    }
-});
+    });
+}
