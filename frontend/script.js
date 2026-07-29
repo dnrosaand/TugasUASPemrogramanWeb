@@ -882,24 +882,21 @@ async function loadSearchProducts(){
 
 
         const products = await response.json();
+        console.log(products);
+        
+        const result = products.filter(product => {
 
+    const name = product.name?.toLowerCase() || "";
+    const artist = product.artist?.toLowerCase() || "";
+    const category = product.category?.toLowerCase() || "";
 
-        const result = products.filter(product =>
+    return (
+        name.includes(keyword.toLowerCase()) ||
+        artist.includes(keyword.toLowerCase()) ||
+        category.includes(keyword.toLowerCase())
+    );
 
-            product.name.toLowerCase()
-            .includes(keyword.toLowerCase())
-
-            ||
-
-            product.artist.toLowerCase()
-            .includes(keyword.toLowerCase())
-
-            ||
-
-            product.category.toLowerCase()
-            .includes(keyword.toLowerCase())
-
-        );
+});
 
 
         result.forEach(product => {
