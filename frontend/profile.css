@@ -185,12 +185,22 @@ header{
    FOTO PROFIL
 ======================================== */
 
-.profile-photo img{
-    width:95px;
-    height:95px;
-    border-radius:50%;
-    object-fit:cover;
-    border:3px solid #FF8FAB;
+.profile-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+
+.profile-photo img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
 }
 
 /* ========================================
