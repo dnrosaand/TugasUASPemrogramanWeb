@@ -447,12 +447,17 @@ if (nextBtn) {
 
 }
 
-// ------Alamat------- //
+// =======================
+// ALAMAT USER
+// =======================
+
 document.addEventListener("DOMContentLoaded", () => {
 
     const agreeCheck = document.getElementById("agreeCheck");
     const registerBtn = document.getElementById("registerBtn");
 
+
+    // Checkbox persetujuan
     if (agreeCheck && registerBtn) {
 
         registerBtn.disabled = true;
@@ -463,76 +468,135 @@ document.addEventListener("DOMContentLoaded", () => {
 
         });
 
-        // =======================
-        // CEK DATA DARI HALAMAN PERTAMA
-        // =======================
+    }
+
+
+
+    // =======================
+    // REGISTER USER
+    // =======================
+
+    if (registerBtn) {
 
         registerBtn.addEventListener("click", async function () {
 
-    const user = JSON.parse(sessionStorage.getItem("registerData"));
 
-    if (!user) {
-        alert("Data diri belum diisi.");
-        return;
-    }
+            const user = JSON.parse(
+                sessionStorage.getItem("registerData")
+            );
 
-    const data = {
-        fullname: `${user.firstName} ${user.lastName}`,
-        email: user.email,
-        phone: user.phone,
-        password: user.password,
 
-        province: document.getElementById("province").value,
-        city: document.getElementById("city").value,
-        district: document.getElementById("district").value,
-        village: document.getElementById("village").value,
-        street: document.getElementById("street").value,
-        houseNumber: document.getElementById("houseNumber").value,
-        rtRw: document.getElementById("rtRw").value,
-        detail: document.getElementById("detail").value
-    };
+            if (!user) {
 
-    try {
+                alert("Data diri belum diisi.");
+                return;
 
-        if (
-            data.province === "Provinsi" ||
-            data.city === "Kabupaten/Kota" ||
-            data.district === "Kecamatan" ||
-            data.village === "Kelurahan/Desa"
-        ) {
-            alert("Silakan lengkapi alamat.");
-            return;
-        }
+            }
 
-        const response = await fetch("https://tugasuaspemrogramanweb-production.up.railway.app/api/users/register", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
+
+
+            const data = {
+
+                fullname: `${user.firstName} ${user.lastName}`,
+                email: user.email,
+                phone: user.phone,
+                password: user.password,
+
+
+                province: document.getElementById("province").value,
+                city: document.getElementById("city").value,
+                district: document.getElementById("district").value,
+                village: document.getElementById("village").value,
+
+                street: document.getElementById("street").value,
+                houseNumber: document.getElementById("houseNumber").value,
+                rtRw: document.getElementById("rtRw").value,
+                detail: document.getElementById("detail").value
+
+            };
+
+
+
+            // validasi alamat
+
+            if (
+                !data.province ||
+                !data.city ||
+                !data.district ||
+                !data.village ||
+                !data.street
+            ) {
+
+                alert("Silakan lengkapi alamat.");
+                return;
+
+            }
+
+
+
+            try {
+
+
+                const response = await fetch(
+                    "https://tugasuaspemrogramanweb-production.up.railway.app/api/users/register",
+                    {
+
+                        method: "POST",
+
+                        headers: {
+
+                            "Content-Type": "application/json"
+
+                        },
+
+                        body: JSON.stringify(data)
+
+                    }
+                );
+
+
+
+                const result = await response.json();
+
+
+
+                if (response.ok) {
+
+
+                    alert("Registrasi berhasil!");
+
+
+                    sessionStorage.removeItem(
+                        "registerData"
+                    );
+
+
+                    window.location.href = "login.html";
+
+
+                } else {
+
+
+                    alert(
+                        result.message || "Registrasi gagal"
+                    );
+
+
+                }
+
+
+            } catch(error) {
+
+
+                console.error(error);
+
+                alert("Server Error");
+
+
+            }
+
+
         });
-
-        const result = await response.json();
-
-        if (response.ok) {
-            alert("Registrasi berhasil!");
-            sessionStorage.removeItem("registerData");
-            window.location.href = "login.html";
-        }
-        else {
-
-            alert(result.message);
-
-        }
-
-    } catch (err) {
-
-        console.error(err);
-        alert("Server Error");
-
-    }
-
-});
 
     }
 
