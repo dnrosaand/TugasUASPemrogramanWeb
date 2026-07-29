@@ -829,53 +829,125 @@ sessionStorage.setItem(
 }
 
 // =======================
-// SEARCH PRODUCT
+// SEARCH PAGE
 // =======================
 
 const searchInput = document.getElementById("searchInput");
 
 if (searchInput) {
 
-    searchInput.addEventListener("input", function () {
+    searchInput.addEventListener("keypress", function(e){
 
-        const keyword = this.value.toLowerCase();
+        if(e.key === "Enter"){
 
-        const products = document.querySelectorAll(".product-card");
+            const keyword = searchInput.value.trim();
 
+            if(keyword !== ""){
 
-        products.forEach(product => {
-
-            const name = product.dataset.name 
-                ? product.dataset.name.toLowerCase()
-                : product.querySelector(".product-name")?.textContent.toLowerCase() || "";
-
-
-            const artist = product.dataset.artist
-                ? product.dataset.artist.toLowerCase()
-                : "";
-
-
-            const category = product.dataset.category
-                ? product.dataset.category.toLowerCase()
-                : "";
-
-
-            if (
-                name.includes(keyword) ||
-                artist.includes(keyword) ||
-                category.includes(keyword)
-            ) {
-
-                product.style.display = "";
-
-            } else {
-
-                product.style.display = "none";
+                window.location.href =
+                `search.html?keyword=${keyword}`;
 
             }
 
-        });
+        }
 
     });
 
 }
+
+// =======================
+// LOAD SEARCH RESULT
+// =======================
+
+async function loadSearchProducts(){
+
+    const container = document.getElementById("search-products");
+
+    if(!container) return;
+
+
+    const params = new URLSearchParams(
+        window.location.search
+    );
+
+
+    const keyword = params.get("keyword");
+
+
+    try{
+
+        const response = await fetch(
+            "https://tugasuaspemrogramanweb-production.up.railway.app/api/products"
+        );
+
+
+        const products = await response.json();
+
+
+        const result = products.filter(product =>
+
+            product.name.toLowerCase()
+            .includes(keyword.toLowerCase())
+
+            ||
+
+            product.artist.toLowerCase()
+            .includes(keyword.toLowerCase())
+
+            ||
+
+            product.category.toLowerCase()
+            .includes(keyword.toLowerCase())
+
+        );
+
+
+        result.forEach(product => {
+
+
+            container.innerHTML += `
+
+            <div class="product-card"
+            onclick="goToDetail(this)"
+
+            data-image="${product.image}"
+            data-category="${product.category}"
+            data-artist="${product.artist}"
+            data-name="${product.name}"
+            data-price="${product.price}"
+            data-desc="${product.description}"
+            >
+
+
+                <img src="${product.image}">
+
+
+                <p class="product-name">
+                    ${product.name}
+                </p>
+
+
+                <p class="price">
+                    Rp${Number(product.price)
+                    .toLocaleString("id-ID")}
+                </p>
+
+
+            </div>
+
+            `;
+
+
+        });
+
+
+    }catch(error){
+
+        console.error(error);
+
+    }
+
+}
+
+
+loadSearchProducts();
