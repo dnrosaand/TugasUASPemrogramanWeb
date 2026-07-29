@@ -1,55 +1,24 @@
-/* ===================== RESET ===================== */
+/* ===================== LOGO ===================== */
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
-    font-family: Arial, Helvetica, sans-serif;
+.logo-section{
+    width:100%;
     background:#fff;
-    color:#333;
-}
-
-/* ===================== CONTAINER ===================== */
-
-body{
     display:flex;
-    flex-direction:column;
-    align-items:center;
-}
-
-/* ===================== HEADER ===================== */
-
-header{
-    width:1200px;
-    height:80px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 30px;
-    background:#fff;
-    position: relative;
-    z-index: 1000;
-}
-
-.header-icon{
-    display:flex;
-    align-items:center;
-    gap:22px;
-}
-
-.header-icon a{
-    display:flex;
-    align-items:center;
     justify-content:center;
-    gap:8px;
-    text-decoration:none;
-    color:#333;
+    padding:15px 0;
+    box-shadow:0 2px 8px rgba(0,0,0,.05);
 }
 
-// ------- edit --------- //
+.logo{
+    width:170px;
+}
+
+.logo img{
+    width:100%;
+    display:block;
+}
+
+/* ============== edit ================== */
 
 *{
     margin:0;
@@ -59,47 +28,92 @@ header{
 }
 
 body{
+    margin:0;
     background:#f7f7f7;
-    padding:40px;
 }
 
 .edit-wrapper{
-    max-width:900px;
-    margin:auto;
-    background:white;
+    width:650px;
+    max-width:90%;
+    margin:40px auto 70px;
+    background:#fff;
+    padding:45px;
     border-radius:18px;
-    padding:35px;
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+.edit-header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 35px;
 }
 
 .back-btn{
-    border:none;
-    background:none;
-    color:#ff7fa8;
-    font-size:15px;
-    font-weight:600;
-    cursor:pointer;
-    margin-bottom:20px;
+    align-self: flex-start;
+    background: none;
+    border: none;
+    color: #FF8FAB;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-weight: 600;
 }
 
 .back-btn:hover{
-    color:#ff4f87;
+    color:#ff5f98;
 }
 
 .edit-header h1{
-    font-size:32px;
-    margin-bottom:8px;
+    font-size: 42px;
+    color:#333;
+    margin-bottom:10px;
 }
 
 .edit-header p{
     color:#777;
-    margin-bottom:35px;
+    font-size:16px;
+    margin-bottom:25px;
 }
 
+/* pp */
+.profile-photo{
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    object-fit:cover;
+    border:4px solid #FF8FAB;
+    margin-bottom:18px;
+    transition:.3s;
+}
+
+.profile-photo:hover{
+    transform:scale(1.03);
+}
+
+.change-photo-btn{
+    background:#fff;
+    color:#FF8FAB;
+    border:2px solid #FF8FAB;
+    border-radius:10px;
+    padding:11px 22px;
+    cursor:pointer;
+    font-size:15px;
+    font-weight:600;
+    transition:.25s;
+}
+
+.change-photo-btn:hover{
+    background:#FF8FAB;
+    color:#fff;
+}
+
+/* from */
+
 .edit-form{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:25px;
+    display:flex;
+    flex-direction:column;
+    gap:22px;
 }
 
 .form-group{
@@ -107,60 +121,74 @@ body{
     flex-direction:column;
 }
 
-.full-width{
-    grid-column:1 / 3;
-}
-
-label{
-    margin-bottom:8px;
+.form-group label{
+    font-size:15px;
     font-weight:600;
+    margin-bottom:8px;
+    color:#333;
 }
 
-input,
-textarea{
-    padding:14px;
+.form-group input,
+.form-group textarea{
+    width:100%;
+    padding:14px 16px;
     border:1px solid #ddd;
     border-radius:10px;
+    background:#fafafa;
     font-size:15px;
     outline:none;
+    transition:.25s;
 }
 
-input:focus,
-textarea:focus{
-    border-color:#ff7fa8;
+.form-group input:focus,
+.form-group textarea:focus{
+    background:#fff;
+    border-color:#FF8FAB;
+    box-shadow:0 0 0 3px rgba(255,143,171,.15);
 }
 
-textarea{
+.form-group textarea{
     resize:none;
+    min-height:120px;
 }
+
+/* button */
 
 .button-group{
-    grid-column:1 / 3;
     display:flex;
     justify-content:flex-end;
     gap:15px;
-    margin-top:15px;
+    margin-top:10px;
 }
 
 .cancel-btn{
-    padding:14px 35px;
-    border:1px solid #ccc;
-    background:white;
-    border-radius:10px;
+    width:140px;
+    height:48px;
+    border:1px solid #d9d9d9;
+    background:#fff;
+    border-radius:12px;
     cursor:pointer;
-    font-weight:bold;
+    font-size:16px;
+    transition:.25s;
+}
+
+.cancel-btn:hover{
+    background:#f7f7f7;
 }
 
 .save-btn{
-    padding:14px 35px;
+    width:220px;
+    height:48px;
     border:none;
-    background:#ff7fa8;
-    color:white;
-    border-radius:10px;
+    border-radius:12px;
+    background:#FF8FAB;
+    color:#fff;
+    font-size:16px;
+    font-weight:600;
     cursor:pointer;
-    font-weight:bold;
+    transition:.25s;
 }
 
 .save-btn:hover{
-    background:#ff5d93;
+    background:#ff6a9f;
 }

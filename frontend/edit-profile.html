@@ -21,6 +21,22 @@
             </button>
             <h1>Edit Profil</h1>
             <p>Perbarui informasi akun kamu di bawah ini.</p>
+            <img
+            id="previewPhoto"
+            src="img/default-user.png"
+            alt="Foto Profil"
+            class="profile-photo">
+            <input
+            type="file"
+            id="photoInput"
+            accept="image/*"
+            hidden>
+            <button
+            type="button"
+            class="change-photo-btn"
+            onclick="document.getElementById('photoInput').click()">
+                Ubah Foto Profil
+            </button>
         </div>
 
         <form class="edit-form" id="editProfileForm">
