@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+    <section class="logo-section">
+        <div class="logo">
+            <img src="img/logo.png" alt="annyeongshop">
+        </div>
+    </section>
+    <header>
+        <button class="menu">
+            ☰
+        </button>
+        <div class="search">
+            <input type="text" placeholder="Search You're Fav">
+        </div>
+        <div class="header-icon">
+            <a href="#">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
+                2 5.42 4.42 3 7.5 3
+                c1.74 0 3.41.81 4.5 2.09
+                C13.09 3.81 14.76 3 16.5 3
+                19.58 3 22 5.42 22 8.5
+                c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+            </a>
+            <a href="#">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M7 4H3v2h2l2.4 9.59A2 2 0 0 0 9.35 17H19v-2H9.42l-.27-1H18a2 2 0 0 0 1.94-1.51L22 6H7.42L7 4zm2 15a2 2 0 100 4 2 2 0 000-4zm8 0a2 2 0 100 4 2 2 0 000-4z"/>
+                </svg>
+            </a>
+            <a href="#" id="user-btn">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24">
+                    <path d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1Zm0 2a9 9 0 016.447 15.276 7 7 0 00-12.895 0A9 9 0 0112 3Zm0 2a4 4 0 100 8 4 4 0 000-8Zm0 2a2 2 0 110 4 2 2 0 010-4Zm-.1 9.001L11.899 16a5 5 0 014.904 3.61A8.96 8.96 0 0112 21a8.96 8.96 0 01-4.804-1.391 5 5 0 014.704-3.608Z"/>
+                </svg>
+            </a>
+        </div>
+    </header>
+
+    <main class="profile-container">
+        <div class="profile-card">
+            <div class="profile-header">
+                <div class="profile-photo">
+                    <img src="img/default-user.png" alt="Profile">
+                </div>
+
+                <div class="profile-info">
+                    <h2 id="profileName">Nama Pengguna</h2>
+                    <p id="profilePhone"></p>
+                </div>
+                <button class="edit-profile">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M12 20h9"/>
+                        <path d="M16.5 3.5a2.12 2.12 0 1 1 3 3L7 19l-4 1 1-4Z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="menu-section">
+            <div class="menu-card">
+                <h3>AKUN SAYA</h3>
+                <a href="#">
+                    <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    Alamat Saya
+                </a>
+
+                <a href="#">
+                    <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                    
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06
+                        a2 2 0 1 1-2.83 2.83l-.06-.06
+                        a1.65 1.65 0 0 0-1.82-.33
+                        1.65 1.65 0 0 0-1 1.51V21
+                        a2 2 0 1 1-4 0v-.09
+                        a1.65 1.65 0 0 0-1-1.51
+                        1.65 1.65 0 0 0-1.82.33l-.06.06
+                        a2 2 0 1 1-2.83-2.83l.06-.06
+                        a1.65 1.65 0 0 0 .33-1.82
+                        1.65 1.65 0 0 0-1.51-1H3
+                        a2 2 0 1 1 0-4h.09
+                        a1.65 1.65 0 0 0 1.51-1
+                        1.65 1.65 0 0 0-.33-1.82l-.06-.06
+                        a2 2 0 1 1 2.83-2.83l.06.06
+                        a1.65 1.65 0 0 0 1.82.33H9
+                        a1.65 1.65 0 0 0 1-1.51V3
+                        a2 2 0 1 1 4 0v.09
+                        a1.65 1.65 0 0 0 1 1.51
+                        1.65 1.65 0 0 0 1.82-.33l.06-.06
+                        a2 2 0 1 1 2.83 2.83l-.06.06
+                        a1.65 1.65 0 0 0-.33 1.82V9
+                        a1.65 1.65 0 0 0 1.51 1H21
+                        a2 2 0 1 1 0 4h-.09
+                        a1.65 1.65 0 0 0-1.51 1z"></path>
+                    </svg>
+                    Pengaturan Akun
+                </a>
+
+                <a href="#">
+                    <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+
+                        <path d="M21 8V21H3V3H16L21 8Z"></path>
+                        <path d="M16 3V8H21"></path>
+                    </svg>
+                    Status Pesanan
+                </a>
+
+                <a href="#">
+                    <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+
+                        <path d="M3 12a9 9 0 1 0 3-6.7"></path>
+                        <path d="M3 3v6h6"></path>
+                        <path d="M12 7v5l3 2"></path>
+                    </svg>
+                    Riwayat Pesanan
+                </a>
+
+                <a href="#">
+                    <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+
+                        <path d="M20 12v10H4V12"></path>
+                        <path d="M2 7h20v5H2z"></path>
+                        <path d="M12 22V7"></path>
+                        <path d="M12 7H8a2 2 0 1 1 0-4c2 0 4 4 4 4z"></path>
+                        <path d="M12 7h4a2 2 0 1 0 0-4c-2 0-4 4-4 4z"></path>
+                    </svg>
+                    Reward
+                </a>
+
+                <a href="#">
+                    <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+
+                        <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"></path>
+                    </svg>
+                    Wishlist
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-logo">
+            <img src="img/logo.png" alt="logo">
+            <p>© 2026 AnnyeongShop. Seluruh Hak Cipta Dilindungi.</p>
+        </div>
+
+        <div class="footer-menu">
+            <h4>BANTUAN</h4>
+            <a href="#">Hubungi Kami</a>
+            <a href="#">FAQ</a>
+            <a href="#">Cara Pemesanan</a>
+            <a href="#">Informasi Pengiriman</a>
+            <a href="#">Kebijakan Pengembalian</a>
+        </div>
+
+        <div class="footer-social">
+            <h4>IKUTI KAMI</h4>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+            <a href="#">TikTok</a>
+        </div>
+    </footer>
+</body>
+</html>

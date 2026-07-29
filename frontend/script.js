@@ -6,26 +6,50 @@ const user = JSON.parse(sessionStorage.getItem("user"));
 // Kalau user sudah login
 if (user && userBtn) {
 
-    userBtn.innerHTML = `
+    if (user.photo) {
+        userBtn.innerHTML = `
+        <img
+        src="${user.photo}"
+        class="header-profile-photo"
+        alt="Profile">
         <span>${user.fullname}</span>
-    `;
+        `;
+    } else {
+        userBtn.innerHTML = `
+        <svg class="icon" xmlns="http://www.w3.org/2000/svg"
+        height="24"
+        width="24"
+        viewBox="0 0 24 24">
+        <path d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1Zm0 2a9 9 0 016.447 15.276 7 7 0 00-12.895 0A9 9 0 0112 3Zm0 2a4 4 0 100 8 4 4 0 000-8Zm0 2a2 2 0 110 4 2 2 0 010-4Zm-.1 9.001L11.899 16a5 5 0 014.904 3.61A8.96 8.96 0 0112 21a8.96 8.96 0 01-4.804-1.391 5 5 0 014.704-3.608Z"/>
+        </svg>
+        <span>${user.fullname}</span>
+        `;
+    }
 
 
-    userBtn.addEventListener("click", function(e){
-
+    userBtn.addEventListener("click", function (e) {
         e.preventDefault();
 
         if (userDropdown) {
-            userDropdown.style.display =
-            userDropdown.style.display === "block"
-            ? "none"
-            : "block";
+            if (userDropdown.style.display === "block") {
+                userDropdown.style.display = "none";
+            } else {
+                userDropdown.style.display = "block";
+            }
         }
+    });
 
+    document.addEventListener("click", function (e) {
+        if (
+            userDropdown &&
+            !userDropdown.contains(e.target) &&
+            !userBtn.contains(e.target)
+        ) {
+            userDropdown.style.display = "none";
+        }
     });
 
 }
-
 
 // Kalau belum login
 else if (userBtn) {
@@ -352,16 +376,10 @@ if (loginForm) {
                     JSON.stringify(result.user)
                 );
 
-
                 alert("Login berhasil!");
-
                 window.location.href = "index.html";
-
-
             } else {
-
                 alert(result.message);
-
             }
 
 
@@ -478,6 +496,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
 
+        if (
+            data.province === "Provinsi" ||
+            data.city === "Kabupaten/Kota" ||
+            data.district === "Kecamatan" ||
+            data.village === "Kelurahan/Desa"
+        ) {
+            alert("Silakan lengkapi alamat.");
+            return;
+        }
+
         const response = await fetch("https://tugasuaspemrogramanweb-production.up.railway.app/api/users/register", {
             method: "POST",
             headers: {
@@ -489,19 +517,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const result = await response.json();
 
         if (response.ok) {
-
-    alert("Registrasi berhasil!");
-
-    sessionStorage.setItem(
-        "user",
-        JSON.stringify(data)
-    );
-
-    sessionStorage.removeItem("registerData");
-
-    window.location.href = "index.html";
-
-}
+            alert("Registrasi berhasil!");
+            sessionStorage.removeItem("registerData");
+            window.location.href = "login.html";
+        }
         else {
 
             alert(result.message);
@@ -520,3 +539,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
+
+// ======================= PROFILE USER ======================= //
+const profileName = document.getElementById("profileName");
+const profilePhone = document.getElementById("profilePhone");
+
+if (profileName && profilePhone) {
+    const user = JSON.parse(sessionStorage.getItem("user"));
+    if (!user) {
+        window.location.href = "login.html";
+        return;
+    }
+    profileName.textContent = user.fullname;
+    profilePhone.textContent = user.phone;
+}

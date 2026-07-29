@@ -1,0 +1,373 @@
+/* ===================== RESET ===================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background:#fff;
+    color:#333;
+}
+
+/* ===================== CONTAINER ===================== */
+
+body{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+/* ===================== HEADER ===================== */
+
+header{
+    width:1200px;
+    height:80px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 30px;
+    background:#fff;
+    position: relative;
+    z-index: 1000;
+}
+
+.header-icon{
+    display:flex;
+    align-items:center;
+    gap:22px;
+}
+
+.header-icon a{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.header-icon .icon{
+    width:24px;
+    height:24px;
+    stroke:#FF8FAB;
+    fill:none;
+    stroke-width:2;
+}
+
+.header-icon .icon:hover{
+    fill:#ff5f98;
+    transform:scale(1.1);
+}
+
+.user-dropdown {
+    display: none;
+    position: absolute;
+    right: 20px;
+    top: 70px;
+
+    background: white;
+    width: 180px;
+    border-radius: 12px;
+    padding: 15px;
+
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+
+    z-index: 9999;
+}
+
+.user-dropdown a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+.user-dropdown a:hover {
+    background: #FFF0F3;
+}
+
+/* ===================== LOGO ===================== */
+
+.logo-section{
+    width:100%;
+    background:#fff;
+    display:flex;
+    justify-content:center;
+    padding:3px 0 0;
+}
+
+.logo{
+    width:170px;
+}
+
+.logo img{
+    width:100%;
+    display:block;
+}
+
+/* ===================== MENU ===================== */
+
+.menu{
+    background:none;
+    border:none;
+    font-size:28px;
+    color:#FF8FAB;
+    cursor:pointer;
+    margin-right:20px;
+}
+
+/* ===================== SEARCH ===================== */
+
+.search{
+    flex:1;
+    margin:0 25px;
+}
+
+.search input{
+    width:100%;
+    height:38px;
+    border:1.5px solid #FF8FAB;
+    border-radius:30px;
+    padding:0 18px;
+    outline:none;
+    font-size:14px;
+}
+
+.search input::placeholder{
+    color:#B6B6B6;
+}
+
+/* ===================== ICON ===================== */
+
+.header-icon{
+    display:flex;
+    align-items:center;
+    gap:22px;
+}
+
+.header-icon img{
+    width:22px;
+    cursor:pointer;
+}
+
+/* ========================================
+   PROFILE CONTAINER
+======================================== */
+
+.profile-container{
+    width:1200px;
+    margin:40px auto 60px;
+}
+
+/* ========================================
+   PROFILE CARD
+======================================== */
+
+.profile-card{
+    background:#fff;
+    border:1px solid #E8E8E8;
+    border-radius:12px;
+    padding:28px 35px;
+    box-shadow:0 2px 10px rgba(0,0,0,.05);
+    margin-bottom:30px;
+}
+
+/* ========================================
+   PROFILE HEADER
+======================================== */
+
+.profile-header{
+    display:flex;
+    align-items:center;
+}
+
+/* ========================================
+   FOTO PROFIL
+======================================== */
+
+.profile-photo img{
+    width:95px;
+    height:95px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid #FF8FAB;
+}
+
+/* ========================================
+   INFORMASI USER
+======================================== */
+
+.profile-info{
+    margin-left:20px;
+}
+
+.profile-info h2{
+    font-size:24px;
+    color:#333;
+    margin-bottom:8px;
+}
+
+.profile-info p{
+    font-size:14px;
+    color:#7B7B7B;
+}
+
+/* ========================================
+   BUTTON EDIT PROFILE
+======================================== */
+
+.edit-profile{
+    margin-left:auto;
+    width:42px;
+    height:42px;
+    border:none;
+    border-radius:50%;
+    background:#FF8FAB;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+    color:#fff;
+    transition:.25s;
+}
+
+.edit-profile:hover{
+    background:#ff6a9f;
+}
+
+.edit-profile svg{
+    width:18px;
+    height:18px;
+}
+
+/* ========================================
+   MENU SECTION
+======================================== */
+
+.menu-section{
+    width:100%;
+}
+
+/* ========================================
+   MENU CARD
+======================================== */
+
+.menu-card{
+    background:#fff;
+    border:1px solid #E8E8E8;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+
+/* ========================================
+   JUDUL MENU
+======================================== */
+
+.menu-card h3{
+    padding:18px 25px;
+    font-size:16px;
+    color:#FF8FAB;
+    background:#FFF3F7;
+    border-bottom:1px solid #EFEFEF;
+}
+
+/* ========================================
+   ITEM MENU
+======================================== */
+
+.menu-card a{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    text-decoration:none;
+    color:#444;
+    font-size:15px;
+    padding:18px 25px;
+    border-bottom:1px solid #F3F3F3;
+    transition:.25s;
+}
+
+.menu-card a:last-child{
+    border-bottom:none;
+}
+
+.menu-card a:hover{
+    background:#FFF7FA;
+    color:#FF8FAB;
+}
+
+/* ========================================
+   SVG ICON
+======================================== */
+
+.menu-icon{
+    width:20px;
+    height:20px;
+    stroke:#FF8FAB;
+    flex-shrink:0;
+    transition:.25s;
+}
+
+.menu-card a:hover .menu-icon{
+    stroke:#ff5f98;
+}
+
+/* ===================== FOOTER ===================== */
+
+footer{
+    width:100%;
+    background:#2F2F2F;
+    color:#fff;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    padding:45px 60px;
+    margin-top:40px;
+}
+
+/* ===================== FOOTER LOGO ===================== */
+
+.footer-logo{
+    width:260px;
+}
+
+.footer-logo img{
+    width:170px;
+    margin-bottom:20px;
+}
+
+.footer-logo p{
+    font-size:12px;
+    color:#CFCFCF;
+    line-height:1.6;
+}
+
+/* ===================== FOOTER MENU ===================== */
+
+.footer-menu,
+.footer-social{
+    display:flex;
+    flex-direction:column;
+}
+
+.footer-menu h4,
+.footer-social h4{
+    font-size:18px;
+    margin-bottom:18px;
+    color:#fff;
+}
+
+.footer-menu a,
+.footer-social a{
+    text-decoration:none;
+    color:#DADADA;
+    font-size:14px;
+    margin-bottom:10px;
+    transition:.3s;
+}
+
+.footer-menu a:hover,
+.footer-social a:hover{
+    color:#FF8FAB;
+}
