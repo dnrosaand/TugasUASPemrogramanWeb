@@ -827,3 +827,55 @@ sessionStorage.setItem(
         }
     });
 }
+
+// =======================
+// SEARCH PRODUCT
+// =======================
+
+const searchInput = document.getElementById("searchInput");
+
+if (searchInput) {
+
+    searchInput.addEventListener("input", function () {
+
+        const keyword = this.value.toLowerCase();
+
+        const products = document.querySelectorAll(".product-card");
+
+
+        products.forEach(product => {
+
+            const name = product.dataset.name 
+                ? product.dataset.name.toLowerCase()
+                : product.querySelector(".product-name")?.textContent.toLowerCase() || "";
+
+
+            const artist = product.dataset.artist
+                ? product.dataset.artist.toLowerCase()
+                : "";
+
+
+            const category = product.dataset.category
+                ? product.dataset.category.toLowerCase()
+                : "";
+
+
+            if (
+                name.includes(keyword) ||
+                artist.includes(keyword) ||
+                category.includes(keyword)
+            ) {
+
+                product.style.display = "";
+
+            } else {
+
+                product.style.display = "none";
+
+            }
+
+        });
+
+    });
+
+}
