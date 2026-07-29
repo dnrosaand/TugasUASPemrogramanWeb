@@ -7,7 +7,7 @@ const profileName = document.getElementById("profileName");
 const profilePhone = document.getElementById("profilePhone");
 
 
-const user = JSON.parse(
+const profileUser = JSON.parse(
     sessionStorage.getItem("user")
 );
 
@@ -16,18 +16,18 @@ const user = JSON.parse(
 if(profileName && profilePhone){
 
 
-    if(!user){
+    if(!profileUser){
 
         window.location.href="login.html";
 
     }else{
 
         profileName.textContent =
-        user.fullname || "-";
+        profileUser.fullname || "-";
 
 
         profilePhone.textContent =
-        user.phone || "-";
+        profileUser.phone || "-";
 
     }
 
@@ -47,10 +47,10 @@ document.getElementById("profileImage");
 if(profileImage){
 
 
-    if(user && user.photo){
+    if(profileUser && profileUser.photo){
 
         profileImage.src =
-        user.photo;
+        profileUser.photo;
 
     }
 
@@ -76,10 +76,10 @@ if(photoInput && previewPhoto){
 
     // tampil foto lama
 
-    if(user && user.photo){
+    if(profileUser && profileUser.photo){
 
         previewPhoto.src =
-        user.photo;
+        profileUser.photo;
 
     }
 
@@ -109,6 +109,7 @@ if(photoInput && previewPhoto){
 
 
 }
+
 
 
 
@@ -170,18 +171,27 @@ document.getElementById("saveProfile");
 
 
 
+
 if(
 fullnameInput &&
 emailInput &&
 phoneInput &&
+provinceInput &&
+cityInput &&
+districtInput &&
+villageInput &&
+streetInput &&
+houseNumberInput &&
+rtRwInput &&
+detailInput &&
 saveBtn
 ){
 
 
 
-if(!user){
+if(!profileUser){
 
-window.location.href="login.html";
+    window.location.href="login.html";
 
 }
 
@@ -193,47 +203,48 @@ window.location.href="login.html";
 
 
 fullnameInput.value =
-user.fullname || "";
+profileUser.fullname || "";
 
 
 emailInput.value =
-user.email || "";
+profileUser.email || "";
 
 
 phoneInput.value =
-user.phone || "";
+profileUser.phone || "";
 
 
 provinceInput.value =
-user.province || "";
+profileUser.province || "";
 
 
 cityInput.value =
-user.city || "";
+profileUser.city || "";
 
 
 districtInput.value =
-user.district || "";
+profileUser.district || "";
 
 
 villageInput.value =
-user.village || "";
+profileUser.village || "";
 
 
 streetInput.value =
-user.street || "";
+profileUser.street || "";
 
 
 houseNumberInput.value =
-user.house_number || "";
+profileUser.house_number || "";
 
 
 rtRwInput.value =
-user.rt_rw || "";
+profileUser.rt_rw || "";
 
 
 detailInput.value =
-user.detail || "";
+profileUser.detail || "";
+
 
 
 
@@ -255,7 +266,7 @@ try{
 // =======================
 
 
-if(photoInput.files.length > 0){
+if(photoInput && photoInput.files.length > 0){
 
 
 
@@ -270,10 +281,11 @@ photoInput.files[0]
 
 
 
+
 const uploadResponse =
 await fetch(
 
-`https://tugasuaspemrogramanweb-production.up.railway.app/api/users/upload-photo/${user.id}`,
+`https://tugasuaspemrogramanweb-production.up.railway.app/api/users/upload-photo/${profileUser.id}`,
 
 {
 
@@ -287,8 +299,10 @@ body:formData
 
 
 
+
 const uploadResult =
 await uploadResponse.json();
+
 
 
 
@@ -302,19 +316,21 @@ return;
 
 
 
-user.photo =
+
+profileUser.photo =
 uploadResult.photo;
 
 
 
 sessionStorage.setItem(
 "user",
-JSON.stringify(user)
+JSON.stringify(profileUser)
 );
 
 
 
 }
+
 
 
 
@@ -330,7 +346,7 @@ JSON.stringify(user)
 const response =
 await fetch(
 
-`https://tugasuaspemrogramanweb-production.up.railway.app/api/users/${user.id}`,
+`https://tugasuaspemrogramanweb-production.up.railway.app/api/users/${profileUser.id}`,
 
 {
 
@@ -402,8 +418,12 @@ detailInput.value
 
 
 
+
+
 const result =
 await response.json();
+
+
 
 
 
@@ -415,7 +435,7 @@ if(response.ok){
 const updatedUser={
 
 
-...user,
+...profileUser,
 
 
 fullname:
@@ -463,10 +483,11 @@ detailInput.value,
 
 
 photo:
-user.photo
+profileUser.photo
 
 
 };
+
 
 
 
@@ -483,14 +504,20 @@ JSON.stringify(updatedUser)
 
 
 
+
+
 alert(
 "Profil berhasil diperbarui"
 );
 
 
 
+
 window.location.href=
 "profile.html";
+
+
+
 
 
 
@@ -504,6 +531,7 @@ result.message ||
 
 
 }
+
 
 
 
