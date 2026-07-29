@@ -381,3 +381,176 @@ footer{
 .footer-social a:hover{
     color:#FF8FAB;
 }
+
+/* ===================== TABLET ===================== */
+
+@media screen and (max-width:768px){
+
+    header{
+        width:100%;
+        padding:15px 20px;
+        height:auto;
+        gap:15px;
+    }
+
+    .logo{
+        width:150px;
+    }
+
+    .search{
+        margin:0 15px;
+    }
+
+    .profile-container{
+        width:92%;
+        margin:30px auto 50px;
+    }
+
+    .profile-card{
+        padding:25px;
+    }
+
+    .profile-photo{
+        width:70px;
+        height:70px;
+    }
+
+    .profile-info h2{
+        font-size:22px;
+    }
+
+    .profile-info p{
+        font-size:14px;
+    }
+
+    .menu-card h3{
+        padding:16px 20px;
+    }
+
+    .menu-card a{
+        padding:16px 20px;
+    }
+
+    footer{
+        flex-direction:column;
+        gap:30px;
+        padding:35px 30px;
+    }
+
+    .footer-logo{
+        width:100%;
+    }
+
+}
+
+/* ===================== HP KECIL ===================== */
+
+@media screen and (max-width:480px){
+
+    header{
+        width:100%;
+        flex-wrap:wrap;
+        justify-content:center;
+        padding:15px;
+        gap:15px;
+    }
+
+    .menu{
+        margin-right:0;
+        font-size:24px;
+    }
+
+    .search{
+        width:100%;
+        order:3;
+        margin:0;
+    }
+
+    .search input{
+        height:42px;
+        font-size:14px;
+    }
+
+    .header-icon{
+        gap:16px;
+    }
+
+    .logo{
+        width:130px;
+    }
+
+    .profile-container{
+        width:95%;
+        margin:25px auto 40px;
+    }
+
+    .profile-card{
+        padding:20px;
+    }
+
+    .profile-header{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .profile-info{
+        margin:15px 0;
+    }
+
+    .profile-info h2{
+        font-size:22px;
+    }
+
+    .profile-info p{
+        font-size:13px;
+    }
+
+    .edit-profile{
+        margin:15px 0 0;
+        width:45px;
+        height:45px;
+    }
+
+    .menu-card h3{
+        font-size:15px;
+        padding:15px 18px;
+    }
+
+    .menu-card a{
+        padding:15px 18px;
+        font-size:14px;
+        gap:12px;
+    }
+
+    .menu-icon{
+        width:18px;
+        height:18px;
+    }
+
+    .user-dropdown{
+        width:170px;
+        right:10px;
+    }
+
+    footer{
+        flex-direction:column;
+        gap:25px;
+        padding:30px 20px;
+        text-align:center;
+        align-items:center;
+    }
+
+    .footer-logo{
+        width:100%;
+    }
+
+    .footer-logo img{
+        width:150px;
+    }
+
+    .footer-menu,
+    .footer-social{
+        align-items:center;
+    }
+
+}
