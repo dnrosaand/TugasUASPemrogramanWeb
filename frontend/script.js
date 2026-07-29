@@ -575,7 +575,6 @@ if (
 ) {
     if (!user) {
         window.location.href = "login.html";
-        return;
     }
     fullnameInput.value = user.fullname || "";
     emailInput.value = user.email || "";
