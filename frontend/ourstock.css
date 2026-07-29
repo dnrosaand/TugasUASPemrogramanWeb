@@ -93,6 +93,18 @@ header{
     fill:#ff6d9c;
 }
 
+/* PROFILE IMAGE HEADER */
+
+.header-profile-photo{
+    width:36px !important;
+    height:36px !important;
+    max-width:36px;
+    max-height:36px;
+    object-fit:cover;
+    border-radius:50%;
+    display:block;
+}
+
 /* ===================== CONTAINER ===================== */
 
 .stock-container{
@@ -361,6 +373,11 @@ footer{
     .header-icon .icon{
         width:20px;
         height:20px;
+    }
+
+    .header-profile-photo{
+        width:28px !important;
+        height:28px !important;
     }
 
     /* CONTAINER */
