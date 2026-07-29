@@ -1,128 +1,254 @@
+// =======================
+// FLASH SALE PRODUCT
+// =======================
+
+
 async function loadProducts() {
 
-    const container = document.getElementById("flash-sale-products");
 
-    if (!container) return;
+    const container =
+    document.getElementById("flash-sale-products");
 
-    try {
 
-        const response = await fetch(
+    if(!container) return;
+
+
+
+    try{
+
+
+        const response =
+        await fetch(
         "https://tugasuaspemrogramanweb-production.up.railway.app/api/products"
         );
 
-        const products = await response.json();
+
+        const products =
+        await response.json();
 
 
-        products.forEach(product => {
+
+        console.log("PRODUCT DATA:", products);
 
 
-            const soldPercent = Math.round(
-                (product.sold / (product.sold + product.stock)) * 100
-            );
+
+        products.forEach(product=>{
+
+
+            // =======================
+            // FIX IMAGE PATH
+            // =======================
+
+            let imagePath = product.image;
+
+
+            if(
+                imagePath &&
+                !imagePath.startsWith("http") &&
+                !imagePath.startsWith("img/")
+            ){
+
+                imagePath = "img/" + imagePath;
+
+            }
+
+
+
+            const total =
+            Number(product.sold) + Number(product.stock);
+
+
+            const soldPercent =
+            total > 0
+            ? Math.round(
+                (Number(product.sold) / total) * 100
+            )
+            : 0;
+
+
 
 
             container.innerHTML += `
 
+
             <div class="product-card"
+
             onclick="goToDetail(this)"
 
-            data-image="${product.image}"
-            data-category="${product.category}"
-            data-artist="${product.artist}"
-            data-name="${product.name}"
-            data-price="${product.price}"
-            data-oldprice="${product.old_price}"
-            data-sold="${product.sold}"
-            data-stock="${product.stock}"
-            data-desc="${product.description}"
+
+            data-image="${imagePath}"
+
+            data-category="${product.category || ''}"
+
+            data-artist="${product.artist || ''}"
+
+            data-name="${product.name || ''}"
+
+            data-price="${product.price || 0}"
+
+            data-oldprice="${product.old_price || 0}"
+
+            data-sold="${product.sold || 0}"
+
+            data-stock="${product.stock || 0}"
+
+            data-desc="${product.description || ''}"
+
             >
 
 
-            <img src="${product.image}">
+
+                <img 
+                src="${imagePath}"
+                alt="${product.name}"
+                onerror="this.src='img/default-product.png'"
+                >
 
 
-            <div class="product-info">
 
-            <small>${product.status}</small>
-
-
-            <p class="product-name">
-            ${product.name}
-            </p>
+                <div class="product-info">
 
 
-            <p class="price">
-            Rp${Number(product.price)
-            .toLocaleString("id-ID")}
-
-            <span>
-            Rp${Number(product.old_price)
-            .toLocaleString("id-ID")}
-            </span>
-
-            </p>
+                    <small>
+                    ${product.status || "Ready Stock"}
+                    </small>
 
 
-            <div class="flash-sale-box">
 
-            <div class="progress">
+                    <p class="product-name">
+                    ${product.name}
+                    </p>
 
-            <div class="progress-bar"
-            style="width:${soldPercent}%">
+
+
+                    <p class="price">
+
+                    Rp${Number(product.price)
+                    .toLocaleString("id-ID")}
+
+
+
+                    ${
+                    product.old_price
+                    ?
+                    `<span>
+                    Rp${Number(product.old_price)
+                    .toLocaleString("id-ID")}
+                    </span>`
+                    :
+                    ""
+                    }
+
+                    </p>
+
+
+
+
+                    <div class="flash-sale-box">
+
+
+                        <div class="progress">
+
+                            <div 
+                            class="progress-bar"
+                            style="width:${soldPercent}%">
+                            </div>
+
+                        </div>
+
+
+                        <p class="sold-text">
+                        ${soldPercent}% Terjual
+                        </p>
+
+
+                    </div>
+
+
+                </div>
+
+
             </div>
 
-            </div>
-
-
-            <p>
-            ${soldPercent}% Terjual
-            </p>
-
-
-            </div>
-
-
-            </div>
-
-
-            </div>
 
             `;
+
 
 
         });
 
 
-    }catch(err){
 
-        console.error(err);
+    }catch(error){
+
+
+        console.error(
+            "Gagal mengambil produk:",
+            error
+        );
+
 
     }
+
 
 }
 
 
+
 loadProducts();
 
+
+
+
 // =======================
-// DETAIL PRODUK
+// DETAIL PRODUCT
 // =======================
 
-function goToDetail(card) {
+
+function goToDetail(card){
+
 
     const product = {
 
-        image: card.dataset.image,
-        category: card.dataset.category,
-        artist: card.dataset.artist,
-        name: card.dataset.name,
-        price: card.dataset.price,
-        oldprice: card.dataset.oldprice,
-        sold: card.dataset.sold,
-        stock: card.dataset.stock,
-        desc: card.dataset.desc
+
+        image:
+        card.dataset.image,
+
+
+        category:
+        card.dataset.category,
+
+
+        artist:
+        card.dataset.artist,
+
+
+        name:
+        card.dataset.name,
+
+
+        price:
+        card.dataset.price,
+
+
+        oldprice:
+        card.dataset.oldprice,
+
+
+        sold:
+        card.dataset.sold,
+
+
+        stock:
+        card.dataset.stock,
+
+
+        desc:
+        card.dataset.desc
+
 
     };
+
 
 
     localStorage.setItem(
@@ -131,6 +257,9 @@ function goToDetail(card) {
     );
 
 
-    window.location.href = "detail.html";
+
+    window.location.href =
+    "detail.html";
+
 
 }
