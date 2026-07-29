@@ -566,8 +566,6 @@ const phoneInput = document.getElementById("phone");
 const addressInput = document.getElementById("address");
 const saveBtn = document.getElementById("saveProfile");
 
-const user = JSON.parse(sessionStorage.getItem("user"));
-
 if (
     fullnameInput &&
     emailInput &&
