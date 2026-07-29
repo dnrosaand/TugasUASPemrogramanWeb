@@ -560,73 +560,63 @@ if (profileImage) {
 }
 
 // ------ edit ------ //
-const editBtn = document.querySelector(".edit-profile");
-const editContainer = document.getElementById("editContainer");
 const fullnameInput = document.getElementById("fullname");
+const emailInput = document.getElementById("email");
 const phoneInput = document.getElementById("phone");
-
-if (editBtn) {
-    editBtn.addEventListener("click", function () {
-        const user = JSON.parse(sessionStorage.getItem("user"));
-        // tampilkan form
-        editContainer.style.display = "block";
-        // isi data lama
-        fullnameInput.value = user.fullname;
-        phoneInput.value = user.phone;
-    });
-}
-
-// ------- save -------- //
+const addressInput = document.getElementById("address");
 const saveBtn = document.getElementById("saveProfile");
 
-if(saveBtn){
-    saveBtn.addEventListener("click", async function(){
-        const user = JSON.parse(sessionStorage.getItem("user"));
-        if(!user){
-            alert("User belum login");
-            return;
-        }
-        const fullname = fullnameInput.value;
-        const phone = phoneInput.value;
-        try {
-            const response = await fetch(
-                `https://tugasuaspemrogramanweb-production.up.railway.app/api/users/${user.id}`,
-                {
-                    method: "PUT",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        fullname: fullname,
-                        phone: phone
-                    })
-                }
-            );
+const user = JSON.parse(sessionStorage.getItem("user"));
 
-            const result = await response.json();
-            if(response.ok){
-                // update sessionStorage
-                const updatedUser = {
-                    ...user,
-                    fullname: fullname,
-                    phone: phone
-                };
-
-                sessionStorage.setItem(
-                    "user",
-                    JSON.stringify(updatedUser)
-                );
-                alert("Profile berhasil diperbarui");
-                // sembunyikan form lagi
-                editContainer.style.display = "none";
-                // update tampilan profile
-                location.reload();
-            } else{
-                alert(result.message || "Gagal update profile");
-            }
-        } catch(error){
-            console.error(error);
-            alert("Terjadi kesalahan server");
-        }
-    });
+if(!user){
+    alert("Silakan login terlebih dahulu");
+    window.location.href="login.html";
 }
+
+fullnameInput.value = user.fullname || "";
+emailInput.value = user.email || "";
+phoneInput.value = user.phone || "";
+addressInput.value = user.address || "";
+
+saveBtn.addEventListener("click", async () => {
+    try {
+        const response = await fetch(
+            `https://tugasuaspemrogramanweb-production.up.railway.app/api/users/${user.id}`,
+            {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    fullname: fullnameInput.value,
+                    email: emailInput.value,
+                    phone: phoneInput.value,
+                    address: addressInput.value
+                })
+            }
+
+        );
+        const result = await response.json();
+        if (response.ok) {
+            // Update session
+            const updatedUser = {
+                ...user,
+                fullname: fullnameInput.value,
+                email: emailInput.value,
+                phone: phoneInput.value,
+                address: addressInput.value
+            };
+            sessionStorage.setItem(
+                "user",
+                JSON.stringify(updatedUser)
+            );
+            alert("Profil berhasil diperbarui.");
+            window.location.href = "profile.html";
+        } else {
+            alert(result.message || "Gagal memperbarui profil.");
+        }
+    } catch (error) {
+        console.error(error);
+        alert("Terjadi kesalahan pada server.");
+    }
+});
