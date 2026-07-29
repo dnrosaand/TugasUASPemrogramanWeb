@@ -5,7 +5,6 @@ const fs = require("fs");
 const uploadPath = path.resolve(__dirname, "../uploads");
 
 console.log("UPLOAD PATH =", uploadPath);
-console.log("__dirname =", __dirname);
 
 if (!fs.existsSync(uploadPath)) {
     fs.mkdirSync(uploadPath, { recursive: true });
@@ -13,12 +12,15 @@ if (!fs.existsSync(uploadPath)) {
 
 const storage = multer.diskStorage({
     destination(req, file, cb) {
-        console.log("Saving to:", uploadPath);
+        console.log("Destination =", uploadPath);
+        console.log("Folder exists =", fs.existsSync(uploadPath));
         cb(null, uploadPath);
     },
 
     filename(req, file, cb) {
-        cb(null, Date.now() + path.extname(file.originalname));
+        const filename = Date.now() + path.extname(file.originalname);
+        console.log("Filename =", filename);
+        cb(null, filename);
     }
 });
 
