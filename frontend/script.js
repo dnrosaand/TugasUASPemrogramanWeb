@@ -688,7 +688,7 @@ if (
                     street: streetInput.value,
                     house_number: houseNumberInput.value,
                     rt_rw: rtRwInput.value,
-                    detail: detailInput.value
+                    detail: detailInput.value,
                     photo: user.photo
                 };
                 sessionStorage.setItem(
