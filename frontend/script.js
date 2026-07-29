@@ -447,156 +447,211 @@ if (nextBtn) {
 
 }
 
-// =======================
-// ALAMAT USER
-// =======================
-
+// ------Alamat------- //
 document.addEventListener("DOMContentLoaded", () => {
 
     const agreeCheck = document.getElementById("agreeCheck");
     const registerBtn = document.getElementById("registerBtn");
 
-
-    // Checkbox persetujuan
     if (agreeCheck && registerBtn) {
 
         registerBtn.disabled = true;
 
         agreeCheck.addEventListener("change", function () {
-
             registerBtn.disabled = !this.checked;
-
         });
 
     }
 
 
+    // ===== DATA WILAYAH ===== //
+    const wilayah = {
+        "Jawa Timur": {
+            "Kota Malang": {
+                "Lowokwaru": [
+                    "Dinoyo",
+                    "Tulusrejo",
+                    "Sumbersari"
+                ],
+                "Klojen": [
+                    "Kauman",
+                    "Samaan"
+                ]
+            },
 
-    // =======================
-    // REGISTER USER
-    // =======================
+            "Kota Surabaya": {
+                "Sukolilo": [
+                    "Keputih",
+                    "Gebang Putih"
+                ]
+            },
 
-    if (registerBtn) {
+            "Kab. Lamongan": {
+                "Brondong": [
+                    "Sedayulawas",
+                    "Brondong"
+                ]
+            }
+        },
+
+        "Nusa Tenggara Timur": {
+            "Kota Kupang": {
+                "Kelapa Lima": [
+                    "Oesapa",
+                    "Kelapa Lima"
+                ]
+            }
+        }
+    };
+
+
+    // ===== SELECT ALAMAT ===== //
+    const province = document.getElementById("province");
+    const city = document.getElementById("city");
+    const district = document.getElementById("district");
+    const village = document.getElementById("village");
+
+
+    // cek apakah select alamat ada
+    if (province && city && district && village) {
+
+
+        // tampilkan provinsi
+        Object.keys(wilayah).forEach((prov) => {
+            province.innerHTML += `
+                <option value="${prov}">
+                    ${prov}
+                </option>
+            `;
+        });
+
+
+        // pilih provinsi
+        province.addEventListener("change", function () {
+
+            city.innerHTML = `<option value="">Pilih Kabupaten/Kota</option>`;
+            district.innerHTML = `<option value="">Pilih Kecamatan</option>`;
+            village.innerHTML = `<option value="">Pilih Desa/Kelurahan</option>`;
+
+            Object.keys(wilayah[this.value]).forEach((kota) => {
+                city.innerHTML += `
+                    <option value="${kota}">
+                        ${kota}
+                    </option>
+                `;
+            });
+
+        });
+
+
+        // pilih kota
+        city.addEventListener("change", function () {
+
+            district.innerHTML = `<option value="">Pilih Kecamatan</option>`;
+            village.innerHTML = `<option value="">Pilih Desa/Kelurahan</option>`;
+
+            Object.keys(wilayah[province.value][this.value])
+            .forEach((kec) => {
+
+                district.innerHTML += `
+                    <option value="${kec}">
+                        ${kec}
+                    </option>
+                `;
+
+            });
+
+        });
+
+
+        // pilih kecamatan
+        district.addEventListener("change", function () {
+
+            village.innerHTML = `<option value="">Pilih Desa/Kelurahan</option>`;
+
+            wilayah[province.value][city.value][this.value]
+            .forEach((desa) => {
+
+                village.innerHTML += `
+                    <option value="${desa}">
+                        ${desa}
+                    </option>
+                `;
+
+            });
+
+        });
+
+    }
+
+});
+
+        // =======================
+        // CEK DATA DARI HALAMAN PERTAMA
+        // =======================
 
         registerBtn.addEventListener("click", async function () {
 
+    const user = JSON.parse(sessionStorage.getItem("registerData"));
 
-            const user = JSON.parse(
-                sessionStorage.getItem("registerData")
-            );
+    if (!user) {
+        alert("Data diri belum diisi.");
+        return;
+    }
 
+    const data = {
+        fullname: `${user.firstName} ${user.lastName}`,
+        email: user.email,
+        phone: user.phone,
+        password: user.password,
 
-            if (!user) {
+        province: document.getElementById("province").value,
+        city: document.getElementById("city").value,
+        district: document.getElementById("district").value,
+        village: document.getElementById("village").value,
+        street: document.getElementById("street").value,
+        houseNumber: document.getElementById("houseNumber").value,
+        rtRw: document.getElementById("rtRw").value,
+        detail: document.getElementById("detail").value
+    };
 
-                alert("Data diri belum diisi.");
-                return;
+    try {
 
-            }
+        if (
+            data.province === "Provinsi" ||
+            data.city === "Kabupaten/Kota" ||
+            data.district === "Kecamatan" ||
+            data.village === "Kelurahan/Desa"
+        ) {
+            alert("Silakan lengkapi alamat.");
+            return;
+        }
 
-
-
-            const data = {
-
-                fullname: `${user.firstName} ${user.lastName}`,
-                email: user.email,
-                phone: user.phone,
-                password: user.password,
-
-
-                province: document.getElementById("province").value,
-                city: document.getElementById("city").value,
-                district: document.getElementById("district").value,
-                village: document.getElementById("village").value,
-
-                street: document.getElementById("street").value,
-                houseNumber: document.getElementById("houseNumber").value,
-                rtRw: document.getElementById("rtRw").value,
-                detail: document.getElementById("detail").value
-
-            };
-
-
-
-            // validasi alamat
-
-            if (
-                !data.province ||
-                !data.city ||
-                !data.district ||
-                !data.village ||
-                !data.street
-            ) {
-
-                alert("Silakan lengkapi alamat.");
-                return;
-
-            }
-
-
-
-            try {
-
-
-                const response = await fetch(
-                    "https://tugasuaspemrogramanweb-production.up.railway.app/api/users/register",
-                    {
-
-                        method: "POST",
-
-                        headers: {
-
-                            "Content-Type": "application/json"
-
-                        },
-
-                        body: JSON.stringify(data)
-
-                    }
-                );
-
-
-
-                const result = await response.json();
-
-
-
-                if (response.ok) {
-
-
-                    alert("Registrasi berhasil!");
-
-
-                    sessionStorage.removeItem(
-                        "registerData"
-                    );
-
-
-                    window.location.href = "login.html";
-
-
-                } else {
-
-
-                    alert(
-                        result.message || "Registrasi gagal"
-                    );
-
-
-                }
-
-
-            } catch(error) {
-
-
-                console.error(error);
-
-                alert("Server Error");
-
-
-            }
-
-
+        const response = await fetch("https://tugasuaspemrogramanweb-production.up.railway.app/api/users/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
         });
+
+        const result = await response.json();
+
+        if (response.ok) {
+            alert("Registrasi berhasil!");
+            sessionStorage.removeItem("registerData");
+            window.location.href = "login.html";
+        }
+        else {
+
+            alert(result.message);
+
+        }
+
+    } catch (err) {
+
+        console.error(err);
+        alert("Server Error");
 
     }
 
