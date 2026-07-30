@@ -1,203 +1,150 @@
+// =======================
+// SEARCH INPUT
+// =======================
+
 const searchInput = document.getElementById("searchInput");
 
-if(searchInput){
-
-    searchInput.addEventListener("keydown", function(e){
-
-        if(e.key === "Enter"){
-
+if (searchInput) {
+    searchInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
             const keyword = searchInput.value.trim();
 
-            if(keyword !== ""){
-
-                window.location.href =
-                `search.html?keyword=${keyword}`;
-
+            if (keyword) {
+                window.location.href = `search.html?keyword=${encodeURIComponent(keyword)}`;
             }
-
         }
-
     });
-
 }
+
 
 // =======================
 // LOAD SEARCH RESULT
 // =======================
 
-async function loadSearchProducts(){
-
+async function loadSearchProducts() {
     const container = document.getElementById("search-products");
 
-    if(!container) return;
+    if (!container) return;
 
+    const params = new URLSearchParams(window.location.search);
 
-    const params = new URLSearchParams(
-        window.location.search
-    );
+    const keyword = (params.get("keyword") || "")
+        .trim()
+        .toLowerCase();
 
-
-    const keyword = params.get("keyword")?.trim().toLowerCase();
-
-
-    console.log("KEYWORD:", keyword);
-
-
-    if(!keyword){
-
+    if (!keyword) {
         container.innerHTML = `
-            <p>Pencarian kosong</p>
+            <p class="no-result">
+                Pencarian kosong
+            </p>
         `;
-
         return;
-
     }
 
-
-    try{
-
-
+    try {
         const response = await fetch(
             "https://tugasuaspemrogramanweb-production.up.railway.app/api/products"
         );
 
-
         const products = await response.json();
 
+        // Pisahkan keyword menjadi beberapa kata
+        const keywords = keyword
+            .replace(/[()]/g, "")
+            .split(/\s+/)
+            .filter(Boolean);
 
-        console.log("SEMUA PRODUK:", products);
+        const result = products.filter((product) => {
 
+            const text = `
+                ${product.name || ""}
+                ${product.artist || ""}
+                ${product.category || ""}
+            `
+                .toLowerCase()
+                .replace(/[()]/g, "");
 
-
-        const result = products.filter(product => {
-
-
-            const name = 
-            String(product.name || "").toLowerCase();
-
-
-            const artist = 
-            String(product.artist || "").toLowerCase();
-
-
-            const category = 
-            String(product.category || "").toLowerCase();
-
-
-
-            return (
-                name.includes(keyword) ||
-                artist.includes(keyword) ||
-                category.includes(keyword)
-            );
-
-
+            return keywords.every((word) => text.includes(word));
         });
 
-
-
-        console.log("HASIL SEARCH:", result);
-
-
-
-        if(result.length === 0){
-
-
+        if (result.length === 0) {
             container.innerHTML = `
-
-            <p class="no-result">
-                Produk tidak ditemukan
-            </p>
-
+                <p class="no-result">
+                    Produk tidak ditemukan
+                </p>
             `;
-
             return;
-
         }
-
-
 
         container.innerHTML = "";
 
+        result.forEach((product) => {
 
+            // =======================
+            // FIX IMAGE PATH
+            // =======================
 
-        result.forEach(product => {
+            let imagePath = (product.image || "")
+                .trim()
+                .replace(/\\/g, "/");
 
+            if (
+                !imagePath.startsWith("http") &&
+                !imagePath.startsWith("img/")
+            ) {
+                imagePath = "img/" + imagePath;
+            }
 
             container.innerHTML += `
+                <div
+                    class="product-card"
+                    onclick="goToDetail(this)"
+                    data-image="${imagePath}"
+                    data-category="${product.category || ""}"
+                    data-artist="${product.artist || ""}"
+                    data-name="${product.name || ""}"
+                    data-price="${product.price || 0}"
+                    data-oldprice="${product.old_price || 0}"
+                    data-stock="${product.stock || 0}"
+                    data-sold="${product.sold || 0}"
+                    data-desc="${product.description || ""}"
+                >
 
-            <div class="product-card"
+                    <img
+                        src="${imagePath}"
+                        alt="${product.name}"
+                        onerror="this.src='img/default-product.png'"
+                    >
 
-            onclick="goToDetail(this)"
+                    <div class="product-info">
 
-            data-image="${product.image}"
+                        <small>
+                            ${product.status || ""}
+                        </small>
 
-            data-category="${product.category}"
+                        <p class="product-name">
+                            ${product.name}
+                        </p>
 
-            data-artist="${product.artist}"
+                        <p class="price">
+                            Rp${Number(product.price).toLocaleString("id-ID")}
+                        </p>
 
-            data-name="${product.name}"
-
-            data-price="${product.price}"
-
-            data-oldprice="${product.old_price || ''}"
-
-            data-stock="${product.stock}"
-
-            data-sold="${product.sold}"
-
-            data-desc="${product.description}"
-
-            >
-
-
-                <img 
-                src="${product.image}"
-                alt="${product.name}">
-
-
-                <div class="product-info">
-
-
-                    <small>
-                    ${product.status || ""}
-                    </small>
-
-
-                    <p class="product-name">
-                    ${product.name}
-                    </p>
-
-
-                    <p class="price">
-                    Rp${Number(product.price)
-                    .toLocaleString("id-ID")}
-                    </p>
-
+                    </div>
 
                 </div>
-
-
-            </div>
-
-
             `;
-
-
         });
 
+    } catch (error) {
+        console.error("Gagal load search:", error);
 
-
-    }catch(error){
-
-        console.error(
-            "Gagal load search:",
-            error
-        );
-
+        container.innerHTML = `
+            <p class="no-result">
+                Terjadi kesalahan saat memuat produk.
+            </p>
+        `;
     }
-
 }
-
 
 loadSearchProducts();
