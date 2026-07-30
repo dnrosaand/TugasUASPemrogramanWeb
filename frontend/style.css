@@ -725,17 +725,20 @@ footer{
 
 /* Punya Search */
 .back-home {
-    margin: 20px 0 10px 20px;
+    width:1200px;
+    margin:30px auto 25px;
+    padding-bottom:12px;
+    border-bottom:1px solid #d9d9d9;
 }
 
 .back-home a {
-    font-size: 18px;
-    color: #ff6f9b;
-    text-decoration: underline;
-    font-weight: 500;
-    transition: 0.2s;
+    text-decoration:none;
+    color:#555;
+    font-size:14px;
+    font-weight:500;
+    transition:.3s;
 }
 
 .back-home a:hover {
-    color: #fff;
+    color:#FF8FAB;
 }
