@@ -730,12 +730,12 @@ footer{
 
 .back-home a {
     font-size: 18px;
-    color: #fff;
+    color: #ff6f9b;
     text-decoration: underline;
     font-weight: 500;
     transition: 0.2s;
 }
 
 .back-home a:hover {
-    color: #FF8FAB;
+    color: #fff;
 }
