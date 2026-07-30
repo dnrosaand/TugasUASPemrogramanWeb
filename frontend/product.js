@@ -5,15 +5,17 @@
 function goToDetail(card) {
 
     const product = {
+
         image: card.dataset.image,
         category: card.dataset.category,
         artist: card.dataset.artist,
         name: card.dataset.name,
-        price: card.dataset.price,
-        oldprice: card.dataset.oldprice,
-        sold: card.dataset.sold,
-        stock: card.dataset.stock,
+        price: Number(card.dataset.price),
+        oldprice: Number(card.dataset.oldprice),
+        sold: Number(card.dataset.sold),
+        stock: Number(card.dataset.stock),
         desc: card.dataset.desc
+
     };
 
     localStorage.setItem(
@@ -27,7 +29,7 @@ function goToDetail(card) {
 
 
 // =======================
-// ADD TO CART (CARD)
+// ADD TO CART (PRODUCT CARD)
 // =======================
 
 function addToCart(event, button) {
@@ -77,15 +79,31 @@ function addDetailToCart() {
     const qty =
         parseInt(document.getElementById("qty").value) || 1;
 
-    product.qty = qty;
+    saveToCart({
 
-    saveToCart(product);
+        ...product,
+        qty
+
+    });
 
 }
 
 
 // =======================
-// SIMPAN KE CART
+// BELI SEKARANG
+// =======================
+
+function buyNow() {
+
+    addDetailToCart();
+
+    window.location.href = "cart.html";
+
+}
+
+
+// =======================
+// SIMPAN KE KERANJANG
 // =======================
 
 function saveToCart(product) {
@@ -94,8 +112,10 @@ function saveToCart(product) {
         JSON.parse(localStorage.getItem("cart")) || [];
 
     const existingProduct = cart.find(item =>
+
         item.name === product.name &&
         item.artist === product.artist
+
     );
 
     if (existingProduct) {
@@ -119,14 +139,20 @@ function saveToCart(product) {
 
 
 // =======================
-// QTY
+// QUANTITY
 // =======================
 
-const minusBtn = document.getElementById("minus");
-const plusBtn = document.getElementById("plus");
-const qtyInput = document.getElementById("qty");
+const minusBtn =
+    document.getElementById("minus");
 
-if (plusBtn && minusBtn && qtyInput) {
+const plusBtn =
+    document.getElementById("plus");
+
+const qtyInput =
+    document.getElementById("qty");
+
+
+if (minusBtn && plusBtn && qtyInput) {
 
     plusBtn.onclick = () => {
 
