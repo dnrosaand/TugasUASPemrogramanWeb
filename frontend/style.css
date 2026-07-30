@@ -725,27 +725,17 @@ footer{
 
 /* Punya Search */
 .back-home {
-    width: 100%;
-    padding: 20px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    box-sizing: border-box;
+    margin: 20px 0 10px 20px;
 }
 
-.back-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 2px;
-    padding: 10px 18px;
-    background: none;
+.back-home a {
+    font-size: 18px;
+    color: #fff;
+    text-decoration: underline;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.back-home a:hover {
     color: #FF8FAB;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: 600;
-    transition: 0.3s;
-}
-
-.back-btn:hover {
-    background: #333;
 }
