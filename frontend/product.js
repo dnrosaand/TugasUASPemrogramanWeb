@@ -5,7 +5,6 @@
 function goToDetail(card) {
 
     const product = {
-
         image: card.dataset.image,
         category: card.dataset.category,
         artist: card.dataset.artist,
@@ -15,7 +14,6 @@ function goToDetail(card) {
         sold: card.dataset.sold,
         stock: card.dataset.stock,
         desc: card.dataset.desc
-
     };
 
     localStorage.setItem(
@@ -29,15 +27,16 @@ function goToDetail(card) {
 
 
 // =======================
-// ADD TO CART
+// ADD TO CART (CARD)
 // =======================
 
 function addToCart(event, button) {
 
-    // Supaya tidak ikut membuka detail
     event.stopPropagation();
 
     const card = button.closest(".product-card");
+
+    if (!card) return;
 
     const product = {
 
@@ -54,6 +53,43 @@ function addToCart(event, button) {
 
     };
 
+    saveToCart(product);
+
+}
+
+
+// =======================
+// ADD TO CART (DETAIL)
+// =======================
+
+function addDetailToCart() {
+
+    const product =
+        JSON.parse(localStorage.getItem("product"));
+
+    if (!product) {
+
+        alert("Produk tidak ditemukan.");
+        return;
+
+    }
+
+    const qty =
+        parseInt(document.getElementById("qty").value) || 1;
+
+    product.qty = qty;
+
+    saveToCart(product);
+
+}
+
+
+// =======================
+// SIMPAN KE CART
+// =======================
+
+function saveToCart(product) {
+
     let cart =
         JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -64,7 +100,7 @@ function addToCart(event, button) {
 
     if (existingProduct) {
 
-        existingProduct.qty++;
+        existingProduct.qty += product.qty;
 
     } else {
 
@@ -109,59 +145,5 @@ if (plusBtn && minusBtn && qtyInput) {
         }
 
     };
-
-}
-
-// =======================
-// ADD TO CART FROM DETAIL
-// =======================
-
-const addCartBtn = document.getElementById("add-cart-btn");
-
-if (addCartBtn) {
-
-    addCartBtn.addEventListener("click", () => {
-
-        const product =
-            JSON.parse(localStorage.getItem("product"));
-
-        if (!product) {
-            alert("Produk tidak ditemukan.");
-            return;
-        }
-
-        let cart =
-            JSON.parse(localStorage.getItem("cart")) || [];
-
-        // Ambil jumlah dari input qty
-        const qty =
-            parseInt(document.getElementById("qty")?.value) || 1;
-
-        const existingProduct = cart.find(item =>
-            item.name === product.name &&
-            item.artist === product.artist
-        );
-
-        if (existingProduct) {
-
-            existingProduct.qty += qty;
-
-        } else {
-
-            cart.push({
-                ...product,
-                qty: qty
-            });
-
-        }
-
-        localStorage.setItem(
-            "cart",
-            JSON.stringify(cart)
-        );
-
-        alert("Produk berhasil dimasukkan ke keranjang!");
-
-    });
 
 }
