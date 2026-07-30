@@ -3,120 +3,92 @@
 // =======================
 
 async function loadStocks() {
-
     const productGrid = document.getElementById("our-stock-products");
 
-    // kalau bukan halaman ourstock
+    // Kalau bukan halaman Our Stock
     if (!productGrid) return;
 
-
     try {
-
         const response = await fetch(
             "https://tugasuaspemrogramanweb-production.up.railway.app/api/stocks"
         );
 
-
         const products = await response.json();
 
+        products.forEach((product) => {
+            // =======================
+            // FIX IMAGE PATH
+            // =======================
 
-        console.log("DATA STOCK:", products);
+            let imagePath = (product.image || "")
+                .trim()
+                .replace(/\\/g, "/");
 
-
-
-        products.forEach(product => {
-
+            if (
+                !imagePath.startsWith("http") &&
+                !imagePath.startsWith("img/")
+            ) {
+                imagePath = "img/" + imagePath;
+            }
 
             productGrid.innerHTML += `
-
-            <div class="product-card"
-
-                onclick="goToDetail(this)"
-
-                data-image="${product.image}"
-                data-category="${product.category}"
-                data-artist="${product.artist}"
-                data-name="${product.name}"
-                data-price="${product.price}"
-                data-oldprice="${product.old_price || ''}"
-                data-stock="${product.stock}"
-                data-sold="${product.sold}"
-                data-desc="${product.description}"
-
-            >
-
-
-                <img 
-                    src="${product.image}"
-                    alt="${product.name}"
+                <div
+                    class="product-card"
+                    onclick="goToDetail(this)"
+                    data-image="${imagePath}"
+                    data-category="${product.category || ""}"
+                    data-artist="${product.artist || ""}"
+                    data-name="${product.name || ""}"
+                    data-price="${product.price || 0}"
+                    data-oldprice="${product.old_price || 0}"
+                    data-stock="${product.stock || 0}"
+                    data-sold="${product.sold || 0}"
+                    data-desc="${product.description || ""}"
                 >
 
+                    <img
+                        src="${imagePath}"
+                        alt="${product.name}"
+                        onerror="this.src='img/default-product.png'"
+                    >
 
+                    <div class="product-info">
 
-                <div class="product-info">
+                        <small>
+                            ${product.status || ""}
+                        </small>
 
+                        <p class="product-name">
+                            ${product.name}
+                        </p>
 
-                    <small>
-                        ${product.status || ""}
-                    </small>
+                        <p class="price">
+                            Rp${Number(product.price).toLocaleString("id-ID")}
+                        </p>
 
+                        <div class="product-action">
 
+                            <button class="buy-btn">
+                                Belanja
+                            </button>
 
-                    <p class="product-name">
-                        ${product.name}
-                    </p>
+                            <img
+                                src="img/Shopping cart.png"
+                                alt="cart"
+                            >
 
-
-
-                    <p class="price">
-                        Rp${Number(product.price)
-                        .toLocaleString("id-ID")}
-                    </p>
-
-
-
-                    <div class="product-action">
-
-
-                        <button class="buy-btn">
-                            Belanja
-                        </button>
-
-
-                        <img 
-                            src="img/Shopping cart.png"
-                            alt="cart"
-                        >
-
+                        </div>
 
                     </div>
 
-
                 </div>
-
-
-            </div>
-
             `;
-
-
         });
 
-
-
-    } catch(error) {
-
-
-        console.error(
-            "Gagal mengambil stock:",
-            error
-        );
-
-
+    } catch (error) {
+        console.error("Gagal mengambil stock:", error);
     }
-
 }
 
-
-// jalankan
+// Jalankan
 loadStocks();
