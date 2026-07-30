@@ -39,18 +39,16 @@ async function loadProducts() {
             // FIX IMAGE PATH
             // =======================
 
-            let imagePath = product.image;
+            let imagePath = (product.image || "").trim();
 
+console.log("Image dari database:", imagePath);
 
-            if(
-                imagePath &&
-                !imagePath.startsWith("http") &&
-                !imagePath.startsWith("img/")
-            ){
+// Kalau database belum ada "img/", tambahkan
+if (!imagePath.startsWith("img/")) {
+    imagePath = "img/" + imagePath;
+}
 
-                imagePath = "img/" + imagePath;
-
-            }
+console.log("Image yang dipakai:", imagePath);
 
 
 
