@@ -42,11 +42,15 @@ async function loadSearchProducts() {
     }
 
     try {
-        const response = await fetch(
-            "https://tugasuaspemrogramanweb-production.up.railway.app/api/products"
-        );
+        const [productRes, stockRes] = await Promise.all([
+            fetch("https://tugasuaspemrogramanweb-production.up.railway.app/api/products"),
+            fetch("https://tugasuaspemrogramanweb-production.up.railway.app/api/stocks")
+        ]);
 
-        const products = await response.json();
+        const products = await productRes.json();
+        const stocks = await stockRes.json();
+
+        const allProducts = [...products, ...stocks];
 
         // Pisahkan keyword menjadi beberapa kata
         const keywords = keyword
@@ -54,7 +58,7 @@ async function loadSearchProducts() {
             .split(/\s+/)
             .filter(Boolean);
 
-        const result = products.filter((product) => {
+        const result = allProducts.filter((product) => {
 
             const text = `
                 ${product.name || ""}
