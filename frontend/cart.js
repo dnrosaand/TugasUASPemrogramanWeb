@@ -3,13 +3,15 @@
 // =======================
 
 function loadCart() {
+
     const cartContainer = document.getElementById("cart-items");
     const totalItem = document.getElementById("total-item");
     const totalPrice = document.getElementById("total-price");
 
     if (!cartContainer) return;
 
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const cart =
+        JSON.parse(localStorage.getItem("cart")) || [];
 
     cartContainer.innerHTML = "";
 
@@ -18,6 +20,7 @@ function loadCart() {
     // =======================
 
     if (cart.length === 0) {
+
         cartContainer.innerHTML = `
             <p class="empty-cart">
                 Keranjang masih kosong.
@@ -28,6 +31,7 @@ function loadCart() {
         totalPrice.textContent = "Rp0";
 
         return;
+
     }
 
     let totalBarang = 0;
@@ -44,6 +48,7 @@ function loadCart() {
             .replace(/\\/g, "/");
 
         if (
+            imagePath &&
             !imagePath.startsWith("http") &&
             !imagePath.startsWith("img/")
         ) {
@@ -53,27 +58,26 @@ function loadCart() {
         const qty = product.qty || 1;
 
         totalBarang += qty;
-        totalHarga += Number(product.price) * qty;
+        totalHarga += Number(product.price || 0) * qty;
 
         cartContainer.innerHTML += `
             <div class="cart-item">
 
                 <img
                     src="${imagePath}"
-                    alt="${product.name}"
-                    onerror="this.src='img/default-product.png'"
+                    alt="${product.name || "Produk"}"
                 >
 
                 <div class="cart-info">
 
-                    <h3>${product.name}</h3>
+                    <h3>${product.name || "-"}</h3>
 
                     <p class="artist">
                         ${product.artist || ""}
                     </p>
 
                     <p class="price">
-                        Rp${Number(product.price).toLocaleString("id-ID")}
+                        Rp${Number(product.price || 0).toLocaleString("id-ID")}
                     </p>
 
                 </div>
@@ -109,12 +113,14 @@ function loadCart() {
 
             </div>
         `;
+
     });
 
     totalItem.textContent = totalBarang;
 
     totalPrice.textContent =
         "Rp" + totalHarga.toLocaleString("id-ID");
+
 }
 
 
@@ -123,7 +129,9 @@ function loadCart() {
 // =======================
 
 function removeCart(index) {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const cart =
+        JSON.parse(localStorage.getItem("cart")) || [];
 
     cart.splice(index, 1);
 
@@ -133,6 +141,7 @@ function removeCart(index) {
     );
 
     loadCart();
+
 }
 
 
@@ -141,14 +150,19 @@ function removeCart(index) {
 // =======================
 
 function changeQty(index, value) {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const cart =
+        JSON.parse(localStorage.getItem("cart")) || [];
 
     if (!cart[index]) return;
 
-    cart[index].qty = (cart[index].qty || 1) + value;
+    cart[index].qty =
+        (cart[index].qty || 1) + value;
 
     if (cart[index].qty <= 0) {
+
         cart.splice(index, 1);
+
     }
 
     localStorage.setItem(
@@ -157,6 +171,7 @@ function changeQty(index, value) {
     );
 
     loadCart();
+
 }
 
 
@@ -164,17 +179,21 @@ function changeQty(index, value) {
 // CHECKOUT
 // =======================
 
-const checkoutBtn = document.getElementById("checkout-btn");
+const checkoutBtn =
+    document.getElementById("checkout-btn");
 
 if (checkoutBtn) {
+
     checkoutBtn.addEventListener("click", () => {
 
         const cart =
             JSON.parse(localStorage.getItem("cart")) || [];
 
         if (cart.length === 0) {
+
             alert("Keranjang masih kosong.");
             return;
+
         }
 
         alert("Checkout berhasil!");
@@ -182,12 +201,14 @@ if (checkoutBtn) {
         localStorage.removeItem("cart");
 
         loadCart();
+
     });
+
 }
 
 
 // =======================
-// LOAD SAAT HALAMAN DIBUKA
+// LOAD CART
 // =======================
 
 loadCart();
